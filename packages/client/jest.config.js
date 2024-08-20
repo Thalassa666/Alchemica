@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 import { pathsToModuleNameMapper } from 'ts-jest'
-import { compilerOptions } from './tsconfig.json'
+import compilerOptions from './tsconfig.json' assert { type: 'json' };
 dotenv.config()
 
 export default {
