@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import './App.css'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import Login from './pages/Login'
@@ -9,7 +10,7 @@ import Game from './pages/Game'
 import Leaderboard from './pages/Leaderboard'
 import Forum from './pages/Forum'
 import Topic from './pages/Topic'
-import Error from './pages/Error'
+import Error from '@pages/Error'
 
 const AppRoutes = () => {
   return useRoutes([
@@ -68,7 +69,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AppRoutes />
+      <ErrorBoundary fallback={<div>Something went wrong</div>}>
+        <AppRoutes />
+      </ErrorBoundary>
     </BrowserRouter>
   )
 }
