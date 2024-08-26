@@ -10,7 +10,7 @@ import Game from './pages/Game'
 import Leaderboard from './pages/Leaderboard'
 import Forum from './pages/Forum'
 import Topic from './pages/Topic'
-import Error from '@pages/Error'
+import Error from './pages/Error'
 
 const AppRoutes = () => {
   return useRoutes([
