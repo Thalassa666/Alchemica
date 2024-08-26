@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   max-height: 500px;
   max-width: 380px;
   padding: 29px 94px 29px 94px;
@@ -30,13 +30,22 @@
   align-items: center;
   justify-content: center;
   box-sizing: content-box;
+  h1 {
+    font-size: 120px;
+  }
 }
 .background {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 964px;
+  flex-direction: column;
+  width: 1240px;
   height: 100vh;
   background-image: url('../../assets/images/alh-background.png');
   background-size: 100% 100%;
+}
+.titleOverlay {
+  text-align: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
 }

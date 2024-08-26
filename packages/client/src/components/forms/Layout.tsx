@@ -8,7 +8,12 @@ type TLayoutProps = {
 export const Layout = (props: TLayoutProps) => {
   return (
     <section className={styles.layout}>
-      <div className={styles.background}>{props.children}</div>
+      <div className={styles.background}>
+        <div className={styles.titleOverlay}>
+          <h1>ALCHEMIST</h1>
+        </div>
+        {props.children}
+      </div>
     </section>
   )
 }
