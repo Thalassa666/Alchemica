@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  max-height: 500px;
+  max-width: 380px;
+  padding: 29px 94px 29px 94px;
+  gap: 15px;
+
+  h2 {
+    color: white;
+  }
+
+  input {
+    background: #465049;
+  }
+
+  button {
+    background-color: #c8c8c7;
+    border: none;
+    text-align: center;
+    color: black;
+  }
+}

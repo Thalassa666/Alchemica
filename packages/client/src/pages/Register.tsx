@@ -1,11 +1,11 @@
 import { Button } from '@gravity-ui/uikit'
+import { RegisterForm } from '@components/forms'
 
 const Register = () => {
   return (
     <>
       <div>
-        <Button> </Button>
-        <h1>Register Page</h1>
+        <RegisterForm />
       </div>
     </>
   )
