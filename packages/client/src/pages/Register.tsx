@@ -1,11 +1,10 @@
-import { Button } from '@gravity-ui/uikit'
-import { RegisterForm } from '@components/forms'
+import { FormsLayout, RegisterForm } from '@components/forms'
 
 const Register = () => {
   return (
     <>
       <div>
-        <RegisterForm />
+        <FormsLayout children={<RegisterForm />} />
       </div>
     </>
   )

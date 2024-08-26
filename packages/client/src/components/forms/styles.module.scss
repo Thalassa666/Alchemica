@@ -24,3 +24,19 @@
     color: black;
   }
 }
+
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+}
+.background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 964px;
+  height: 100vh;
+  background-image: url('../../assets/images/alh-background.png');
+  background-size: 100% 100%;
+}
