@@ -20,7 +20,7 @@ export const Login = () => {
           placeholder={'password'}
           name={'password'}
         />
-        <ArrowButton />
+        <ArrowButton type={'submit'} />
         <Link className={styles.link} to={'/register'}>
           Зарегистрироваться
         </Link>

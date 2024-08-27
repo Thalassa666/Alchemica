@@ -1,4 +1,8 @@
 import styles from './styles.module.scss'
-export const ArrowButton = () => {
-  return <button className={styles.button}></button>
+
+type TButtonProps = {
+  type: 'button' | 'submit' | 'reset' | undefined
+}
+export const ArrowButton = ({ type }: TButtonProps) => {
+  return <button type={type} className={styles.button}></button>
 }
