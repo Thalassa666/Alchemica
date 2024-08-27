@@ -1,7 +1,7 @@
 .button {
   border: none;
-  width: 62px;
-  height: 62px;
+  min-width: 62px;
+  min-height: 62px;
   border-radius: 50%;
   background-image: url(../../../assets/images/arrow.png);
   background-size: cover;
@@ -11,5 +11,4 @@
 button:hover {
   cursor: pointer;
   opacity: 0.8;
-
 }
