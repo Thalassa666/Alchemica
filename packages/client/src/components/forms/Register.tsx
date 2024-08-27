@@ -23,19 +23,18 @@ export const Register = () => {
 
   const validateField = (name: keyof RegistrationFormData, value: string) => {
     try {
-      const fieldSchema = registrationSchema.shape[name] // Получаем схему для конкретного поля
-      fieldSchema.parse(value) // Проверяем значение поля
+      const fieldSchema = registrationSchema.shape[name]
+      fieldSchema.parse(value)
       setErrors(prevErrors => ({
         ...prevErrors,
-        [name]: undefined, // Если ошибок нет, удаляем сообщение об ошибке
+        [name]: undefined,
       }))
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        setErrors(prevErrors => ({
-          ...prevErrors,
-          [name]: error.errors[0]?.message, // Устанавливаем сообщение об ошибке
-        }))
-      }
+    } catch (err) {
+      const error = err as z.ZodError
+      setErrors(prevErrors => ({
+        ...prevErrors,
+        [name]: error.errors[0].message,
+      }))
     }
   }
 
