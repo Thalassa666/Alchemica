@@ -50,6 +50,7 @@ export const Login = () => {
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
+
         <h2>ВХОД В ИГРУ</h2>
         <TextInput
           size={'l'}
@@ -70,6 +71,7 @@ export const Login = () => {
           errorMessage={errors.password}
         />
         <ArrowButton type={'submit'} />
+
         <Link className={styles.link} to={'/register'}>
           Зарегистрироваться
         </Link>
