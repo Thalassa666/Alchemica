@@ -1,6 +1,7 @@
 import styles from './styles.module.scss'
-import { Button, TextInput } from '@gravity-ui/uikit'
+import { TextInput } from '@gravity-ui/uikit'
 import { Link } from 'react-router-dom'
+import { ArrowButton } from '@components/UI'
 
 export const Login = () => {
   return (
@@ -19,8 +20,10 @@ export const Login = () => {
           placeholder={'password'}
           name={'password'}
         />
-        <Button>Войти</Button>
-        <Link to={'/register'}>Зарегистрироваться</Link>
+        <ArrowButton />
+        <Link className={styles.link} to={'/register'}>
+          Зарегистрироваться
+        </Link>
       </form>
     </>
   )
