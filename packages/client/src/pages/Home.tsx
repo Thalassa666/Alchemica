@@ -7,7 +7,8 @@ const Home = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/login">Страница логина</Link>
+            <Link to="/Login">Страница логина</Link>
+
           </li>
           <li>
             <Link to="/register">Страница регистрации</Link>

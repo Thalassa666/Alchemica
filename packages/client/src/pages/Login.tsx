@@ -1,8 +1,10 @@
+import { FormsLayout, LoginForm } from '@components/forms'
+
 const Login = () => {
   return (
     <>
       <div>
-        <h1>Login Page</h1>
+        <FormsLayout children={<LoginForm />} />
       </div>
     </>
   )
