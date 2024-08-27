@@ -5,11 +5,15 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import { ThemeProvider } from '@gravity-ui/uikit'
+import { Provider } from 'react-redux'
+import { store } from '@core/store/store'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme="dark">
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>
 )
