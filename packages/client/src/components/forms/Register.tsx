@@ -135,8 +135,6 @@ export const Register = () => {
           errorMessage={errors.password}
         />
         <ArrowButton type={'submit'} />
-          name={'password'}
-        />
       </form>
     </>
   )

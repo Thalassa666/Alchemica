@@ -3,7 +3,6 @@ import { TextInput } from '@gravity-ui/uikit'
 import { Link } from 'react-router-dom'
 import { ArrowButton } from '@components/UI'
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { RegistrationFormData } from '@core/validation/validationSchema'
 
 type TLoginFormData = {
   login: string
@@ -50,7 +49,6 @@ export const Login = () => {
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
-
         <h2>ВХОД В ИГРУ</h2>
         <TextInput
           size={'l'}
