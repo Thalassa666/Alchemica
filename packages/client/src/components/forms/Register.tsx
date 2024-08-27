@@ -1,6 +1,7 @@
 import styles from './styles.module.scss'
 import { Button, TextInput } from '@gravity-ui/uikit'
 import { Link } from 'react-router-dom'
+import { ArrowButton } from '@components/UI'
 
 export const Register = () => {
   return (
@@ -43,7 +44,7 @@ export const Register = () => {
           placeholder={'password'}
           name={'password'}
         />
-        <Button>Зарегистрироваться</Button>
+        <ArrowButton />
       </form>
     </>
   )

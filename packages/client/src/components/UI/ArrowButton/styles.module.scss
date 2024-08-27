@@ -1,0 +1,15 @@
+.button {
+  border: none;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background-image: url(../../../assets/images/arrow.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 2px 2px 2px gray;
+}
+button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+
+}
