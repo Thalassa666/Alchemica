@@ -1,8 +1,8 @@
-import styles from './styles.module.scss'
-import { TextInput } from '@gravity-ui/uikit'
-import { Link } from 'react-router-dom'
 import { ArrowButton } from '@components/UI'
+import { TextInput } from '@gravity-ui/uikit'
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { Link } from 'react-router-dom'
+import styles from './styles.module.scss'
 
 type TLoginFormData = {
   login: string
@@ -14,9 +14,7 @@ export const Login = () => {
     login: '',
     password: '',
   })
-  const [errors, setErrors] = useState<
-    Partial<Record<keyof TLoginFormData, string>>
-  >({})
+  const [errors, setErrors] = useState<Partial<Record<keyof TLoginFormData, string>>>({})
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
