@@ -1,6 +1,7 @@
 import {
   createAsyncThunk,
   createSlice,
+  PayloadAction,
   SerializedError,
 } from '@reduxjs/toolkit'
 import { IUser, TUserQuery } from '@core/utils/interfaces/User'
@@ -48,7 +49,7 @@ export const authReducer = createSlice({
       .addCase(getUserData.pending, state => {
         state.isLoading = true
       })
-      .addCase(getUserData.fulfilled, (state, action) => {
+      .addCase(getUserData.fulfilled, (state, action: PayloadAction<any>) => {
         state.userData = action.payload
         state.isAuth = true
         state.isLoading = false
@@ -65,7 +66,7 @@ export const authReducer = createSlice({
       .addCase(registerUser.pending, state => {
         state.isLoading = true
       })
-      .addCase(registerUser.fulfilled, (state, action) => {
+      .addCase(registerUser.fulfilled, (state, action: PayloadAction<any>) => {
         state.userData = action.payload
         state.isAuth = true
         state.isLoading = false
@@ -82,7 +83,7 @@ export const authReducer = createSlice({
       .addCase(loginUser.pending, state => {
         state.isLoading = true
       })
-      .addCase(loginUser.fulfilled, (state, action) => {
+      .addCase(loginUser.fulfilled, (state, action: PayloadAction<any>) => {
         state.userData = action.payload
         state.isAuth = true
         state.isLoading = false
@@ -105,7 +106,7 @@ export const authReducer = createSlice({
         state.isLoading = true
       })
       .addCase(logoutUser.fulfilled, state => {
-        state.userData = null
+        state.userData = {}
         state.isAuth = false
         state.isLoading = false
       })
