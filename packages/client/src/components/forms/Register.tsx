@@ -73,7 +73,7 @@ export const Register = () => {
         <TextInput
           size={'l'}
           type={'email'}
-          placeholder={'first_name'}
+          placeholder={'email'}
           name={'email'}
           value={formData.email}
           onChange={handleChange}
