@@ -1,4 +1,3 @@
-
 import { FormsLayout, RegisterForm } from '@components/forms'
 
 const Register = () => {

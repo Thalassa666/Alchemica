@@ -2,3 +2,16 @@ body {
   padding: 0;
   margin: 0;
 }
+@font-face {
+  font-family: 'Lancelot';
+  src: url('assets/fonts/Lancelot/Lancelot-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bookman Old Style';
+  src: url('assets/fonts/Bookman Old Style/bookmanoldstyle.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
