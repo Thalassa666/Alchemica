@@ -94,6 +94,7 @@ export const Register = () => {
           size={'l'}
           type={'password'}
           placeholder={'password'}
+          name={'password'}
           value={formData.password}
           onChange={handleChange}
           validationState={errors.password ? 'invalid' : undefined}

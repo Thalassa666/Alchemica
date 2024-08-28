@@ -59,7 +59,6 @@ function useForm<T extends Record<string, any>>({
           const path = validationError.path[0] as keyof T
           fieldErrors[path] = validationError.message
         })
-
         setErrors(fieldErrors)
       }
     } else {
