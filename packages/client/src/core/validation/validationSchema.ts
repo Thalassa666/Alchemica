@@ -11,10 +11,4 @@ export const registrationSchema = z.object({
   password: z.string().min(6, 'Пароль должен содержать минимум 6 символов'),
 })
 
-export const loginSchema = z.object({
-  login: z.string().min(1, 'Поле не может быть пустым'),
-  password: z.string().min(1, 'Поле не может быть пустым'),
-})
-
 export type RegistrationFormData = z.infer<typeof registrationSchema>
-export type LoginFormData = z.infer<typeof loginSchema>
