@@ -1,14 +1,8 @@
 import styles from './styles.module.scss'
 import { TextInput } from '@gravity-ui/uikit'
-import { Link, Navigate, redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ArrowButton } from '@components/UI'
-import useForm from '@core/hooks/useForms'
-import { loginSchema } from '@core/validation/validationSchema'
-import { useDispatch } from 'react-redux'
-import { TAppDispatch } from '@core/store/store'
-import { loginUser } from '@core/store/redusers/auth.reduser'
-import { TUserQuery } from '@core/utils/interfaces/User'
-import { useAppSelector } from '@core/hooks/useAppSelector'
+import { ChangeEvent, FormEvent, useState } from 'react'
 
 type TLoginFormData = {
   login: string
@@ -16,55 +10,70 @@ type TLoginFormData = {
 }
 
 export const Login = () => {
-  const dispatch = useDispatch<TAppDispatch>()
-  const { isAuth } = useAppSelector(state => state.authReducer)
+  const [formData, setFormData] = useState<TLoginFormData>({
+    login: '',
+    password: '',
+  })
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof TLoginFormData, string>>
+  >({})
 
-  const { formData, errors, handleChange, handleSubmit } =
-    useForm<TLoginFormData>({
-      initialValues: {
-        login: '',
-        password: '',
-      },
-      validationSchema: loginSchema,
-      onSubmit: async values => {
-        await dispatch(loginUser(values as TUserQuery))
-        redirect('/game')
-      },
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData({
+      ...formData,
+      [name]: value,
     })
-
-  if (isAuth) {
-    return <Navigate to="/game" replace />
   }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const newErrors: Partial<Record<keyof TLoginFormData, string>> = {}
+
+    if (formData.login === '') {
+      newErrors.login = 'Поле не может быть пустым'
+    }
+
+    if (formData.password === '') {
+      newErrors.password = 'Поле не может быть пустым'
+    }
+
+    setErrors(newErrors)
+
+    if (!newErrors.login && !newErrors.password) {
+      // Отправка формы или другая логика
+    }
+  }
+
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <h2>ВХОД В ИГРУ</h2>
+    <>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h2>ВХОД В ИГРУ</h2>
+        <TextInput
+          size={'l'}
+          type={'text'}
+          placeholder={'login'}
+          name={'login'}
+          onChange={handleChange}
+          validationState={errors.login ? 'invalid' : undefined}
+          errorMessage={errors.login}
+        />
+        <TextInput
+          size={'l'}
+          type={'password'}
+          placeholder={'password'}
+          name={'password'}
+          onChange={handleChange}
+          validationState={errors.password ? 'invalid' : undefined}
+          errorMessage={errors.password}
+        />
+        <ArrowButton type={'submit'} />
 
-      <TextInput
-        size={'l'}
-        type={'text'}
-        placeholder={'login'}
-        name={'login'}
-        value={formData.login}
-        onChange={handleChange}
-        validationState={errors.login ? 'invalid' : undefined}
-        errorMessage={errors.login}
-      />
-
-      <TextInput
-        size={'l'}
-        type={'password'}
-        placeholder={'password'}
-        name={'password'}
-        value={formData.password}
-        onChange={handleChange}
-        validationState={errors.password ? 'invalid' : undefined}
-        errorMessage={errors.password}
-      />
-
-      <ArrowButton type={'submit'} />
-      <Link className={styles.link} to={'/register'}>
-        Зарегистрироваться
-      </Link>
-    </form>
+        <Link className={styles.link} to={'/register'}>
+          Зарегистрироваться
+        </Link>
+      </form>
+    </>
   )
 }

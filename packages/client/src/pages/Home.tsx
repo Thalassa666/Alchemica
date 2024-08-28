@@ -1,14 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import { getUserData } from '@core/store/redusers/auth.reduser'
-import { TAppDispatch } from '@core/store/store'
 
 const Home = () => {
-  const dispatch = useDispatch<TAppDispatch>()
-  useEffect(() => {
-    dispatch(getUserData())
-  })
   return (
     <div>
       <h1>Главная страница</h1>
@@ -16,6 +8,7 @@ const Home = () => {
         <ul>
           <li>
             <Link to="/Login">Страница логина</Link>
+
           </li>
           <li>
             <Link to="/register">Страница регистрации</Link>
