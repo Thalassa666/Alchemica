@@ -1,7 +1,6 @@
 import { FormsLayout, LoginForm } from '@components/forms'
 
 const Login = () => {
-  throw new Error('I crashed!')
   return (
     <>
       <div>
