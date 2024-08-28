@@ -1,8 +1,10 @@
+import { FormsLayout, RegisterForm } from '@components/forms'
+
 const Register = () => {
   return (
     <>
       <div>
-        <h1>Register Page</h1>
+        <FormsLayout children={<RegisterForm />} />
       </div>
     </>
   )
