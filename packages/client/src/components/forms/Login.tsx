@@ -36,35 +36,35 @@ export const Login = () => {
     return <Navigate to="/game" replace />
   }
   return (
-    <>
-      <form>
-        <TextInput
-          size={'l'}
-          type={'password'}
-          placeholder={'password'}
-          name={'password'}
-          value={formData.login}
-          onChange={handleChange}
-          validationState={errors.login ? 'invalid' : undefined}
-          errorMessage={errors.login}
-        />
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <h2>ВХОД В ИГРУ</h2>
 
-        <TextInput
-          size={'l'}
-          type={'password'}
-          placeholder={'password'}
-          name={'password'}
-          value={formData.password}
-          onChange={handleChange}
-          validationState={errors.password ? 'invalid' : undefined}
-          errorMessage={errors.password}
-        />
-        <ArrowButton type={'submit'} />
+      <TextInput
+        size={'l'}
+        type={'text'}
+        placeholder={'login'}
+        name={'login'}
+        value={formData.login}
+        onChange={handleChange}
+        validationState={errors.login ? 'invalid' : undefined}
+        errorMessage={errors.login}
+      />
 
-        <Link className={styles.link} to={'/register'}>
-          Зарегистрироваться
-        </Link>
-      </form>
-    </>
+      <TextInput
+        size={'l'}
+        type={'password'}
+        placeholder={'password'}
+        name={'password'}
+        value={formData.password}
+        onChange={handleChange}
+        validationState={errors.password ? 'invalid' : undefined}
+        errorMessage={errors.password}
+      />
+
+      <ArrowButton type={'submit'} />
+      <Link className={styles.link} to={'/register'}>
+        Зарегистрироваться
+      </Link>
+    </form>
   )
 }
