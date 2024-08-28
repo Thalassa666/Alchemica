@@ -34,18 +34,6 @@ export const Login = () => {
 
   if (isAuth) {
     return <Navigate to="/game" replace />
-  }
-
-  return (
-    <>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <h2>ВХОД В ИГРУ</h2>
-
-        <TextInput
-          size={'l'}
-          type={'text'}
-          placeholder={'login'}
-          name={'login'}
           value={formData.login}
           onChange={handleChange}
           validationState={errors.login ? 'invalid' : undefined}
@@ -62,7 +50,6 @@ export const Login = () => {
           validationState={errors.password ? 'invalid' : undefined}
           errorMessage={errors.password}
         />
-
         <ArrowButton type={'submit'} />
 
         <Link className={styles.link} to={'/register'}>
