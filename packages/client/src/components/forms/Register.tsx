@@ -1,76 +1,41 @@
 import styles from './styles.module.scss'
 import { TextInput } from '@gravity-ui/uikit'
 import { ArrowButton } from '@components/UI'
-import { ChangeEvent, FormEvent, useState } from 'react'
-import { z } from 'zod'
 import {
-  registrationSchema,
   RegistrationFormData,
+  registrationSchema,
 } from '@core/validation/validationSchema'
+import { useDispatch } from 'react-redux'
+import { TAppDispatch } from '@core/store/store'
+import { useAppSelector } from '@core/hooks/useAppSelector'
+import useForm from '@core/hooks/useForms'
+import { Navigate, redirect } from 'react-router-dom'
+import { IUser } from '@core/utils/interfaces/User'
+import { registerUser } from '@core/store/redusers/auth.reduser'
 
 export const Register = () => {
-  const [formData, setFormData] = useState<RegistrationFormData>({
-    login: '',
-    first_name: '',
-    second_name: '',
-    email: '',
-    phone: '',
-    password: '',
-  })
-  const [errors, setErrors] = useState<
-    Partial<Record<keyof RegistrationFormData, string>>
-  >({})
+  const dispatch = useDispatch<TAppDispatch>()
+  const { isAuth } = useAppSelector(state => state.authReducer)
 
-  const validateField = (name: keyof RegistrationFormData, value: string) => {
-    try {
-      const fieldSchema = registrationSchema.shape[name]
-      fieldSchema.parse(value)
-      setErrors(prevErrors => ({
-        ...prevErrors,
-        [name]: undefined,
-      }))
-    } catch (err) {
-      const error = err as z.ZodError
-      setErrors(prevErrors => ({
-        ...prevErrors,
-        [name]: error.errors[0].message,
-      }))
-    }
-  }
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFormData({
-      ...formData,
-      [name]: value,
+  const { formData, errors, handleChange, handleSubmit } =
+    useForm<RegistrationFormData>({
+      initialValues: {
+        login: '',
+        first_name: '',
+        second_name: '',
+        email: '',
+        phone: '',
+        password: '',
+      },
+      validationSchema: registrationSchema,
+      onSubmit: async values => {
+        await dispatch(registerUser(values as IUser))
+        redirect('/game')
+      },
     })
-
-    validateField(name as keyof RegistrationFormData, value)
+  if (isAuth) {
+    return <Navigate to="/game" replace />
   }
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    try {
-      registrationSchema.parse(formData)
-      console.log('Форма отправлена:', formData)
-      // Обработка отправки формы
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        const formattedErrors: Partial<
-          Record<keyof RegistrationFormData, string>
-        > = {}
-        error.errors.forEach(err => {
-          if (err.path[0]) {
-            formattedErrors[err.path[0] as keyof RegistrationFormData] =
-              err.message
-          }
-        })
-        setErrors(formattedErrors)
-      }
-    }
-  }
-
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>

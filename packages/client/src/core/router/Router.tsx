@@ -8,6 +8,7 @@ import Forum from '@pages/Forum'
 import Topic from '@pages/Topic'
 import Error from '@pages/Error'
 import { createBrowserRouter } from 'react-router-dom'
+import { RequireAuth } from '@core/router/ProtectedRoute'
 
 export const router = createBrowserRouter([
   {
@@ -24,19 +25,35 @@ export const router = createBrowserRouter([
   },
   {
     path: '/profile',
-    element: <Profile />,
+    element: (
+      <RequireAuth>
+        <Profile />
+      </RequireAuth>
+    ),
   },
   {
     path: '/game',
-    element: <Game />,
+    element: (
+      <RequireAuth>
+        <Game />
+      </RequireAuth>
+    ),
   },
   {
     path: '/leaderboard',
-    element: <Leaderboard />,
+    element: (
+      <RequireAuth>
+        <Leaderboard />
+      </RequireAuth>
+    ),
   },
   {
     path: '/forum',
-    element: <Forum />,
+    element: (
+      <RequireAuth>
+        <Forum />
+      </RequireAuth>
+    ),
     children: [
       {
         path: ':topicId',
