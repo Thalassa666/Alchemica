@@ -34,6 +34,15 @@ export const Login = () => {
 
   if (isAuth) {
     return <Navigate to="/game" replace />
+  }
+  return (
+    <>
+      <form>
+        <TextInput
+          size={'l'}
+          type={'password'}
+          placeholder={'password'}
+          name={'password'}
           value={formData.login}
           onChange={handleChange}
           validationState={errors.login ? 'invalid' : undefined}
