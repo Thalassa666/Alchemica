@@ -1,6 +1,7 @@
 import Error from '@pages/Error'
 import Forum from '@pages/Forum'
 import PlayGame from '@pages/PlayGame/PlayGame'
+import AboutGame from '@pages/AboutGame/AboutGame'
 import Home from '@pages/Home'
 import Login from '@pages/Login'
 import Register from '@pages/Register'
@@ -9,7 +10,7 @@ import Leaderboard from '@pages/Leaderboard'
 import Topic from '@pages/Topic'
 import { createBrowserRouter } from 'react-router-dom'
 import styles from './styles.module.scss'
-import { FallbackProps } from 'react-error-boundary'
+import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
 import { useNavigate } from 'react-router-dom'
 
 function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
@@ -64,7 +65,19 @@ export const router = createBrowserRouter([
   },
   {
     path: '/game',
-    element: <PlayGame />,
+    element: (
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <PlayGame />
+      </ErrorBoundary>
+    ),
+  },
+  {
+    path: '/about',
+    element: (
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <AboutGame />
+      </ErrorBoundary>
+    ),
   },
   {
     path: '/leaderboard',
