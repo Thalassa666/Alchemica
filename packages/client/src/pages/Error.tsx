@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from './Error.module.scss'
 import { Link } from 'react-router-dom'
+import styles from './Error.module.scss'
 
 interface ErrorProps {
   errorCode: number
