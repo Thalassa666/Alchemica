@@ -1,0 +1,44 @@
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Amatic SC', sans-serif;
+}
+
+.errorContent {
+  text-align: center;
+}
+
+.errorImage {
+  position: relative;
+  z-index: 10;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.errorBackground {
+  position: absolute;
+  inset: 0;
+  background: url('@assets/images/error_bg.png') no-repeat center center;
+  background-size: 700px;
+  opacity: 0.75;
+}
+
+.errorTitle {
+  font-size: 60px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.errorMessage {
+  font-size: 28px;
+  color: #ffffff;
+}
+
+.errorLink {
+  color: #cddcfe;
+  position: relative;
+  font-family: 'Roboto Light', sans-serif;
+  font-size: 18px;
+}
