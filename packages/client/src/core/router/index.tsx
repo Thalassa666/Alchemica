@@ -2,29 +2,65 @@ import Error from '@pages/Error'
 import Forum from '@pages/Forum'
 import PlayGame from '@pages/PlayGame/PlayGame'
 import Home from '@pages/Home'
-import Leaderboard from '@pages/Leaderboard'
 import Login from '@pages/Login'
-import Profile from '@pages/Profile'
 import Register from '@pages/Register'
+import Profile from '@pages/Profile'
+import Leaderboard from '@pages/Leaderboard'
 import Topic from '@pages/Topic'
 import { createBrowserRouter } from 'react-router-dom'
+import styles from './styles.module.scss'
+import { FallbackProps } from 'react-error-boundary'
+import { useNavigate } from 'react-router-dom'
+
+function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
+  const navigate = useNavigate()
+
+  const handleReset = () => {
+    resetErrorBoundary()
+    navigate('/')
+  }
+
+  return (
+    <div className={styles.error}>
+      <p>Something went wrong:</p>
+      <pre>{error.message}</pre>
+      <button onClick={handleReset}>Try again</button>
+    </div>
+  )
+}
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: (
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Home />
+      </ErrorBoundary>
+    ),
   },
   {
     path: '/login',
-    element: <Login />,
+    element: (
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Login />
+      </ErrorBoundary>
+    ),
   },
   {
     path: '/register',
-    element: <Register />,
+    element: (
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Register />
+      </ErrorBoundary>
+    ),
   },
   {
     path: '/profile',
-    element: <Profile />,
+    element: (
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Profile />
+      </ErrorBoundary>
+    ),
   },
   {
     path: '/game',
@@ -32,20 +68,36 @@ export const router = createBrowserRouter([
   },
   {
     path: '/leaderboard',
-    element: <Leaderboard />,
+    element: (
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Leaderboard />
+      </ErrorBoundary>
+    ),
   },
   {
     path: '/forum',
-    element: <Forum />,
+    element: (
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Forum />
+      </ErrorBoundary>
+    ),
     children: [
       {
         path: ':topicId',
-        element: <Topic />,
+        element: (
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <Topic />
+          </ErrorBoundary>
+        ),
       },
     ],
   },
   {
     path: '*',
-    element: <Error />,
+    element: (
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Error />
+      </ErrorBoundary>
+    ),
   },
 ])

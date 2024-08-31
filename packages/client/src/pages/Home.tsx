@@ -7,7 +7,7 @@ const Home = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/Login">Страница логина</Link>
+            <Link to="/login">Страница логина</Link>
           </li>
           <li>
             <Link to="/register">Страница регистрации</Link>
@@ -25,7 +25,9 @@ const Home = () => {
             <Link to="/forum">Страница форума</Link>
           </li>
           <li>
-            <Link to="/forum/1">Страница топика форума (Пример: Topic ID 1)</Link>
+            <Link to="/forum/1">
+              Страница топика форума (Пример: Topic ID 1)
+            </Link>
           </li>
         </ul>
       </nav>
