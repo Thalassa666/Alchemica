@@ -1,12 +1,12 @@
-import styles from './styles.module.scss'
-import { TextInput } from '@gravity-ui/uikit'
 import { ArrowButton } from '@components/UI'
-import { ChangeEvent, FormEvent, useState } from 'react'
-import { z } from 'zod'
 import {
   registrationSchema,
   RegistrationFormData,
 } from '@core/validation/validationSchema'
+import { TextInput } from '@gravity-ui/uikit'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import { z } from 'zod'
+import styles from './styles.module.scss'
 
 export const Register = () => {
   const [formData, setFormData] = useState<RegistrationFormData>({

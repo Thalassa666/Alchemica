@@ -1,8 +1,8 @@
-import styles from './styles.module.scss'
-import { TextInput } from '@gravity-ui/uikit'
-import { Link } from 'react-router-dom'
 import { ArrowButton } from '@components/UI'
+import { TextInput } from '@gravity-ui/uikit'
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { Link } from 'react-router-dom'
+import styles from './styles.module.scss'
 
 type TLoginFormData = {
   login: string
