@@ -1,6 +1,6 @@
 import Error from '@pages/Error'
 import Forum from '@pages/Forum'
-import Game from '@pages/Game'
+import PlayGame from '@pages/PlayGame/PlayGame'
 import Home from '@pages/Home'
 import Leaderboard from '@pages/Leaderboard'
 import Login from '@pages/Login'
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/game',
-    element: <Game />,
+    element: <PlayGame />,
   },
   {
     path: '/leaderboard',
