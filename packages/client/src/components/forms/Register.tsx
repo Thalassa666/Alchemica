@@ -1,5 +1,8 @@
 import { ArrowButton } from '@components/UI'
-import { registrationSchema, RegistrationFormData } from '@core/validation/validationSchema'
+import {
+  registrationSchema,
+  RegistrationFormData,
+} from '@core/validation/validationSchema'
 import { TextInput } from '@gravity-ui/uikit'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { z } from 'zod'
@@ -14,7 +17,9 @@ export const Register = () => {
     phone: '',
     password: '',
   })
-  const [errors, setErrors] = useState<Partial<Record<keyof RegistrationFormData, string>>>({})
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof RegistrationFormData, string>>
+  >({})
 
   const validateField = (name: keyof RegistrationFormData, value: string) => {
     try {
@@ -52,10 +57,13 @@ export const Register = () => {
       // Обработка отправки формы
     } catch (error) {
       if (error instanceof z.ZodError) {
-        const formattedErrors: Partial<Record<keyof RegistrationFormData, string>> = {}
+        const formattedErrors: Partial<
+          Record<keyof RegistrationFormData, string>
+        > = {}
         error.errors.forEach(err => {
           if (err.path[0]) {
-            formattedErrors[err.path[0] as keyof RegistrationFormData] = err.message
+            formattedErrors[err.path[0] as keyof RegistrationFormData] =
+              err.message
           }
         })
         setErrors(formattedErrors)

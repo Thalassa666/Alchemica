@@ -14,7 +14,9 @@ export const Login = () => {
     login: '',
     password: '',
   })
-  const [errors, setErrors] = useState<Partial<Record<keyof TLoginFormData, string>>>({})
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof TLoginFormData, string>>
+  >({})
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
