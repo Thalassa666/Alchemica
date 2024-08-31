@@ -1,7 +1,4 @@
-import {
-  CraftDialogSizes,
-  CraftToolsBackgrounds,
-} from '../constants/craftTools'
+import { CraftDialogSizes } from '../constants/craftTools'
 import {
   CanvasContext,
   CraftTool,
@@ -9,6 +6,7 @@ import {
   Position,
   Size,
 } from '../types/types'
+
 import { useBackground } from './useBackground'
 import { useGameState } from './useGameState'
 import IngredientBoxSrc from '/ingredient-box.png'
@@ -61,16 +59,11 @@ export const useIngredientsCombo = () => {
     dialogLocation: Position & Size,
     craftTool: CraftTool
   ) => {
-    const craftToolBg =
-      CraftToolsBackgrounds[
-        craftTool.name as keyof typeof CraftToolsBackgrounds
-      ]
-
     drawSquare(
       context,
       { x: getPosX(dialogLocation.x, 0), y: getPosY(dialogLocation.y, 0) },
-      craftToolBg,
-      craftTool.name
+      craftTool.imgSrc,
+      craftTool.label
     )
   }
 
@@ -87,7 +80,7 @@ export const useIngredientsCombo = () => {
         y: getPosY(dialogLocation.y, 0),
       },
       ingredient?.imgSrc ?? '',
-      ingredient?.name ?? 'Выберите через Enter'
+      ingredient?.label ?? 'Выберите'
     )
   }
 
@@ -96,7 +89,7 @@ export const useIngredientsCombo = () => {
     dialogLocation: Position & Size,
     boxesBeforeCount: number
   ) => {
-    const isFilled = getInventory().selected.every(item => item)
+    const itemByReceipt = getInventory().itemByReceipt
 
     drawSquare(
       context,
@@ -104,8 +97,8 @@ export const useIngredientsCombo = () => {
         x: getPosX(dialogLocation.x, boxesBeforeCount),
         y: getPosY(dialogLocation.y, 0),
       },
-      '',
-      isFilled ? '' : 'Выберите ингредиенты'
+      itemByReceipt?.imgSrc ?? '',
+      itemByReceipt?.label ?? 'Выберите ингредиенты'
     )
   }
 
@@ -114,7 +107,6 @@ export const useIngredientsCombo = () => {
     position: Position,
     contentSrc: string,
     text: string
-    // textPosition
   ) => {
     const boxImgSize = {
       width: CraftDialogSizes.ComboSquareWidth,

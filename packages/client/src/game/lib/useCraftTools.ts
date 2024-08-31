@@ -29,11 +29,11 @@ export const useCraftTools = () => {
   /** Отрисовать существующие интерактивные объекты и тот объект, что находится в коллизии с игроком */
   const draw = (context: CanvasContext) => {
     craftToolsValues.forEach(craftTool => {
-      const { x, y, width, height } = craftTool
+      const { x, y, width, height } = craftTool.collision
 
       const getStyle = () => {
         switch (true) {
-          case getCraftTools().nearPlayer?.name === craftTool.name:
+          case getCraftTools().nearPlayer?.key === craftTool.key:
             return GameColors.CraftToolNearPlayer
           default:
             return GameColors.CraftToolObject
@@ -49,7 +49,7 @@ export const useCraftTools = () => {
   /** Проверить пересекается ли игрок с интерактивным объектом */
   const checkInteraction = (location: Position & Size) => {
     const craftTool = craftToolsValues.find(tool =>
-      hasCollision(location, tool)
+      hasCollision(location, tool.collision)
     )
 
     if (craftTool) {

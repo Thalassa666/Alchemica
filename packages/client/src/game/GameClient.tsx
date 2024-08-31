@@ -6,8 +6,6 @@ import { GameSize } from './constants/misc'
 import { useCraftTools } from './lib/useCraftTools'
 import { useGameBorders } from './lib/useGameBorders'
 import { useCraftDialog } from './lib/useCraftDialog'
-import { useGameState } from './lib/useGameState'
-import { IngredientsMap } from './constants/ingredients'
 
 const backgroundOptions: BackgroundOptions = {
   src: LevelBackgroundSrc,
@@ -24,8 +22,6 @@ export const GameClient = () => {
   const craftTools = useCraftTools()
   const player = usePlayer()
   const craftDialog = useCraftDialog()
-
-  const { updateInventory } = useGameState()
 
   const animate = () => {
     window.requestAnimationFrame(animate)
@@ -48,10 +44,6 @@ export const GameClient = () => {
   useEffect(() => {
     ctxRef.current = canvasRef.current?.getContext('2d') ?? null
     animate()
-  }, [])
-
-  useEffect(() => {
-    updateInventory({ all: Object.values(IngredientsMap) })
   }, [])
 
   return (

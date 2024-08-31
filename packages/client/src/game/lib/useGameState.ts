@@ -1,6 +1,20 @@
 import { useMemo } from 'react'
 import { PlayerInitial } from '../constants/player'
-import { CraftToolsState, InventoryState, PlayerState } from '../types/types'
+import {
+  CraftToolsState,
+  InventoryItem,
+  InventoryState,
+  PlayerState,
+} from '../types/types'
+import { IngredientsMap } from '../constants/ingredients'
+
+const initialInventory = Object.values(IngredientsMap).filter(
+  item => item.type === 'ingredient' && item.condition === 'Raw'
+)
+
+const sortInventory = (inventory: InventoryItem[]) => {
+  return inventory.slice().sort((a, b) => a.label.localeCompare(b.label))
+}
 
 class GameState {
   static _instance: GameState
@@ -11,10 +25,11 @@ class GameState {
     active: null,
   }
   inventory: InventoryState = {
-    all: [],
+    all: initialInventory,
     selected: [null],
     selectingIndex: 0,
     isPicking: false,
+    itemByReceipt: null,
   }
   canPlayerMove = true
 
@@ -70,12 +85,18 @@ export const useGameState = () => {
       setCanPlayerMove,
     } = gameState
 
+    const getSortedInventory = () => {
+      const { all, ...rest } = getInventory()
+
+      return { ...rest, all: sortInventory(all) }
+    }
+
     return {
       getPlayer,
       updatePlayer,
       getCraftTools,
       updateCraftTools,
-      getInventory,
+      getInventory: getSortedInventory,
       updateInventory,
       getCanPlayerMove,
       setCanPlayerMove,

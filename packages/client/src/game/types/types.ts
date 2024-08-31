@@ -1,3 +1,4 @@
+import { ConditionNames } from 'game/constants/conditions'
 import { Direction } from '../constants/player'
 
 export type CanvasContext = {
@@ -29,11 +30,16 @@ export type Collision = Position &
     name: string
   }
 
-export type CollisionMap<T extends Collision> = {
-  [collisionName: string]: T
-}
+export type ConditionType = typeof ConditionNames[keyof typeof ConditionNames]
 
-export type CraftTool = Collision
+export type CraftTool = {
+  key: string
+  label: string
+  imgSrc: string
+  comboCount: number
+  collision: Collision
+  toConditions: Record<string, boolean>
+}
 
 export type CraftToolsState = {
   nearPlayer: CraftTool | null
@@ -41,13 +47,23 @@ export type CraftToolsState = {
 }
 
 export type InventoryItem = {
-  name: string
+  key: string
   imgSrc: string
+  type: 'ingredient' | 'potion'
+  condition: ConditionType
+  label: string
 }
 
 export type InventoryState = {
   all: InventoryItem[]
   selected: (InventoryItem | null)[]
   selectingIndex: number
+  itemByReceipt: InventoryItem | null
   isPicking: boolean
+}
+
+export type Receipt = {
+  key: string
+  tool: CraftTool['key']
+  ingredientNames: string[]
 }

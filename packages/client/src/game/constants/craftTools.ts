@@ -1,56 +1,67 @@
-import { CollisionMap, CraftTool } from '../types/types'
-import CraftTableBackgroundSrc from '/craft-tool-craft-table-background.png'
+import { CraftTool } from '../types/types'
+import { ConditionNames } from './conditions'
+import FirePotImgSrc from '/icon-in-progress.png'
+import CraftTableImgSrc from '/icon-in-progress.png'
+import MixingImgSrc from '/icon-in-progress.png'
 
 export const CraftToolNames = {
   FirePot: 'FirePot',
   CraftTable: 'CraftTable',
-  Pot: 'Pot',
+  Mixing: 'Mixing',
 } as const
 
-// TODO: Добавить иконки
-export const CraftToolsBackgrounds = {
-  [CraftToolNames.FirePot]: '',
-  [CraftToolNames.CraftTable]: CraftTableBackgroundSrc,
-  [CraftToolNames.Pot]: '',
-} as const
-
-export const CraftToolsComboCount = {
-  [CraftToolNames.FirePot]: 1,
-  [CraftToolNames.CraftTable]: 1,
-  [CraftToolNames.Pot]: 3,
-} as const
-
-export const CraftTools: CollisionMap<CraftTool> = {
+export const CraftTools: Record<
+  typeof CraftToolNames[keyof typeof CraftToolNames],
+  CraftTool
+> = {
   [CraftToolNames.FirePot]: {
-    x: 215,
-    y: 350,
-    width: 100,
-    height: 330,
-    name: CraftToolNames.FirePot,
+    key: CraftToolNames.FirePot,
+    label: 'Жаровня',
+    imgSrc: FirePotImgSrc,
+    comboCount: 1,
+    collision: {
+      name: CraftToolNames.FirePot,
+      x: 215,
+      y: 350,
+      width: 100,
+      height: 330,
+    },
+    toConditions: {
+      [ConditionNames.Dry]: true,
+    },
   },
   [CraftToolNames.CraftTable]: {
-    x: 640,
-    y: 350,
-    width: 100,
-    height: 330,
-    name: CraftToolNames.CraftTable,
+    key: CraftToolNames.CraftTable,
+    label: 'Ремесленный стол',
+    imgSrc: CraftTableImgSrc,
+    comboCount: 1,
+    collision: {
+      x: 640,
+      y: 350,
+      width: 100,
+      height: 330,
+      name: CraftToolNames.CraftTable,
+    },
+    toConditions: {
+      [ConditionNames.Cut]: true,
+    },
   },
-  [CraftToolNames.Pot]: {
-    x: 1040,
-    y: 350,
-    width: 100,
-    height: 330,
-    name: CraftToolNames.Pot,
+  [CraftToolNames.Mixing]: {
+    key: CraftToolNames.Mixing,
+    label: 'Смешивание',
+    imgSrc: MixingImgSrc,
+    comboCount: 3,
+    collision: {
+      x: 1040,
+      y: 350,
+      width: 100,
+      height: 330,
+      name: CraftToolNames.Mixing,
+    },
+    toConditions: {
+      [ConditionNames.Raw]: true, // Создаёт новый предмет - зелье
+    },
   },
-}
-
-export const CraftToolsComboCounts: Record<
-  keyof typeof CraftToolNames,
-  number
-> = {
-  [CraftToolNames.FirePot]: 1,
-  [CraftToolNames.CraftTable]: 1,
-  [CraftToolNames.Pot]: 3,
 }
 
 export const CraftDialogSizes = {

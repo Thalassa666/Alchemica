@@ -1,8 +1,4 @@
-import {
-  CraftDialogSizes,
-  CraftToolsBackgrounds,
-  CraftToolsComboCount,
-} from '../constants/craftTools'
+import { CraftDialogSizes } from '../constants/craftTools'
 import { useGameState } from './useGameState'
 import { CanvasContext, CraftTool, Position, Size } from '../types/types'
 import { BackgroundOptions, useBackground } from './useBackground'
@@ -10,6 +6,8 @@ import { EvtKeys } from '../constants/misc'
 import { useWindowEffect } from '../../hooks/useWindowEffect'
 import { useIngredientsCarousel } from './useIngredientsCarousel'
 import { useIngredientsCombo } from './useIngredientsCombo'
+
+import { findReceipt, getItemFromReceipt } from './findReceipt'
 
 const getBackgroundPosition = (context: CanvasContext): Position => {
   return {
@@ -56,9 +54,7 @@ export const useCraftDialog = () => {
     const size = getBackgroundSize()
 
     const backgroundOptions: BackgroundOptions = {
-      src: CraftToolsBackgrounds[
-        craftTool.name as keyof typeof CraftToolsBackgrounds
-      ],
+      src: craftTool.imgSrc,
       position,
       size,
     }
@@ -79,12 +75,7 @@ export const useCraftDialog = () => {
       return []
     }
 
-    const comboCount =
-      CraftToolsComboCount[
-        craftTool.name as keyof typeof CraftToolsComboCount
-      ] ?? 1
-
-    return Array.from({ length: comboCount }, () => null)
+    return Array.from({ length: craftTool.comboCount }, () => null)
   }
 
   /** Открыть модальное окно и установить все необходимые значения */
@@ -115,14 +106,19 @@ export const useCraftDialog = () => {
   const closeDialog = () => {
     updateCraftTools({ active: null })
     setCanPlayerMove(true)
-    updateInventory({ isPicking: false, selectingIndex: 0, selected: [null] })
+    updateInventory({
+      isPicking: false,
+      selectingIndex: 0,
+      selected: [null],
+      itemByReceipt: null,
+    })
   }
 
   /** Сбросить модальное окно на начальные значения, но не закрывать */
   const resetDialog = () => {
     const selected = createSelected()
 
-    updateInventory({ selected })
+    updateInventory({ selected, itemByReceipt: null })
   }
 
   /* Выбрать (заменить null у selected) отцентрированный элемент карусели */
@@ -139,16 +135,36 @@ export const useCraftDialog = () => {
       index === swapIndex ? centeredItem : item
     )
 
-    updateInventory({ selected: updatedSelected })
+    /* В этот же момент, если всё в итоге выбрано - находим подходящий рецепт под выбранные ингредиенты */
+    const isFilled = updatedSelected.every(item => item)
+    let itemByReceipt = null
+
+    if (isFilled) {
+      const craftTool = getCraftTools().active as CraftTool
+      const receipt = findReceipt(craftTool, updatedSelected)
+      itemByReceipt = getItemFromReceipt(receipt)
+    }
+
+    updateInventory({ selected: updatedSelected, itemByReceipt })
   }
 
-  /* Создать получаемый элемент (ингридиент/зелье) */
+  /* Создать получаемый элемент (ингридиент/зелье), сложить в инвентарь (если ещё нет) и закрыть модальное окно */
   const craftElement = () => {
-    //
+    const itemByReceipt = getInventory().itemByReceipt
+    const currentInventory = getInventory().all
+    const isExist = currentInventory.find(
+      item => item.key === itemByReceipt?.key
+    )
+
+    if (!isExist && itemByReceipt) {
+      updateInventory({ all: [...currentInventory, itemByReceipt] })
+    }
+
+    closeDialog()
   }
 
   const handleKeydown = (evt: KeyboardEvent) => {
-    if (!getCraftTools().active) {
+    if (!getCraftTools().active || !getInventory().isPicking) {
       return
     }
 

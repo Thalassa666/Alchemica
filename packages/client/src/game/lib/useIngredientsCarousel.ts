@@ -99,7 +99,7 @@ export const useIngredientsCarousel = () => {
     context.ctx.fillStyle = CraftDialogSizes.PickFontColorCentered
     context.ctx.textAlign = 'center'
     context.ctx.fillText(
-      item.name,
+      item.label,
       position.x + size.width / 2,
       boxesLocation.y + boxesLocation.height + CraftDialogSizes.OverlayPadding
     )
