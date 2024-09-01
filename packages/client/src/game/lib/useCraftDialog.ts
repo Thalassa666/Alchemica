@@ -1,4 +1,4 @@
-import { CraftDialogSizes } from '../constants/craftTools'
+import { CraftDialogSizes, CraftType } from '../constants/craftTools'
 import { useGameState } from './useGameState'
 import { CanvasContext, CraftTool, Position, Size } from '../types/types'
 import { BackgroundOptions, useBackground } from './useBackground'
@@ -8,6 +8,7 @@ import { useIngredientsCarousel } from './useIngredientsCarousel'
 import { useIngredientsCombo } from './useIngredientsCombo'
 
 import { findReceipt, getItemFromReceipt } from './findReceipt'
+import { useNotifications } from './useNotifications'
 
 const getBackgroundPosition = (context: CanvasContext): Position => {
   return {
@@ -28,7 +29,7 @@ export const useCraftDialog = () => {
   const {
     getCraftTools,
     updateCraftTools,
-    setCanPlayerMove,
+    updatePlayer,
     getInventory,
     updateInventory,
   } = useGameState()
@@ -36,6 +37,7 @@ export const useCraftDialog = () => {
   const background = useBackground()
   const ingredientsCombo = useIngredientsCombo()
   const ingredientsPick = useIngredientsCarousel()
+  const notifications = useNotifications()
 
   /** Открыть модальное окно, если было взаимодействие с интерактивным объектом */
   const draw = (context: CanvasContext) => {
@@ -87,7 +89,7 @@ export const useCraftDialog = () => {
       ...getBackgroundSize(),
     }
 
-    setCanPlayerMove(false)
+    updatePlayer({ canMove: false })
 
     /* В момент открытия модального окна - устанавливается возможность выбрать 1 или несколько комбо ингридиентов */
 
@@ -105,7 +107,7 @@ export const useCraftDialog = () => {
   /** Закрыть модальное окно и сбросить все необходимые значения */
   const closeDialog = () => {
     updateCraftTools({ active: null })
-    setCanPlayerMove(true)
+    updatePlayer({ canMove: true })
     updateInventory({
       isPicking: false,
       selectingIndex: 0,
@@ -158,6 +160,14 @@ export const useCraftDialog = () => {
 
     if (!isExist && itemByReceipt) {
       updateInventory({ all: [...currentInventory, itemByReceipt] })
+    }
+
+    if (itemByReceipt) {
+      notifications.addNotification({
+        title: itemByReceipt.type === CraftType.Wasted ? 'Провал!' : 'Успех!',
+        text: `Вы создали ${itemByReceipt.label}.`,
+        imgSrc: itemByReceipt.imgSrc,
+      })
     }
 
     closeDialog()

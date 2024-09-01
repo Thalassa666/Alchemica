@@ -1,4 +1,4 @@
-import { EvtKeys } from '../constants/misc'
+import { EvtKeys, GameColors } from '../constants/misc'
 import { useWindowEffect } from '../../hooks/useWindowEffect'
 import { CanvasContext, InventoryItem, Position, Size } from '../types/types'
 import { BackgroundOptions, useBackground } from './useBackground'
@@ -96,13 +96,14 @@ export const useIngredientsCarousel = () => {
     }
 
     context.ctx.font = `${CraftDialogSizes.PickFontSizeCentered}px serif`
-    context.ctx.fillStyle = CraftDialogSizes.PickFontColorCentered
+    context.ctx.fillStyle = GameColors.TextColor
     context.ctx.textAlign = 'center'
     context.ctx.fillText(
       item.label,
       position.x + size.width / 2,
       boxesLocation.y + boxesLocation.height + CraftDialogSizes.OverlayPadding
     )
+    context.ctx.textAlign = 'left'
   }
 
   const swipeLeft = () => {

@@ -7,7 +7,7 @@ import { useCraftTools } from './useCraftTools'
 /** Использовать данные и управление игрока */
 export const usePlayer = () => {
   useMovement()
-  const { getPlayer, updatePlayer, getCanPlayerMove } = useGameState()
+  const { getPlayer, updatePlayer } = useGameState()
   const borders = useGameBorders()
   const craftTools = useCraftTools()
 
@@ -22,8 +22,7 @@ export const usePlayer = () => {
 
   /** Обновить положение игрока */
   const update = (_context: CanvasContext) => {
-    const { position, velocity, size } = getPlayer()
-    const canPlayerMove = getCanPlayerMove()
+    const { position, velocity, size, canMove } = getPlayer()
 
     const updPosition = {
       x: position.x + velocity.x,
@@ -41,7 +40,7 @@ export const usePlayer = () => {
     })
 
     /* Сбросить все ускорения и позицию, если есть коллизия с границей игры */
-    if (border || !canPlayerMove) {
+    if (border || !canMove) {
       updVelocity.x = 0
       updVelocity.y = 0
       updPosition.x = position.x

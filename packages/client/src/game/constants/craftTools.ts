@@ -10,6 +10,12 @@ export const CraftToolNames = {
   Mixing: 'Mixing',
 } as const
 
+export const CraftType = {
+  Ingredient: 'Ingredient',
+  Potion: 'Potion',
+  Wasted: 'Wasted',
+} as const
+
 export const CraftTools: Record<
   typeof CraftToolNames[keyof typeof CraftToolNames],
   CraftTool
@@ -91,8 +97,6 @@ export const CraftDialogSizes = {
   PickIconWidthCentered: 90,
   /** Размер шрифта ингридиента в ленте (активный - центральный)  */
   PickFontSizeCentered: 22,
-  /** Цвет шрифта ингридиента в ленте (активный - центральный)  */
-  PickFontColorCentered: 'white',
 
   /** Ширина квадрата комбинирования предметов */
   ComboSquareWidth: 100,
@@ -105,6 +109,4 @@ export const CraftDialogSizes = {
 
   /** Размер шрифта ингридиента для комбо ингридиентов */
   ComboFontSizeCentered: 17,
-  /** Размер шрифта ингридиента для комбо ингридиентов */
-  ComboFontColorCentered: 'white',
 }

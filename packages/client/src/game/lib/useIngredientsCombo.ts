@@ -1,3 +1,4 @@
+import { GameColors } from '../constants/misc'
 import { CraftDialogSizes } from '../constants/craftTools'
 import {
   CanvasContext,
@@ -31,10 +32,12 @@ const getPosX = (dialogPosX: number, columnIndex: number) => {
   )
 }
 
+/** Использовать ленту комбинирования ингредиентов в новый ингредиент/зелье */
 export const useIngredientsCombo = () => {
   const { getCraftTools, getInventory } = useGameState()
   const background = useBackground()
 
+  /** Отрисовать всю ленту */
   const draw = (context: CanvasContext, dialogLocation: Position & Size) => {
     const activeTool = getCraftTools().active
 
@@ -54,6 +57,7 @@ export const useIngredientsCombo = () => {
     drawResult(context, dialogLocation, boxesBeforeCount)
   }
 
+  /** Отрисовать инструмент, на котором происходит взаимодействие */
   const drawTool = (
     context: CanvasContext,
     dialogLocation: Position & Size,
@@ -67,6 +71,7 @@ export const useIngredientsCombo = () => {
     )
   }
 
+  /** Отрисовать ингредиент */
   const drawIngredient = (
     context: CanvasContext,
     dialogLocation: Position & Size,
@@ -84,6 +89,7 @@ export const useIngredientsCombo = () => {
     )
   }
 
+  /** Отрисовать то, что получается из ингредиентов */
   const drawResult = (
     context: CanvasContext,
     dialogLocation: Position & Size,
@@ -102,6 +108,7 @@ export const useIngredientsCombo = () => {
     )
   }
 
+  /** Отрисовать квадрат - ячейку для вставки всех прочих элементов ленты */
   const drawSquare = (
     context: CanvasContext,
     position: Position,
@@ -134,13 +141,14 @@ export const useIngredientsCombo = () => {
     })
 
     context.ctx.font = `${CraftDialogSizes.ComboFontSizeCentered}px serif`
-    context.ctx.fillStyle = CraftDialogSizes.ComboFontColorCentered
+    context.ctx.fillStyle = GameColors.TextColor
     context.ctx.textAlign = 'center'
     context.ctx.fillText(
       text,
       position.x + boxImgSize.width / 2,
       position.y + boxImgSize.height + 15
     )
+    context.ctx.textAlign = 'left'
   }
 
   return {

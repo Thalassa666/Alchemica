@@ -21,6 +21,7 @@ import BlessedThistleDryImgSrc from '/icon-in-progress.png'
 import BlessedThistleCutImgSrc from '/icon-in-progress.png'
 
 import { ConditionNames, Conditions } from './conditions'
+import { CraftType } from './craftTools'
 
 const getDefaultMod = (type: ConditionType, prefix: string) => {
   const label = Conditions[type].label
@@ -56,21 +57,21 @@ export const IngredientsMap: Record<
     condition: ConditionNames.Raw,
     imgSrc: HollyImgSrc,
     label: 'Остролист',
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
   [IngredientNames.HollyDry]: {
     key: IngredientNames.HollyDry,
     condition: ConditionNames.Dry,
     imgSrc: HollyDryImgSrc,
     label: getDefaultMod(ConditionNames.Dry, 'Остролист'),
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
   [IngredientNames.HollyCut]: {
     key: IngredientNames.HollyCut,
     condition: ConditionNames.Cut,
     imgSrc: HollyCutImgSrc,
     label: getDefaultMod(ConditionNames.Cut, 'Остролист'),
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
 
   /* ----- */
@@ -79,21 +80,21 @@ export const IngredientsMap: Record<
     condition: ConditionNames.Raw,
     imgSrc: WinterKissImgSrc,
     label: 'Поцелуй зимы',
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
   [IngredientNames.WinterKissDry]: {
     key: IngredientNames.WinterKissDry,
     condition: ConditionNames.Dry,
     imgSrc: WinterKissDryImgSrc,
     label: getDefaultMod(ConditionNames.Dry, 'Поцелуй зимы'),
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
   [IngredientNames.WinterKissCut]: {
     key: IngredientNames.WinterKissCut,
     condition: ConditionNames.Cut,
     imgSrc: WinterKissCutImgSrc,
     label: getDefaultMod(ConditionNames.Cut, 'Поцелуй зимы'),
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
 
   /* ----- */
@@ -102,21 +103,21 @@ export const IngredientsMap: Record<
     condition: ConditionNames.Raw,
     imgSrc: BibberbangImgSrc,
     label: 'Бибербанг',
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
   [IngredientNames.BibberbangDry]: {
     key: IngredientNames.BibberbangDry,
     condition: ConditionNames.Dry,
     imgSrc: BibberbangDryImgSrc,
     label: getDefaultMod(ConditionNames.Dry, 'Бибербанг'),
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
   [IngredientNames.BibberbangCut]: {
     key: IngredientNames.BibberbangCut,
     condition: ConditionNames.Cut,
     imgSrc: BibberbangCutImgSrc,
     label: getDefaultMod(ConditionNames.Cut, 'Бибербанг'),
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
 
   /* ----- */
@@ -125,21 +126,21 @@ export const IngredientsMap: Record<
     condition: ConditionNames.Raw,
     imgSrc: NightshadeImgSrc,
     label: 'Паслён',
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
   [IngredientNames.NightshadeDry]: {
     key: IngredientNames.NightshadeDry,
     condition: ConditionNames.Dry,
     imgSrc: NightshadeDryImgSrc,
     label: getDefaultMod(ConditionNames.Dry, 'Паслён'),
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
   [IngredientNames.NightshadeCut]: {
     key: IngredientNames.NightshadeCut,
     condition: ConditionNames.Cut,
     imgSrc: NightshadeCutImgSrc,
     label: getDefaultMod(ConditionNames.Cut, 'Паслён'),
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
 
   /* ----- */
@@ -148,14 +149,14 @@ export const IngredientsMap: Record<
     condition: ConditionNames.Raw,
     imgSrc: BlessedThistleImgSrc,
     label: 'Кникус',
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
   [IngredientNames.BlessedThistleDry]: {
     key: IngredientNames.BlessedThistleDry,
     condition: ConditionNames.Dry,
     imgSrc: BlessedThistleDryImgSrc,
     label: getDefaultMod(ConditionNames.Dry, 'Кникус'),
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
 
   [IngredientNames.BlessedThistleCut]: {
@@ -163,6 +164,6 @@ export const IngredientsMap: Record<
     condition: ConditionNames.Cut,
     imgSrc: BlessedThistleCutImgSrc,
     label: getDefaultMod(ConditionNames.Cut, 'Кникус'),
-    type: 'ingredient',
+    type: CraftType.Ingredient,
   },
 }

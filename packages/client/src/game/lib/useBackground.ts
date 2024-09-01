@@ -1,4 +1,4 @@
-import { GameColors, GameSize } from '../constants/misc'
+import { GameColors, Game } from '../constants/misc'
 import { CanvasContext, Position, Size } from '../types/types'
 
 export type BackgroundOptions = {
@@ -28,7 +28,7 @@ export const useBackground = () => {
   /** Отрисовать подложку - оверлей на весь размер экрана игры */
   const drawOverlayFullSize = (context: CanvasContext) => {
     context.ctx.fillStyle = GameColors.Overlay
-    context.ctx.fillRect(0, 0, GameSize.width, GameSize.height)
+    context.ctx.fillRect(0, 0, Game.Size.width, Game.Size.height)
     context.ctx.fillStyle = 'transparent'
   }
 

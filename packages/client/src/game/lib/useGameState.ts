@@ -2,36 +2,53 @@ import { useMemo } from 'react'
 import { PlayerInitial } from '../constants/player'
 import {
   CraftToolsState,
+  GameNotification,
+  GameStateType,
+  GameStatistic,
   InventoryItem,
   InventoryState,
   PlayerState,
 } from '../types/types'
 import { IngredientsMap } from '../constants/ingredients'
+import { CraftType } from '../constants/craftTools'
 
 const initialInventory = Object.values(IngredientsMap).filter(
-  item => item.type === 'ingredient' && item.condition === 'Raw'
+  item => item.type === CraftType.Ingredient && item.condition === 'Raw'
 )
 
 const sortInventory = (inventory: InventoryItem[]) => {
   return inventory.slice().sort((a, b) => a.label.localeCompare(b.label))
 }
 
-class GameState {
-  static _instance: GameState
-
-  player: PlayerState = PlayerInitial
-  craftTools: CraftToolsState = {
+const defaultState: GameStateType = {
+  player: PlayerInitial,
+  craftTools: {
     nearPlayer: null,
     active: null,
-  }
-  inventory: InventoryState = {
+  },
+  inventory: {
     all: initialInventory,
     selected: [null],
     selectingIndex: 0,
     isPicking: false,
     itemByReceipt: null,
-  }
-  canPlayerMove = true
+  },
+  notifications: [],
+  statistic: {
+    startedAt: null,
+    endedAt: null,
+    itemsToWin: {},
+    totalScore: 0,
+  },
+}
+class GameState {
+  static _instance: GameState
+
+  player = defaultState.player
+  craftTools = defaultState.craftTools
+  inventory = defaultState.inventory
+  notifications = defaultState.notifications
+  statistic = defaultState.statistic
 
   constructor() {
     if (GameState._instance) {
@@ -62,11 +79,18 @@ class GameState {
     this.inventory = { ...this.inventory, ...updates }
   }
 
-  getCanPlayerMove = (): boolean => {
-    return this.canPlayerMove
+  getNotifications = (): GameNotification[] => {
+    return this.notifications
   }
-  setCanPlayerMove = (canMove: boolean): void => {
-    this.canPlayerMove = canMove
+  setNotifications = (notifications: GameNotification[]): void => {
+    this.notifications = notifications
+  }
+
+  getStatistic = (): GameStatistic => {
+    return this.statistic
+  }
+  updateStatistic = (updates: Partial<GameStatistic>): void => {
+    this.statistic = { ...this.statistic, ...updates }
   }
 }
 
@@ -81,8 +105,10 @@ export const useGameState = () => {
       updateCraftTools,
       getInventory,
       updateInventory,
-      getCanPlayerMove,
-      setCanPlayerMove,
+      getNotifications,
+      setNotifications,
+      getStatistic,
+      updateStatistic,
     } = gameState
 
     const getSortedInventory = () => {
@@ -98,8 +124,10 @@ export const useGameState = () => {
       updateCraftTools,
       getInventory: getSortedInventory,
       updateInventory,
-      getCanPlayerMove,
-      setCanPlayerMove,
+      getNotifications,
+      setNotifications,
+      getStatistic,
+      updateStatistic,
     }
   }, [])
 
