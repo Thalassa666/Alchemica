@@ -1,7 +1,6 @@
 import Error from '@pages/Error'
 import Forum from '@pages/Forum'
 import PlayGame from '@pages/PlayGame/PlayGame'
-import AboutGame from '@pages/AboutGame/AboutGame'
 import Home from '@pages/Home'
 import Login from '@pages/Login'
 import Register from '@pages/Register'
@@ -68,14 +67,6 @@ export const router = createBrowserRouter([
     element: (
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <PlayGame />
-      </ErrorBoundary>
-    ),
-  },
-  {
-    path: '/about',
-    element: (
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <AboutGame />
       </ErrorBoundary>
     ),
   },
