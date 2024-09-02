@@ -64,7 +64,6 @@
     gap: 60px;
     align-items: center;
   }
-
 }
 
 .layout {
@@ -93,4 +92,46 @@
   text-align: center;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+.book {
+  height: 174px;
+  width: 214px;
+  background-image: url('../../assets/images/book-small-pic.png');
+}
+
+.skill1 {
+  height: 86px;
+  width: 86px;
+  background-image: url('../../assets/images/skill1-pic.png');
+}
+
+.skill2 {
+  height: 80px;
+  width: 80px;
+  background-image: url('../../assets/images/skill2-pic.png');
+}
+
+.skill3 {
+  height: 75px;
+  width: 82px;
+  background-image: url('../../assets/images/skill3-pic.png');
+}
+
+.potion1 {
+  height: 78px;
+  width: 70px;
+  background-image: url('../../assets/images/potion1-pic.png');
+}
+
+.potion2 {
+  height: 96px;
+  width: 76px;
+  background-image: url('../../assets/images/potion2-pic.png');
+}
+
+.potion3 {
+  height: 105px;
+  width: 84px;
+  background-image: url('../../assets/images/potion3-pic.png');
 }

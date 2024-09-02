@@ -1,6 +1,5 @@
-import { ChangeEvent, FormEvent, useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import styles from './styles.module.scss'
-import music from '../../assets/images/music-pic.png'
 
 export const Header = () => {
   useEffect(() => {
@@ -20,7 +19,7 @@ export const Header = () => {
     <header className={styles.header}>
       <nav className={styles.nav}>
         <div>
-          <img src={music} />
+          <div className={styles.music}></div>
           <a href={'/game'} className={styles.link}>
             Играть
           </a>

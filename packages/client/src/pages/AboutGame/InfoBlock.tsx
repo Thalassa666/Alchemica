@@ -23,25 +23,24 @@ export const InfoBlock = () => {
         <div className={styles.layout2}>
           <p>Используйте способности</p>
           <div>
-            <img src={skill1} />
-            <img src={skill2} />
-            <img src={skill3} />
+            <div className={styles.skill1}></div>
+            <div className={styles.skill2}></div>
+            <div className={styles.skill3}></div>
           </div>
         </div>
         <div className={styles.layout2}>
           <p>Следуйте рецептам</p>
-          <img src={book} />
+          <div className={styles.book}></div>
         </div>
         <div className={styles.layout2}>
           <p>Создавайте идеальные зелья</p>
           <div>
-            <img src={potion1} />
-            <img src={potion2} />
-            <img src={potion3} />
+            <div className={styles.potion1}></div>
+            <div className={styles.potion2}></div>
+            <div className={styles.potion3}></div>
           </div>
         </div>
         <p>И удачи на экзамене!</p>
-        <img src={arrow} />
       </div>
     </>
   )

@@ -1,5 +1,5 @@
 import { ArrowButton } from '@components/UI'
-import { FC, MouseEvent, useState } from 'react'
+import { FC } from 'react'
 import styles from './styles.module.scss'
 
 type TBlockProps = {
