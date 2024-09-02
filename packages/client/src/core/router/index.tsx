@@ -72,14 +72,6 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: '/about',
-    element: (
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <AboutGame />
-      </ErrorBoundary>
-    ),
-  },
-  {
     path: '/leaderboard',
     element: (
       <ErrorBoundary FallbackComponent={ErrorFallback}>
