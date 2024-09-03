@@ -2,6 +2,10 @@
   "singleQuote": true,
   "semi": false,
   "arrowParens": "avoid",
-  "bracketSameLine": true,
-  "width": 50
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "width": 120,
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "jsxSingleQuote": false
 }
