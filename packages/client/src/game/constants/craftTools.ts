@@ -1,8 +1,8 @@
-import { CraftTool } from '../types/types'
-import { ConditionNames } from './conditions'
 import FirePotImgSrc from '@assets/images/icon-in-progress.png'
 import CraftTableImgSrc from '@assets/images/icon-in-progress.png'
 import MixingImgSrc from '@assets/images/icon-in-progress.png'
+import { CraftTool } from '../types/types'
+import { ConditionNames } from './conditions'
 
 /** Названия крафт инструментов */
 export const CraftToolNames = {

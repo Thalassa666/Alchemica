@@ -1,8 +1,8 @@
 import { CanvasContext } from '../types/types'
-import { useMovement } from './useMovement'
-import { useGameState } from './useGameState'
-import { useGameBorders } from './useGameBorders'
 import { useCraftTools } from './useCraftTools'
+import { useGameBorders } from './useGameBorders'
+import { useGameState } from './useGameState'
+import { useMovement } from './useMovement'
 
 /** Использовать данные и управление игрока */
 export const usePlayer = () => {

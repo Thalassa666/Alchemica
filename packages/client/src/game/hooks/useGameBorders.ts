@@ -1,6 +1,6 @@
-import { CanvasContext, FullLocation } from '../types/types'
-import { hasCollision } from '../helpers/hasCollision'
 import { GameBorders, GameColors } from '../constants/misc'
+import { hasCollision } from '../helpers/hasCollision'
+import { CanvasContext, FullLocation } from '../types/types'
 
 const gameBorderValues = Object.values(GameBorders)
 

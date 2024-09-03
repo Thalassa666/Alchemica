@@ -1,9 +1,9 @@
+import BadReceiptIngredientImgSrc from '@assets/images/icon-in-progress.png'
 import { InventoryItem, Receipt } from '../types/types'
 import { ConditionNames } from './conditions'
 import { CraftToolNames, CraftType } from './craftTools'
 import { IngredientNames } from './ingredients'
 import { PotionNames } from './potions'
-import BadReceiptIngredientImgSrc from '@assets/images/icon-in-progress.png'
 
 /** Конфигурация рецептов */
 export const Receipts: Record<string, Receipt> = {

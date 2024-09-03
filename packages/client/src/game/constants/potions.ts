@@ -1,10 +1,9 @@
-import { InventoryItem } from '../types/types'
-import { ConditionNames } from './conditions'
-import { CraftType } from './craftTools'
-
 import SpeedImgSrc from '@assets/images/icon-in-progress.png'
 import StrengthImgSrc from '@assets/images/icon-in-progress.png'
 import WisdomImgSrc from '@assets/images/icon-in-progress.png'
+import { InventoryItem } from '../types/types'
+import { ConditionNames } from './conditions'
+import { CraftType } from './craftTools'
 
 /** Названия зелий */
 export const PotionNames = {

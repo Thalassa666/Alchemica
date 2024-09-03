@@ -1,27 +1,22 @@
-import { InventoryItem } from '../types/types'
-import { labelDefaultCondition } from '../helpers/labelDefaultCondition'
-import { ConditionNames } from './conditions'
-import { CraftType } from './craftTools'
-
 import HollyImgSrc from '@assets/images/icon-in-progress.png'
 import HollyDryImgSrc from '@assets/images/icon-in-progress.png'
 import HollyCutImgSrc from '@assets/images/icon-in-progress.png'
-
 import WinterKissImgSrc from '@assets/images/icon-in-progress.png'
 import WinterKissDryImgSrc from '@assets/images/icon-in-progress.png'
 import WinterKissCutImgSrc from '@assets/images/icon-in-progress.png'
-
 import BibberbangImgSrc from '@assets/images/icon-in-progress.png'
 import BibberbangDryImgSrc from '@assets/images/icon-in-progress.png'
 import BibberbangCutImgSrc from '@assets/images/icon-in-progress.png'
-
 import NightshadeImgSrc from '@assets/images/icon-in-progress.png'
 import NightshadeDryImgSrc from '@assets/images/icon-in-progress.png'
 import NightshadeCutImgSrc from '@assets/images/icon-in-progress.png'
-
 import BlessedThistleImgSrc from '@assets/images/icon-in-progress.png'
 import BlessedThistleDryImgSrc from '@assets/images/icon-in-progress.png'
 import BlessedThistleCutImgSrc from '@assets/images/icon-in-progress.png'
+import { labelDefaultCondition } from '../helpers/labelDefaultCondition'
+import { InventoryItem } from '../types/types'
+import { ConditionNames } from './conditions'
+import { CraftType } from './craftTools'
 
 /** Названия ингредиентов */
 export const IngredientNames = {

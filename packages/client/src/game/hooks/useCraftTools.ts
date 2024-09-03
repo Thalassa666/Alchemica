@@ -1,9 +1,9 @@
 import { useWindowEffect } from '@core/hooks'
 import { EvtCodes } from '@core/utils/constants'
-import { CanvasContext, CraftTool, Position, Size } from '../types/types'
-import { hasCollision } from '../helpers/hasCollision'
-import { GameColors } from '../constants/misc'
 import { CraftTools } from '../constants/craftTools'
+import { GameColors } from '../constants/misc'
+import { hasCollision } from '../helpers/hasCollision'
+import { CanvasContext, CraftTool, Position, Size } from '../types/types'
 import { useGameState } from './useGameState'
 
 const craftToolsValues = Object.values(CraftTools)

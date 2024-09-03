@@ -1,8 +1,8 @@
+import NotificationDefaultImgSrc from '@assets/images/icon-in-progress.png'
 import { GameColors, Game } from '../constants/misc'
 import { CanvasContext, FullLocation, GameNotification } from '../types/types'
-import { useImage } from './useImage'
 import { useGameState } from './useGameState'
-import NotificationDefaultImgSrc from '@assets/images/icon-in-progress.png'
+import { useImage } from './useImage'
 
 const DefaultTimeout = 3000
 

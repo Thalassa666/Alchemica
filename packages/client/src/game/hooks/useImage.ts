@@ -1,5 +1,5 @@
-import { CanvasContext, FullLocation, Position, Size } from '../types/types'
 import { GameColors, Game } from '../constants/misc'
+import { CanvasContext, FullLocation, Position, Size } from '../types/types'
 
 export type BackgroundOptions = {
   src: string

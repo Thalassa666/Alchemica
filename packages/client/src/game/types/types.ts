@@ -1,6 +1,6 @@
 import { ConditionNames } from '../constants/conditions'
-import { Direction } from '../constants/player'
 import { CraftType } from '../constants/craftTools'
+import { Direction } from '../constants/player'
 
 export type CanvasContext = {
   canvas: HTMLCanvasElement

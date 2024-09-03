@@ -1,15 +1,15 @@
+import LevelBackgroundSrc from '@assets/images/level-background.jpg'
 import { useEffect, useRef } from 'react'
-import { usePlayer } from '../hooks/usePlayer'
-import { BackgroundOptions, useImage } from '../hooks/useImage'
+import { CraftType } from '../constants/craftTools'
 import { Game } from '../constants/misc'
+import { Receipts } from '../constants/receipts'
+import { useCraftDialog } from '../hooks/useCraftDialog'
 import { useCraftTools } from '../hooks/useCraftTools'
 import { useGameBorders } from '../hooks/useGameBorders'
-import { useCraftDialog } from '../hooks/useCraftDialog'
-import { useNotifications } from '../hooks/useNotifications'
-import { Receipts } from '../constants/receipts'
-import { CraftType } from '../constants/craftTools'
 import { useGameState } from '../hooks/useGameState'
-import LevelBackgroundSrc from '@assets/images/level-background.jpg'
+import { BackgroundOptions, useImage } from '../hooks/useImage'
+import { useNotifications } from '../hooks/useNotifications'
+import { usePlayer } from '../hooks/usePlayer'
 
 const backgroundOptions: BackgroundOptions = {
   src: LevelBackgroundSrc,

@@ -1,5 +1,6 @@
-import { GameColors } from '../constants/misc'
+import IngredientBoxSrc from '@assets/images/ingredient-box.png'
 import { CraftDialogSizes } from '../constants/craftTools'
+import { GameColors } from '../constants/misc'
 import {
   CanvasContext,
   CraftTool,
@@ -7,9 +8,8 @@ import {
   InventoryItem,
   Position,
 } from '../types/types'
-import { useImage } from './useImage'
 import { useGameState } from './useGameState'
-import IngredientBoxSrc from '@assets/images/ingredient-box.png'
+import { useImage } from './useImage'
 
 const getPosY = (dialogPosY: number, rowIndex: number) => {
   return (

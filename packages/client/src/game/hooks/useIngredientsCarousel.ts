@@ -1,12 +1,12 @@
+import IngredientsSelectSrc from '@assets/images/ingredients-select.png'
 import { useWindowEffect } from '@core/hooks'
 import { EvtCodes } from '@core/utils/constants'
-import { CanvasContext, FullLocation, InventoryItem } from '../types/types'
-import { centerActiveElement } from '../helpers/centerActiveElement'
-import { GameColors } from '../constants/misc'
 import { CraftDialogSizes } from '../constants/craftTools'
-import { BackgroundOptions, useImage } from './useImage'
+import { GameColors } from '../constants/misc'
+import { centerActiveElement } from '../helpers/centerActiveElement'
+import { CanvasContext, FullLocation, InventoryItem } from '../types/types'
 import { useGameState } from './useGameState'
-import IngredientsSelectSrc from '@assets/images/ingredients-select.png'
+import { BackgroundOptions, useImage } from './useImage'
 
 /** Использовать карусель (ящики) просмотра ингридиентов из инвентаря */
 export const useIngredientsCarousel = () => {

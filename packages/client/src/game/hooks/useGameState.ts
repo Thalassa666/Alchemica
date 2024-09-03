@@ -1,4 +1,7 @@
 import { useMemo } from 'react'
+import { CraftType } from '../constants/craftTools'
+import { IngredientsMap } from '../constants/ingredients'
+import { PlayerInitial } from '../constants/player'
 import {
   CraftToolsState,
   GameNotification,
@@ -8,9 +11,6 @@ import {
   InventoryState,
   PlayerState,
 } from '../types/types'
-import { PlayerInitial } from '../constants/player'
-import { IngredientsMap } from '../constants/ingredients'
-import { CraftType } from '../constants/craftTools'
 
 const initialInventory = Object.values(IngredientsMap).filter(
   item => item.type === CraftType.Ingredient && item.condition === 'Raw'

@@ -1,7 +1,7 @@
 import { useWindowEffect } from '@core/hooks'
 import { EvtCodes } from '@core/utils/constants'
-import { DirectionType, Position } from '../types/types'
 import { Direction, VelocitySpeed } from '../constants/player'
+import { DirectionType, Position } from '../types/types'
 import { useGameState } from './useGameState'
 
 /** Использовать движения персонажа */
