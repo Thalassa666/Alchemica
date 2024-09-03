@@ -1,10 +1,9 @@
-import AboutGame from '@pages/AboutGame/AboutGame'
 import Error from '@pages/Error'
 import Forum from '@pages/Forum'
+import Game from '@pages/Game'
 import Home from '@pages/Home'
 import Leaderboard from '@pages/Leaderboard'
 import Login from '@pages/Login'
-import PlayGame from '@pages/PlayGame/PlayGame'
 import Profile from '@pages/Profile'
 import Register from '@pages/Register'
 import Topic from '@pages/Topic'
@@ -79,22 +78,6 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: '/about',
-    element: (
-      <ErrorBoundary
-        fallbackRender={() => (
-          <Error
-            errorCode={500}
-            errorMessage="Упс, что-то сломалось :-("
-            errorPicture={errorPotionImage}
-          />
-        )}
-      >
-        <AboutGame />
-      </ErrorBoundary>
-    ),
-  },
-  {
     path: '/game',
     element: (
       <ErrorBoundary
@@ -106,7 +89,7 @@ export const router = createBrowserRouter([
           />
         )}
       >
-        <PlayGame />
+        <Game />
       </ErrorBoundary>
     ),
   },
