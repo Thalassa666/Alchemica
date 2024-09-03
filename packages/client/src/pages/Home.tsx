@@ -29,6 +29,12 @@ const Home = () => {
               Страница топика форума (Пример: Topic ID 1)
             </Link>
           </li>
+          <li>
+            <Link to="/500">Error 500</Link>
+          </li>
+          <li>
+            <Link to="/qw">Error 404</Link>
+          </li>
         </ul>
       </nav>
     </div>
