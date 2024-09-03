@@ -1,39 +1,30 @@
 import Error from '@pages/Error'
 import Forum from '@pages/Forum'
-import PlayGame from '@pages/PlayGame/PlayGame'
 import Home from '@pages/Home'
-import Login from '@pages/Login'
-import Register from '@pages/Register'
-import Profile from '@pages/Profile'
 import Leaderboard from '@pages/Leaderboard'
+import Login from '@pages/Login'
+import PlayGame from '@pages/PlayGame/PlayGame'
+import Profile from '@pages/Profile'
+import Register from '@pages/Register'
 import Topic from '@pages/Topic'
+import { ErrorBoundary } from 'react-error-boundary'
 import { createBrowserRouter } from 'react-router-dom'
-import styles from './styles.module.scss'
-import { FallbackProps } from 'react-error-boundary'
-import { useNavigate } from 'react-router-dom'
-
-function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
-  const navigate = useNavigate()
-
-  const handleReset = () => {
-    resetErrorBoundary()
-    navigate('/')
-  }
-
-  return (
-    <div className={styles.error}>
-      <p>Something went wrong:</p>
-      <pre>{error.message}</pre>
-      <button onClick={handleReset}>Try again</button>
-    </div>
-  )
-}
+import errorBookImage from '../../assets/images/error_book.png'
+import errorPotionImage from '../../assets/images/error_potion.png'
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ErrorBoundary
+        fallbackRender={() => (
+          <Error
+            errorCode={500}
+            errorMessage="Упс, что-то сломалось :-("
+            errorPicture={errorPotionImage}
+          />
+        )}
+      >
         <Home />
       </ErrorBoundary>
     ),
@@ -41,7 +32,15 @@ export const router = createBrowserRouter([
   {
     path: '/login',
     element: (
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ErrorBoundary
+        fallbackRender={() => (
+          <Error
+            errorCode={500}
+            errorMessage="Упс, что-то сломалось :-("
+            errorPicture={errorPotionImage}
+          />
+        )}
+      >
         <Login />
       </ErrorBoundary>
     ),
@@ -49,7 +48,15 @@ export const router = createBrowserRouter([
   {
     path: '/register',
     element: (
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ErrorBoundary
+        fallbackRender={() => (
+          <Error
+            errorCode={500}
+            errorMessage="Упс, что-то сломалось :-("
+            errorPicture={errorPotionImage}
+          />
+        )}
+      >
         <Register />
       </ErrorBoundary>
     ),
@@ -57,19 +64,47 @@ export const router = createBrowserRouter([
   {
     path: '/profile',
     element: (
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ErrorBoundary
+        fallbackRender={() => (
+          <Error
+            errorCode={500}
+            errorMessage="Упс, что-то сломалось :-("
+            errorPicture={errorPotionImage}
+          />
+        )}
+      >
         <Profile />
       </ErrorBoundary>
     ),
   },
   {
     path: '/game',
-    element: <PlayGame />,
+    element: (
+      <ErrorBoundary
+        fallbackRender={() => (
+          <Error
+            errorCode={500}
+            errorMessage="Упс, что-то сломалось :-("
+            errorPicture={errorPotionImage}
+          />
+        )}
+      >
+        <PlayGame />
+      </ErrorBoundary>
+    ),
   },
   {
     path: '/leaderboard',
     element: (
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ErrorBoundary
+        fallbackRender={() => (
+          <Error
+            errorCode={500}
+            errorMessage="Упс, что-то сломалось :-("
+            errorPicture={errorPotionImage}
+          />
+        )}
+      >
         <Leaderboard />
       </ErrorBoundary>
     ),
@@ -77,7 +112,15 @@ export const router = createBrowserRouter([
   {
     path: '/forum',
     element: (
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ErrorBoundary
+        fallbackRender={() => (
+          <Error
+            errorCode={500}
+            errorMessage="Упс, что-то сломалось :-("
+            errorPicture={errorPotionImage}
+          />
+        )}
+      >
         <Forum />
       </ErrorBoundary>
     ),
@@ -85,7 +128,15 @@ export const router = createBrowserRouter([
       {
         path: ':topicId',
         element: (
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <ErrorBoundary
+            fallbackRender={() => (
+              <Error
+                errorCode={500}
+                errorMessage="Упс, что-то сломалось :-("
+                errorPicture={errorPotionImage}
+              />
+            )}
+          >
             <Topic />
           </ErrorBoundary>
         ),
@@ -95,9 +146,21 @@ export const router = createBrowserRouter([
   {
     path: '*',
     element: (
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <Error />
-      </ErrorBoundary>
+      <Error
+        errorCode={404}
+        errorMessage="Такой страницы у нас нет :-("
+        errorPicture={errorBookImage}
+      />
+    ),
+  },
+  {
+    path: '/500',
+    element: (
+      <Error
+        errorCode={500}
+        errorMessage="Упс, что-то сломалось :-("
+        errorPicture={errorPotionImage}
+      />
     ),
   },
 ])

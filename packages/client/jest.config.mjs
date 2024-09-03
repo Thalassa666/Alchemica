@@ -12,6 +12,7 @@ export default {
     '^@core/(.*)$': '<rootDir>/src/core/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
+    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/mocks/fileMock.js',
   },
   transform: {
     '.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform',
