@@ -1,9 +1,10 @@
 import { ArrowButton } from '@components/UI'
 import { FC } from 'react'
+import { TGameCase } from './PlayGame'
 import styles from './styles.module.scss'
 
 type TBlockProps = {
-  setGameCase: (a: string) => void
+  setGameCase: React.Dispatch<React.SetStateAction<TGameCase>>
 }
 
 export const StartButtonBlock: FC<TBlockProps> = (props: TBlockProps) => {

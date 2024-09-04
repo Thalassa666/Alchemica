@@ -1,9 +1,10 @@
 import { ArrowButton } from '@components/UI'
 import { FC } from 'react'
+import { TGameCase } from './PlayGame'
 import styles from './styles.module.scss'
 
 type TBlockProps = {
-  setGameCase: (a: string) => void
+  setGameCase: React.Dispatch<React.SetStateAction<TGameCase>>
 }
 
 export const WinGameBlock: FC<TBlockProps> = (props: TBlockProps) => {
@@ -12,7 +13,7 @@ export const WinGameBlock: FC<TBlockProps> = (props: TBlockProps) => {
   return (
     <>
       <div className={styles.form_win}>
-        <h2>GAME END</h2>
+        <h2>YOU WIN!</h2>
         <p>Поздравляем!</p>
         <p>
           Вы сдали экзамен и получили диплом Королевской академии алхимии и

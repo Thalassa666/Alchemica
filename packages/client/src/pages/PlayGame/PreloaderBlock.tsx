@@ -1,11 +1,12 @@
 import { ArrowButton } from '@components/UI'
-import { FC, useEffect, useState } from 'react'
-import styles from './styles.module.scss'
 import { Preloader } from '@components/preloader/Preloader'
+import { FC, useEffect, useState } from 'react'
+import { TGameCase } from './PlayGame'
 import { facts } from './constants/constants'
+import styles from './styles.module.scss'
 
 type TBlockProps = {
-  setGameCase: (a: string) => void
+  setGameCase: React.Dispatch<React.SetStateAction<TGameCase>>
 }
 
 export const PreloaderBlock: FC<TBlockProps> = (props: TBlockProps) => {

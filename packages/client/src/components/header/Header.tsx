@@ -3,9 +3,7 @@ import styles from './styles.module.scss'
 
 export const Header = () => {
   useEffect(() => {
-    const arr = [
-      ...(document.getElementsByTagName('a') as unknown as HTMLLinkElement[]),
-    ]
+    const arr: HTMLAnchorElement[] = [...document.getElementsByTagName('a')]
     if (arr && arr.length !== 0) {
       arr.forEach(item => {
         if (item.getAttribute('href') === window.location.pathname) {
