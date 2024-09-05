@@ -3,13 +3,8 @@ import { useEffect, useRef } from 'react'
 import { CraftType } from '../constants/craftTools'
 import { Game } from '../constants/misc'
 import { Receipts } from '../constants/receipts'
-import { useCraftDialog } from '../hooks/useCraftDialog'
-import { useCraftTools } from '../hooks/useCraftTools'
-import { useGameBorders } from '../hooks/useGameBorders'
-import { useGameState } from '../hooks/useGameState'
-import { BackgroundOptions, useImage } from '../hooks/useImage'
-import { useNotifications } from '../hooks/useNotifications'
-import { usePlayer } from '../hooks/usePlayer'
+import * as GameHooks from '../hooks'
+import type { BackgroundOptions } from '../hooks'
 
 const backgroundOptions: BackgroundOptions = {
   src: LevelBackgroundSrc,
@@ -21,13 +16,13 @@ export const GameClient = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null)
 
-  const { updateStatistic } = useGameState()
-  const background = useImage()
-  const borders = useGameBorders()
-  const craftTools = useCraftTools()
-  const player = usePlayer()
-  const craftDialog = useCraftDialog()
-  const notifications = useNotifications()
+  const { updateStatistic } = GameHooks.useGameState()
+  const background = GameHooks.useImage()
+  const borders = GameHooks.useGameBorders()
+  const craftTools = GameHooks.useCraftTools()
+  const player = GameHooks.usePlayer()
+  const craftDialog = GameHooks.useCraftDialog()
+  const notifications = GameHooks.useNotifications()
 
   const init = () => {
     const potions = Object.values(Receipts).filter(

@@ -111,23 +111,23 @@ export const useNotifications = () => {
   }
 
   /** Удалить одно уведомление */
-  const deleteNotification = (id: GameNotification['id']) => {
+  const deleteNotification = (key: GameNotification['key']) => {
     const updated = getNotifications().filter(
-      notification => notification.id !== id
+      notification => notification.key !== key
     )
 
     setNotifications(updated)
   }
 
   /** Добавить уведомление */
-  const addNotification = (notification: Omit<GameNotification, 'id'>) => {
-    const id = Math.random().toString()
+  const addNotification = (notification: Omit<GameNotification, 'key'>) => {
+    const key = Math.random().toString()
     const current = getNotifications()
 
-    setNotifications([...current, { ...notification, id }])
+    setNotifications([...current, { ...notification, key }])
 
     setTimeout(() => {
-      deleteNotification(id)
+      deleteNotification(key)
     }, notification.timeout ?? DefaultTimeout)
   }
 

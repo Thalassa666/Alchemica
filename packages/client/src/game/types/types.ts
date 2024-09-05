@@ -2,6 +2,10 @@ import { ConditionNames } from '../constants/conditions'
 import { CraftType } from '../constants/craftTools'
 import { Direction } from '../constants/player'
 
+export type KeyId = {
+  key: string
+}
+
 export type CanvasContext = {
   canvas: HTMLCanvasElement
   ctx: CanvasRenderingContext2D
@@ -27,16 +31,15 @@ export type DirectionType = typeof Direction[keyof typeof Direction]
 
 export type PlayerState = {
   position: Position
-  velocity: Position
   size: Size
+  velocity: Position
   lastDirectionX: typeof Direction.Left | typeof Direction.Right
   canMove: boolean
 }
 
 export type ConditionType = typeof ConditionNames[keyof typeof ConditionNames]
 
-export type CraftTool = {
-  key: string
+export type CraftTool = KeyId & {
   label: string
   imgSrc: string
   comboCount: number
@@ -51,12 +54,14 @@ export type CraftToolsState = {
 
 export type CraftType = typeof CraftType[keyof typeof CraftType]
 
-export type InventoryItem = {
-  key: string
-  imgSrc: string
+export type ItemBase = KeyId & {
   type: CraftType
-  condition: ConditionType
+}
+
+export type InventoryItem = ItemBase & {
   label: string
+  imgSrc: string
+  condition: ConditionType
 }
 
 export type InventoryState = {
@@ -67,15 +72,12 @@ export type InventoryState = {
   isPicking: boolean
 }
 
-export type Receipt = {
-  key: string
+export type Receipt = ItemBase & {
   tool: CraftTool['key']
-  type: CraftType
   ingredientNames: string[]
 }
 
-export type GameNotification = {
-  id: string | number
+export type GameNotification = KeyId & {
   title: string
   text: string
   imgSrc?: string
