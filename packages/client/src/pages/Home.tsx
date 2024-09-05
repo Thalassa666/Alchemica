@@ -22,7 +22,7 @@ const Home = () => {
             <Link to="/about">Лендинг игры</Link>
           </li>
           <li>
-            <Link to="/leaderboard">Страница лидерборда</Link>
+            <Link to="/Leaderboard">Страница лидерборда</Link>
           </li>
           <li>
             <Link to="/forum">Страница форума</Link>

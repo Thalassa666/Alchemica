@@ -1,0 +1,65 @@
+.background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 1240px;
+  height: 100vh;
+  background-image: url('../../assets/images/alh-background.png');
+  background-size: 100% 100%;
+}
+.item {
+  border-bottom: 1px solid gray;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px;
+  width: 549px;
+}
+.title {
+  font-family: 'Bookman Old Style', serif;
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  color: #AEAEAE;
+}
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+.time {
+  font-family: 'Bookman Old Style', serif;
+  font-size: .7rem;
+  font-weight: normal;
+  color: #AEAEAE;
+}
+.avatarContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.icon {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  top: 20px;
+  width: 45px;
+  height: 40px;
+  object-fit: cover;
+  background-size: cover;
+}
+
+.first {
+  background-image: url('../../assets/images/skill3-pic.png');
+}
+
+.second {
+  background-image: url('../../assets/images/skill1-pic.png');
+}
+.third {
+  background-image: url('../../assets/images/skill-4-pic.png');
+}
