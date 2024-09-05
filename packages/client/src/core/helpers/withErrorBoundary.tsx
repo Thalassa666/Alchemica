@@ -1,6 +1,6 @@
+import errorPotionImage from '../../assets/images/error_potion.png'
 import { ErrorBoundary } from 'react-error-boundary'
 import Error from '@pages/Error'
-import errorPotionImage from '../../assets/images/error_potion.png'
 import { ReactNode } from 'react'
 
 const WithErrorBoundary = ({ children }: { children: ReactNode }) => (
