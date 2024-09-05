@@ -1,6 +1,6 @@
 import AboutGame from '@pages/AboutGame/AboutGame'
 import Error from '@pages/Error'
-import Forum from '@pages/Forum'
+import Forum from '@pages/Forum/Forum'
 import Home from '@pages/Home'
 import Leaderboard from '@pages/Leaderboard'
 import Login from '@pages/Login'
