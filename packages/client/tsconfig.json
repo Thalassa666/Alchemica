@@ -17,6 +17,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
+      "@/*": ["./*"],
       "@components/*": ["src/components/*"],
       "@core/*": ["src/core/*"],
       "@game/*": ["src/game/*"],
