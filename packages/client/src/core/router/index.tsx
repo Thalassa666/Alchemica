@@ -8,154 +8,87 @@ import PlayGame from '@pages/PlayGame/PlayGame'
 import Profile from '@pages/Profile'
 import Register from '@pages/Register'
 import Topic from '@pages/Topic'
-import { ErrorBoundary } from 'react-error-boundary'
+import WithErrorBoundary from '../helpers/withErrorBoundary'
 import { createBrowserRouter } from 'react-router-dom'
 import errorBookImage from '../../assets/images/error_book.png'
 import errorPotionImage from '../../assets/images/error_potion.png'
+import { RequireAuth } from './ProtectedRoute'
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <ErrorBoundary
-        fallbackRender={() => (
-          <Error
-            errorCode={500}
-            errorMessage="Упс, что-то сломалось :-("
-            errorPicture={errorPotionImage}
-          />
-        )}
-      >
+      <WithErrorBoundary>
         <Home />
-      </ErrorBoundary>
+      </WithErrorBoundary>
     ),
   },
   {
     path: '/login',
     element: (
-      <ErrorBoundary
-        fallbackRender={() => (
-          <Error
-            errorCode={500}
-            errorMessage="Упс, что-то сломалось :-("
-            errorPicture={errorPotionImage}
-          />
-        )}
-      >
+      <WithErrorBoundary>
         <Login />
-      </ErrorBoundary>
+      </WithErrorBoundary>
     ),
   },
   {
     path: '/register',
     element: (
-      <ErrorBoundary
-        fallbackRender={() => (
-          <Error
-            errorCode={500}
-            errorMessage="Упс, что-то сломалось :-("
-            errorPicture={errorPotionImage}
-          />
-        )}
-      >
+      <WithErrorBoundary>
         <Register />
-      </ErrorBoundary>
+      </WithErrorBoundary>
     ),
   },
   {
     path: '/profile',
     element: (
-      <ErrorBoundary
-        fallbackRender={() => (
-          <Error
-            errorCode={500}
-            errorMessage="Упс, что-то сломалось :-("
-            errorPicture={errorPotionImage}
-          />
-        )}
-      >
-        <Profile />
-      </ErrorBoundary>
+      <WithErrorBoundary>
+        <RequireAuth>
+          <Profile />
+        </RequireAuth>
+      </WithErrorBoundary>
     ),
   },
   {
     path: '/about',
     element: (
-      <ErrorBoundary
-        fallbackRender={() => (
-          <Error
-            errorCode={500}
-            errorMessage="Упс, что-то сломалось :-("
-            errorPicture={errorPotionImage}
-          />
-        )}
-      >
+      <WithErrorBoundary>
         <AboutGame />
-      </ErrorBoundary>
+      </WithErrorBoundary>
     ),
   },
   {
     path: '/game',
     element: (
-      <ErrorBoundary
-        fallbackRender={() => (
-          <Error
-            errorCode={500}
-            errorMessage="Упс, что-то сломалось :-("
-            errorPicture={errorPotionImage}
-          />
-        )}
-      >
-        <PlayGame />
-      </ErrorBoundary>
+      <WithErrorBoundary>
+        <RequireAuth>
+          <PlayGame />
+        </RequireAuth>
+      </WithErrorBoundary>
     ),
   },
   {
     path: '/leaderboard',
     element: (
-      <ErrorBoundary
-        fallbackRender={() => (
-          <Error
-            errorCode={500}
-            errorMessage="Упс, что-то сломалось :-("
-            errorPicture={errorPotionImage}
-          />
-        )}
-      >
+      <WithErrorBoundary>
         <Leaderboard />
-      </ErrorBoundary>
+      </WithErrorBoundary>
     ),
   },
   {
     path: '/forum',
     element: (
-      <ErrorBoundary
-        fallbackRender={() => (
-          <Error
-            errorCode={500}
-            errorMessage="Упс, что-то сломалось :-("
-            errorPicture={errorPotionImage}
-          />
-        )}
-      >
+      <WithErrorBoundary>
         <Forum />
-      </ErrorBoundary>
+      </WithErrorBoundary>
     ),
     children: [
       {
         path: ':topicId',
         element: (
-          <ErrorBoundary
-            fallbackRender={() => (
-              <Error
-                errorCode={500}
-                errorMessage="Упс, что-то сломалось :-("
-                errorPicture={errorPotionImage}
-              />
-            )}
-          >
+          <WithErrorBoundary>
             <Topic />
-          </ErrorBoundary>
+          </WithErrorBoundary>
         ),
       },
     ],
