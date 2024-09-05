@@ -1,4 +1,4 @@
-import errorPotionImage from '../../assets/images/error_potion.png'
+import errorPotionImage from '@/assets/assets/images/error_potion.png'
 import { ErrorBoundary } from 'react-error-boundary'
 import Error from '@pages/Error'
 import { ReactNode } from 'react'
