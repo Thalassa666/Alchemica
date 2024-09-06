@@ -9,6 +9,7 @@ export const ArrowButton = ({ type, handleOnClick }: TButtonProps) => {
     <button
       type={type}
       className={styles.button}
-      onClick={handleOnClick}></button>
+      onClick={handleOnClick}
+    ></button>
   )
 }

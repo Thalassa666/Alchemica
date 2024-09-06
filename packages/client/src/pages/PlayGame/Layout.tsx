@@ -20,7 +20,8 @@ export const Layout: FC<TLayoutProps> = (props: TLayoutProps) => {
             : gameCase === 'win'
             ? styles.background_win
             : styles.background_loose
-        }>
+        }
+      >
         <div className={styles.titleOverlay}></div>
         {props.children}
       </div>
