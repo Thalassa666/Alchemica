@@ -5,6 +5,7 @@ import { PreloaderBlock } from './PreloaderBlock'
 import { LooseGameBlock } from './LooseGameBlock'
 import { WinGameBlock } from './WinGameBlock'
 import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 
 const PlayGame = () => {
   const [gameCase, setGameCase] = useState('start')
@@ -16,7 +17,6 @@ const PlayGame = () => {
           gameCase={gameCase}
           children={
             <>
-              <Header />
               {gameCase === 'start' && (
                 <StartButtonBlock setGameCase={setGameCase} />
               )}
@@ -27,6 +27,7 @@ const PlayGame = () => {
               {gameCase === 'loose' && (
                 <LooseGameBlock setGameCase={setGameCase} />
               )}
+              <Outlet />
             </>
           }
         />

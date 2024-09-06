@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import styles from './styles.module.scss'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
   useEffect(() => {
@@ -20,22 +21,22 @@ export const Header = () => {
       <nav className={styles.nav}>
         <div>
           <div className={styles.music}></div>
-          <a href={'/game'} className={styles.link}>
+          <Link className={styles.link} to={'/game'}>
             Играть
-          </a>
+          </Link>
         </div>
-        <a href={'/leaderboard'} className={styles.link}>
+        <Link to={'/leaderboard'} className={styles.link}>
           Рекорды
-        </a>
-        <a href={'/about'} className={styles.link}>
+        </Link>
+        <Link to={'/about'} className={styles.link}>
           Об игре
-        </a>
-        <a href={'/forum'} className={styles.link}>
+        </Link>
+        <Link to={'/forum'} className={styles.link}>
           Форум
-        </a>
-        <a href={'/profile'} className={styles.link}>
+        </Link>
+        <Link to={'/profile'} className={styles.link}>
           Профиль
-        </a>
+        </Link>
       </nav>
     </header>
   )
