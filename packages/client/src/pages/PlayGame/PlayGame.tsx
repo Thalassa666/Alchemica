@@ -1,11 +1,10 @@
 import { Header } from '@components/header/Header'
-import { GameClient } from '@game/index'
-import { useState } from 'react'
 import { Layout } from './Layout'
-import { LooseGameBlock } from './LooseGameBlock'
-import { PreloaderBlock } from './PreloaderBlock'
 import { StartButtonBlock } from './StartButtonBlock'
+import { PreloaderBlock } from './PreloaderBlock'
+import { LooseGameBlock } from './LooseGameBlock'
 import { WinGameBlock } from './WinGameBlock'
+import { useState } from 'react'
 
 const PlayGame = () => {
   const [gameCase, setGameCase] = useState('start')
@@ -24,7 +23,6 @@ const PlayGame = () => {
               {gameCase === 'loading' && (
                 <PreloaderBlock setGameCase={setGameCase} />
               )}
-              {gameCase === 'playing' && <GameClient />}
               {gameCase === 'win' && <WinGameBlock setGameCase={setGameCase} />}
               {gameCase === 'loose' && (
                 <LooseGameBlock setGameCase={setGameCase} />

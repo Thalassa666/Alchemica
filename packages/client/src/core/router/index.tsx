@@ -8,75 +8,74 @@ import PlayGame from '@pages/PlayGame/PlayGame'
 import Profile from '@pages/Profile'
 import Register from '@pages/Register'
 import Topic from '@pages/Topic'
-import { ErrorBoundary } from 'react-error-boundary'
 import { createBrowserRouter } from 'react-router-dom'
 import errorBookImage from '../../assets/images/error_book.png'
 import errorPotionImage from '../../assets/images/error_potion.png'
+import WithErrorBoundary from '@core/helpers/withErrorBoundary'
+import { RequireAuth } from '@core/router/ProtectedRoute'
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: (
+      <WithErrorBoundary>
+        <Home />
+      </WithErrorBoundary>
+    ),
+    children: [
+      {
+        path: 'profile',
+        element: (
+          <RequireAuth>
+            <Profile />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'about',
+        element: <AboutGame />,
+      },
+      {
+        path: 'game',
+        element: (
+          <RequireAuth>
+            <PlayGame />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'leaderboard',
+        element: <Leaderboard />,
+      },
+    ],
   },
   {
     path: '/login',
-    element: <Login />,
+    element: (
+      <WithErrorBoundary>
+        <Login />
+      </WithErrorBoundary>
+    ),
   },
   {
     path: '/register',
-    element: <Register />,
-  },
-  {
-    path: '/profile',
-    element: <Profile />,
-  },
-  {
-    path: '/about',
-    element: <AboutGame />,
-  },
-  {
-    path: '/game',
-    element: <PlayGame />,
-  },
-  {
-    path: '/leaderboard',
     element: (
-      <ErrorBoundary
-        fallbackRender={() => {
-          console.log('Error')
-          return (
-            <Error
-              errorCode={500}
-              errorMessage="Упс, что-то сломалось :-("
-              errorPicture={errorPotionImage}
-            />
-          )
-        }}
-      >
-        {' '}
-        <Leaderboard />
-      </ErrorBoundary>
+      <WithErrorBoundary>
+        <Register />,
+      </WithErrorBoundary>
     ),
   },
   {
     path: '/forum',
-    element: <Forum />,
+    element: (
+      <WithErrorBoundary>
+        <Forum />
+      </WithErrorBoundary>
+    ),
     children: [
       {
         path: ':topicId',
-        element: (
-          <ErrorBoundary
-            fallbackRender={() => (
-              <Error
-                errorCode={500}
-                errorMessage="Упс, что-то сломалось :-("
-                errorPicture={errorPotionImage}
-              />
-            )}
-          >
-            <Topic />
-          </ErrorBoundary>
-        ),
+        element: <Topic />,
       },
     ],
   },
