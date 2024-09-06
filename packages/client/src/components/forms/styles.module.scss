@@ -1,3 +1,5 @@
+
+
 .form {
   display: flex;
   flex-direction: column;
@@ -45,7 +47,6 @@
   flex-direction: column;
   width: 1240px;
   height: 100vh;
-  background-image: url('../../assets/images/alh-background.png');
   background-size: 100% 100%;
 }
 
@@ -54,6 +55,15 @@
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
 }
+
 .link {
   color: #aeaeae;
+}
+
+.loginBg {
+  background-image: url('../../assets/images/alh-background.png');
+}
+
+.profileBg {
+  background-image: url('../../assets/images/alh-background.png');
 }

@@ -37,7 +37,7 @@ export const Login = () => {
   }
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h2>ВХОД В ИГРУ</h2>
+      <h2>LOGIN GAME</h2>
 
       <TextInput
         size={'l'}
