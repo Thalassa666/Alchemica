@@ -1,4 +1,3 @@
-import { Header } from '@components/header/Header'
 import { GameClient } from '@game/index'
 import { useState } from 'react'
 import { Layout } from './Layout'
@@ -17,6 +16,7 @@ const PlayGame = () => {
           gameCase={gameCase}
           children={
             <>
+              {gameCase === 'playing' && <GameClient />}
               {gameCase === 'start' && (
                 <StartButtonBlock setGameCase={setGameCase} />
               )}
