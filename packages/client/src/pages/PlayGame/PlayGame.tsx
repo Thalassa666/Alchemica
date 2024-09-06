@@ -17,7 +17,6 @@ const PlayGame = () => {
           gameCase={gameCase}
           children={
             <>
-              <Header />
               {gameCase === 'start' && (
                 <StartButtonBlock setGameCase={setGameCase} />
               )}
