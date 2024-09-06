@@ -8,7 +8,10 @@ export const registrationSchema = z.object({
   second_name: z.string().min(1, 'Фамилия обязательна для заполнения'),
   email: z.string().email('Некорректный адрес электронной почты'),
   phone: z.string().min(10, 'Телефон должен содержать минимум 10 цифр'),
-  password: z.string().min(6, 'Пароль должен содержать минимум 6 символов'),
+  password: z
+    .string()
+    .min(6, 'Пароль должен содержать минимум 6 символов')
+    .optional(),
 })
 
 export const loginSchema = z.object({

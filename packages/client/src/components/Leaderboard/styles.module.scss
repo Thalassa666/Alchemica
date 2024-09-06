@@ -8,6 +8,14 @@
   background-image: url('../../assets/images/alh-background.png');
   background-size: 100% 100%;
 }
+
+.layout {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .item {
   border-bottom: 1px solid gray;
   display: flex;
@@ -23,7 +31,7 @@
   font-weight: normal;
   margin: 0;
   padding: 0;
-  color: #AEAEAE;
+  color: #aeaeae;
 }
 .titleContainer {
   display: flex;
@@ -33,9 +41,9 @@
 }
 .time {
   font-family: 'Bookman Old Style', serif;
-  font-size: .7rem;
+  font-size: 0.7rem;
   font-weight: normal;
-  color: #AEAEAE;
+  color: #aeaeae;
 }
 .avatarContainer {
   position: relative;

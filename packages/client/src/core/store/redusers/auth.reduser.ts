@@ -93,10 +93,7 @@ export const authReducer = createSlice({
         state.isError = true
         state.errorMessage =
           (action.error as SerializedError).message ?? 'Произошла ошибка'
-        if (
-          (action.error as SerializedError).message ===
-          'Unexpected token \'O\', "OK" is not valid JSON'
-        ) {
+        if ((action.error as SerializedError).message === 'Ошибка: 400') {
           state.isAuth = true
         }
       })
