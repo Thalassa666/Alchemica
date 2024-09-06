@@ -1,8 +1,8 @@
 import { ArrowButton } from '@components/UI'
-import { FC, useEffect, useState } from 'react'
-import styles from './styles.module.scss'
 import { Preloader } from '@components/preloader/Preloader'
+import { FC, useEffect, useState } from 'react'
 import { facts } from './constants/constants'
+import styles from './styles.module.scss'
 
 type TBlockProps = {
   setGameCase: (a: string) => void
@@ -29,6 +29,13 @@ export const PreloaderBlock: FC<TBlockProps> = (props: TBlockProps) => {
           <Preloader />
         </div>
         <p>{currentFact}</p>
+        <div>
+          <p>К игре:</p>
+          <ArrowButton
+            type={'button'}
+            handleOnClick={() => setGameCase('playing')}
+          />
+        </div>
         <div>
           <p>На случай провала:</p>
           <ArrowButton

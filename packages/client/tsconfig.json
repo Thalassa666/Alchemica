@@ -20,6 +20,9 @@
       "@/*": [".src/*"],
       "@components/*": ["src/components/*"],
       "@core/*": ["src/core/*"],
+      "@game/*": ["src/game/*"],
+      "@assets/*": ["src/assets/*"],
+      "@src/*": ["src/*"],
       "@pages/*": ["src/pages/*"]
     }
   },
