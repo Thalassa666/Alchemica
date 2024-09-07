@@ -9,7 +9,6 @@ const AboutGame = () => {
         <Layout
           children={
             <>
-              <Header />
               <InfoBlock />
             </>
           }

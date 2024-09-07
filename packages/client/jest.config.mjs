@@ -1,8 +1,5 @@
-import dotenv from 'dotenv'
-import { pathsToModuleNameMapper } from 'ts-jest'
-import tsconfig from './tsconfig.json' assert { type: 'json' }
-
-dotenv.config()
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default {
   preset: 'ts-jest',
@@ -11,7 +8,10 @@ export default {
   moduleNameMapper: {
     '^@core/(.*)$': '<rootDir>/src/core/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
+    '^@game/(.*)$': '<rootDir>/src/game/$1',
+    '^@src/(.*)$': '<rootDir>/src/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@/assets/images/(.*)$': '<rootDir>/src/assets/images/$1',
     '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/mocks/fileMock.js',
   },
   transform: {
@@ -23,4 +23,4 @@ export default {
   transformIgnorePatterns: [
     'node_modules/(?!(.*@gravity-ui/uikit.*)/)', // Исключаем @gravity-ui/uikit из игнорирования
   ],
-}
+};

@@ -16,8 +16,12 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      '@': resolve(__dirname, 'src'),
       '@components': resolve(__dirname, 'src/components'),
       '@core': resolve(__dirname, 'src/core'),
+      '@game': resolve(__dirname, 'src/game'),
+      '@assets': resolve(__dirname, 'src/assets'),
+      '@src': resolve(__dirname, 'src'),
       '@pages': resolve(__dirname, 'src/pages'),
     },
   },
