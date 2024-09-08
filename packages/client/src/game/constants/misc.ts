@@ -17,10 +17,13 @@ const colorOnDev = (color: string) => {
 export const GameColors = {
   Overlay: '#20222d99',
   TextColor: 'white',
+  TextColorBlack: 'black',
+  TextColorRed: 'red',
   Notification: '#20222d99',
   Border: colorOnDev('#ff64644d'),
   CraftToolNearPlayer: colorOnDev('lightgoldenrodyellow'),
   CraftToolObject: colorOnDev('#ff64ff4d'),
+  MouseInteractionObject: colorOnDev('rgba(0, 255, 0, 0.4)'),
 }
 
 /** Конфигурация игровых границ */

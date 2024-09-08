@@ -1,4 +1,5 @@
 import LevelBackgroundSrc from '@assets/images/level-background.jpg'
+import { CanvasContext } from '@game/types/types'
 import { useEffect, useRef } from 'react'
 import { CraftType } from '../constants/craftTools'
 import { Game } from '../constants/misc'
@@ -23,8 +24,9 @@ export const GameClient = () => {
   const player = GameHooks.usePlayer()
   const craftDialog = GameHooks.useCraftDialog()
   const notifications = GameHooks.useNotifications()
+  const mouseIteration = GameHooks.useMouseInteraction()
 
-  const init = () => {
+  const init = (context: CanvasContext) => {
     const potions = Object.values(Receipts).filter(
       receipt => receipt.type === CraftType.Potion
     )
@@ -35,6 +37,7 @@ export const GameClient = () => {
       )
     }
 
+    mouseIteration.init(context)
     // TODO: Добавить условие победы/время начала игры
   }
 
@@ -58,9 +61,25 @@ export const GameClient = () => {
   }
 
   useEffect(() => {
-    ctxRef.current = canvasRef.current?.getContext('2d') ?? null
-    init()
-    animate()
+    const canvas = canvasRef.current
+    const ctx = canvasRef.current?.getContext('2d')
+    ctxRef.current = ctx ?? null
+
+    if (canvas && ctx) {
+      init({ canvas, ctx })
+      animate()
+    }
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      const canvas = canvasRef.current
+      const ctx = ctxRef.current
+
+      if (canvas && ctx) {
+        mouseIteration.destroy({ canvas, ctx })
+      }
+    }
   }, [])
 
   return (
