@@ -9,15 +9,12 @@ import { mockForumSections } from '../../../mocks/forumMock'
 
 const Forum: React.FC = () => {
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null)
-  const [isModalOpen, setModalOpen] = useState<boolean>(false)
 
-  const handleSelectTopic = (topic: Topic) => {
+  const handleOpenTopic = (topic: Topic) => {
     setSelectedTopic(topic)
-    setModalOpen(true)
   }
 
   const handleCloseModal = () => {
-    setModalOpen(false)
     setSelectedTopic(null)
   }
 
@@ -36,16 +33,14 @@ const Forum: React.FC = () => {
                     id={section.id}
                     title={section.title}
                     topics={section.topics}
-                    onSelectTopic={handleSelectTopic}
+                    onSelectTopic={handleOpenTopic}
                   />
                 ))}
               </ul>
             </div>
-            <Modal
-              isOpen={isModalOpen}
-              onClose={handleCloseModal}
-              topicContent={selectedTopic}
-            />
+            {selectedTopic && (
+              <Modal onClose={handleCloseModal} topicContent={selectedTopic} />
+            )}
           </div>
         </Layout>
       </section>

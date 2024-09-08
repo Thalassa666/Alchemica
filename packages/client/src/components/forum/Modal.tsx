@@ -1,27 +1,15 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react'
 import styles from './styles.module.scss'
 import { Topic } from '@src/types'
 import { TextArea } from '@gravity-ui/uikit'
 
 interface ModalProps {
-  isOpen: boolean
   onClose: () => void
   topicContent: Topic | null
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, topicContent }) => {
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (isOpen && topicContent) {
-      navigate(`/forum/${topicContent.id}`)
-    } else {
-      navigate('/forum')
-    }
-  }, [isOpen, topicContent, navigate])
-
-  if (!isOpen || !topicContent) return null
+const Modal: React.FC<ModalProps> = ({ onClose, topicContent }) => {
+  if (!topicContent) return null
 
   return (
     <div className={styles.modal}>

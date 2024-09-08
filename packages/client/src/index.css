@@ -1,6 +1,9 @@
 :root {
   --gray-color: #aeaeae;
   --color-background: rgba(0, 0, 0, 0.7);
+  --bookman-font: 'Bookman Old Style';
+  --lancelot-font: 'Lancelot';
+  --amatic-font: 'Amatic SC';
 }
 
 body {

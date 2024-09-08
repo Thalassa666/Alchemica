@@ -11,7 +11,7 @@
   justify-content: space-between;
   padding: 20px;
   border: none;
-  font-family: 'Bookman Old Style', sans-serif;
+  font-family: var(--bookman-font), sans-serif;
   color: var(--gray-color);
   cursor: pointer;
   font-size: 24px;
@@ -63,7 +63,7 @@
 .topicTitle {
   font-size: 20px;
   color: var(--gray-color);
-  font-family: 'Bookman Old Style', sans-serif;
+  font-family: var(--bookman-font), sans-serif;
 }
 
 .topicHead {
@@ -76,7 +76,7 @@
   display: flex;
   gap: 10px;
   color: var(--gray-color);
-  font-family: 'Bookman Old Style', sans-serif;
+  font-family: var(--bookman-font), sans-serif;
 }
 
 .username {
@@ -133,7 +133,7 @@
   padding: 20px;
   background-color: var(--color-background);
   color: var(--gray-color);
-  font-family: 'Bookman Old Style', sans-serif;
+  font-family: var(--bookman-font), sans-serif;
 }
 
 .modalMessage {
