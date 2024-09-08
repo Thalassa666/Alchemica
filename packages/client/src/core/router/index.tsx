@@ -69,7 +69,9 @@ export const router = createBrowserRouter([
     path: '/forum',
     element: (
       <WithErrorBoundary>
-        <Forum />
+        <RequireAuth>
+          <Forum />
+        </RequireAuth>
       </WithErrorBoundary>
     ),
     children: [

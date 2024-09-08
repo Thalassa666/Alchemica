@@ -1,4 +1,14 @@
+:root {
+  --gray-color: #aeaeae;
+  --color-background: rgba(0, 0, 0, 0.7);
+}
+
 body {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
   padding: 0;
   margin: 0;
 }
@@ -12,8 +22,7 @@ body {
 
 @font-face {
   font-family: 'Bookman Old Style';
-  src: url('assets/fonts/Bookman Old Style/bookmanoldstyle.ttf')
-    format('truetype');
+  src: url('assets/fonts/Bookman Old Style/BOOKOS.TTF') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
