@@ -77,6 +77,15 @@ export type Receipt = ItemBase & {
   ingredientNames: string[]
 }
 
+export type ReceiptBookState = {
+  isDialogOpen: boolean
+  potions: Record<string, Receipt>
+  ingredients: Record<string, Receipt>
+  hovered: Receipt | null
+  selected: Receipt | null
+  activePage: number
+}
+
 export type GameNotification = KeyId & {
   title: string
   text: string
@@ -94,6 +103,7 @@ export type GameStatistic = {
 export type GameStateType = {
   player: PlayerState
   craftTools: CraftToolsState
+  receiptBook: ReceiptBookState
   inventory: InventoryState
   notifications: GameNotification[]
   statistic: GameStatistic

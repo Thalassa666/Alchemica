@@ -13,10 +13,7 @@ export const PotionNames = {
 } as const
 
 /** Конфигурация зелий */
-export const PotionsMap: Record<
-  typeof PotionNames[keyof typeof PotionNames],
-  InventoryItem
-> = {
+export const PotionsMap: Record<string, InventoryItem> = {
   [PotionNames.Speed]: {
     key: PotionNames.Speed,
     label: 'Зелье скорости',

@@ -19,11 +19,13 @@ export const GameClient = () => {
 
   const { updateStatistic } = GameHooks.useGameState()
   const background = GameHooks.useImage()
+  const quickTools = GameHooks.useQuickTools()
   const borders = GameHooks.useGameBorders()
   const craftTools = GameHooks.useCraftTools()
   const player = GameHooks.usePlayer()
   const craftDialog = GameHooks.useCraftDialog()
   const notifications = GameHooks.useNotifications()
+  const receiptBook = GameHooks.useReceiptsBook()
   const mouseIteration = GameHooks.useMouseInteraction()
 
   const init = (context: CanvasContext) => {
@@ -52,11 +54,13 @@ export const GameClient = () => {
 
       background.draw({ canvas, ctx }, backgroundOptions)
       borders.draw({ canvas, ctx })
+      quickTools.draw({ canvas, ctx })
       craftTools.draw({ canvas, ctx })
       player.draw({ canvas, ctx })
       player.update({ canvas, ctx })
       craftDialog.draw({ canvas, ctx })
       notifications.draw({ canvas, ctx })
+      receiptBook.draw({ canvas, ctx })
     }
   }
 
