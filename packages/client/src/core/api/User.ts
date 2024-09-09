@@ -1,5 +1,5 @@
 import { checkResponse } from '@core/helpers/checkResponse'
-import { IUser, TUserQuery } from '@core/utils/interfaces/User'
+import { IUser, IUserChangePass, TUserQuery } from '@core/utils/interfaces/User'
 import { BASE_URL } from '@core/utils/constants'
 
 class User {
@@ -9,7 +9,7 @@ class User {
     this.url = url + slug
   }
 
-  public async updateUserData(data: IUser) {
+  public async updateUserData(data: IUserChangePass) {
     const res = await fetch(`${this.url}/profile`, {
       method: 'PUT',
       headers: {

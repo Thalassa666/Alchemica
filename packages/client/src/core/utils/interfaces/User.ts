@@ -9,7 +9,8 @@ export interface IUser {
 }
 
 export interface IUserChangePass {
-  password: string
+  oldPassword: string
+  newPassword: string
 }
 
 export type TUserQuery = Pick<IUser, 'login' | 'password'>
