@@ -13,6 +13,7 @@ import errorBookImage from '../../assets/images/error_book.png'
 import errorPotionImage from '../../assets/images/error_potion.png'
 import WithErrorBoundary from '@core/helpers/withErrorBoundary'
 import { RequireAuth } from '@core/router/ProtectedRoute'
+import { ChangePass } from '@pages/ChangePass'
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: 'leaderboard',
         element: <Leaderboard />,
+      },
+      {
+        path: 'change-pass',
+        element: <ChangePass />,
       },
     ],
   },

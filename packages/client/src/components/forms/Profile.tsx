@@ -1,5 +1,5 @@
 import styles from './styles.module.scss'
-import { TextInput, Button } from '@gravity-ui/uikit'
+import { TextInput, Button, Avatar } from '@gravity-ui/uikit'
 import useForm from '@core/hooks/useForms'
 import {
   RegistrationFormData,
@@ -9,11 +9,19 @@ import { useState } from 'react'
 import { ArrowButton, TextButton } from '@components/UI'
 import { useAppSelector } from '@core/hooks'
 import { IUser } from '@core/utils/interfaces/User'
+import { useDispatch } from 'react-redux'
+import { TAppDispatch } from '@core/store/store'
+import { logoutUser } from '@core/store/redusers/auth.reduser'
+import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from '@core/utils/constants'
 
 export const Profile = () => {
+  const dispatch = useDispatch<TAppDispatch>()
+  const navigate = useNavigate()
   const [disable, setDisable] = useState<boolean>(true)
   const { userData } = useAppSelector(state => state.authReducer)
-  const { first_name, second_name, login, email, phone } = userData as IUser
+  const { first_name, second_name, login, email, phone, avatar } =
+    userData as IUser
 
   const { formData, errors, handleChange, handleSubmit } =
     useForm<RegistrationFormData>({
@@ -33,10 +41,20 @@ export const Profile = () => {
     setDisable(!disable)
   }
 
+  const logout = async () => {
+    await dispatch(logoutUser())
+    navigate('/login')
+  }
+
+  const redirectToChangePass = () => {
+    navigate('/change-pass')
+  }
+
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2>WELCOME BACK</h2>
+        <Avatar size={'xl'} imgUrl={`${BASE_URL}/resources/${avatar}`} />
         <p className={styles.name}>{first_name.toUpperCase()}</p>
         <TextInput
           size={'l'}
@@ -97,18 +115,8 @@ export const Profile = () => {
           <TextButton text={'ИЗМЕНИТЬ'} onClick={handleDisabled} />
           <ArrowButton type={'submit'} />
         </div>
-        <TextButton
-          text={'ВЫЙТИ'}
-          onClick={() => {
-            console.log('Выйти')
-          }}
-        />
-        <TextButton
-          text={'ИЗМЕНИТЬ ПАРОЛЬ'}
-          onClick={() => {
-            console.log('Сменить пароль')
-          }}
-        />
+        <TextButton text={'ВЫЙТИ'} onClick={logout} />
+        <TextButton text={'ИЗМЕНИТЬ ПАРОЛЬ'} onClick={redirectToChangePass} />
       </form>
     </>
   )
