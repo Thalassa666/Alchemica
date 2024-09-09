@@ -17,9 +17,13 @@ export const Layout = (props: TLayoutProps) => {
           `${styles[backgroundClass]}`
         )}
       >
-        <div className={styles.titleOverlay}>
-          {backgroundClass === 'profileBg' ? <></> : <h1>ALCHEMIST</h1>}
-        </div>
+        {backgroundClass === 'profileBg' ? (
+          <></>
+        ) : (
+          <div className={styles.titleOverlay}>
+            <h1>ALCHEMIST</h1>
+          </div>
+        )}
         {children}
       </div>
     </section>

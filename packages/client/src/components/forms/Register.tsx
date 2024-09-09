@@ -39,7 +39,7 @@ export const Register = () => {
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <h2>ЗАРЕГИСТРИРОВАТЬСЯ</h2>
+        <h2>REGISTER</h2>
         <TextInput
           size={'l'}
           type={'text'}

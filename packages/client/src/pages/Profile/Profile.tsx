@@ -1,6 +1,5 @@
 import { FormsLayout, ProfileForm } from '@components/forms'
-import { useAppSelector } from '@core/hooks/useAppSelector'
-import { useEffect } from 'react'
+import styles from './styles.module.scss'
 
 const Profile = () => {
   return (

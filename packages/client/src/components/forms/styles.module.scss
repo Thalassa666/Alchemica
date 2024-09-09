@@ -1,39 +1,28 @@
-
-
 .form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
-  max-height: 500px;
   max-width: 380px;
   padding: 29px 94px 29px 94px;
   gap: 15px;
-  height: 1000px;
+  height: 100%;
 
   h2 {
     color: white;
     font-family: 'Lancelot', sans-serif;
+    font-weight: normal;
   }
 
   input {
     background: #465049;
   }
-
-  button {
-    background-color: #c8c8c7;
-    border: none;
-    text-align: center;
-    color: black;
-  }
 }
 
 .layout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: content-box;
+  height: 100vh;
+  box-sizing: border-box;
   h1 {
     font-size: 120px;
     font-family: 'Lancelot', sans-serif;
@@ -41,12 +30,11 @@
 }
 
 .background {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 1240px;
-  height: 100vh;
   background-size: 100% 100%;
 }
 
@@ -58,6 +46,17 @@
 
 .link {
   color: #aeaeae;
+}
+
+.buttonBox {
+  gap: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  margin: 0;
+  font-size: 20px;
 }
 
 .loginBg {

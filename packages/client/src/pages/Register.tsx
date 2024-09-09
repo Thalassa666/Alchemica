@@ -4,7 +4,7 @@ const Register = () => {
   return (
     <>
       <div>
-        <FormsLayout children={<RegisterForm />} />
+        <FormsLayout backgroundClass={'loginBg'} children={<RegisterForm />} />
       </div>
     </>
   )
