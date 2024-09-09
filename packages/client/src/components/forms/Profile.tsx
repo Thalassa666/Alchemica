@@ -6,7 +6,7 @@ import {
   registrationSchema,
 } from '@core/validation/validationSchema'
 import { useState } from 'react'
-import { ArrowButton, TextButton } from '@components/UI'
+import { ArrowButton, TextButton, UploadAvatar } from '@components/UI'
 import { useAppSelector } from '@core/hooks'
 import { IUser } from '@core/utils/interfaces/User'
 import { useDispatch } from 'react-redux'
@@ -54,7 +54,7 @@ export const Profile = () => {
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2>WELCOME BACK</h2>
-        <Avatar size={'xl'} imgUrl={`${BASE_URL}/resources/${avatar}`} />
+        <UploadAvatar src={avatar} />
         <p className={styles.name}>{first_name.toUpperCase()}</p>
         <TextInput
           size={'l'}

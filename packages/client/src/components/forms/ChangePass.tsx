@@ -5,13 +5,11 @@ import { TextInput } from '@gravity-ui/uikit'
 import { ArrowButton, TextButton } from '@components/UI'
 import { redirect, useNavigate } from 'react-router-dom'
 import useForm from '@core/hooks/useForms'
-import { IUserChangePass, TUserQuery } from '@core/utils/interfaces/User'
 import {
+  ChangePasswordFormData,
   changePasswordSchema,
-  loginSchema,
 } from '@core/validation/validationSchema'
 import { useState } from 'react'
-import { loginUser } from '@core/store/redusers/auth.reduser'
 
 export const ChangePass = () => {
   const dispatch = useDispatch<TAppDispatch>()
@@ -19,7 +17,7 @@ export const ChangePass = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const { formData, errors, handleChange, handleSubmit } =
-    useForm<IUserChangePass>({
+    useForm<ChangePasswordFormData>({
       initialValues: {
         oldPassword: '',
         newPassword: '',

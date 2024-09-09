@@ -3,24 +3,19 @@ import { TextInput } from '@gravity-ui/uikit'
 import { Link, Navigate, redirect } from 'react-router-dom'
 import { ArrowButton } from '@components/UI'
 import useForm from '@core/hooks/useForms'
-import { loginSchema } from '@core/validation/validationSchema'
+import { LoginFormData, loginSchema } from '@core/validation/validationSchema'
 import { useDispatch } from 'react-redux'
 import { TAppDispatch } from '@core/store/store'
 import { loginUser } from '@core/store/redusers/auth.reduser'
 import { TUserQuery } from '@core/utils/interfaces/User'
 import { useAppSelector } from '@core/hooks/useAppSelector'
 
-type TLoginFormData = {
-  login: string
-  password: string
-}
-
 export const Login = () => {
   const dispatch = useDispatch<TAppDispatch>()
   const { isAuth } = useAppSelector(state => state.authReducer)
 
   const { formData, errors, handleChange, handleSubmit } =
-    useForm<TLoginFormData>({
+    useForm<LoginFormData>({
       initialValues: {
         login: '',
         password: '',
