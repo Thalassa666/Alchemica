@@ -1,10 +1,10 @@
-import { GameClient } from '@game/index'
+import { GameClient } from '@src/game'
 import { useState } from 'react'
-import { Layout } from './Layout'
 import { LooseGameBlock } from './LooseGameBlock'
 import { PreloaderBlock } from './PreloaderBlock'
 import { StartButtonBlock } from './StartButtonBlock'
 import { WinGameBlock } from './WinGameBlock'
+import { Layout } from '@pages/PlayGame/Layout'
 
 const PlayGame = () => {
   const [gameCase, setGameCase] = useState('start')
