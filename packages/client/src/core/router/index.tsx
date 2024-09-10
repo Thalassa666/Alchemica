@@ -1,6 +1,6 @@
 import AboutGame from '@pages/AboutGame/AboutGame'
 import Error from '@pages/Error'
-import Forum from '@pages/Forum'
+import Forum from '@pages/Forum/Forum'
 import Home from '@pages/Home'
 import Leaderboard from '@pages/Leaderboard/Leaderboard'
 import Login from '@pages/Login'
@@ -74,7 +74,9 @@ export const router = createBrowserRouter([
     path: '/forum',
     element: (
       <WithErrorBoundary>
-        <Forum />
+        <RequireAuth>
+          <Forum />
+        </RequireAuth>
       </WithErrorBoundary>
     ),
     children: [

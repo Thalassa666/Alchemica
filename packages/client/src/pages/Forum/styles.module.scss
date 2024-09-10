@@ -1,0 +1,46 @@
+@import 'src/mixins';
+
+.background {
+  width: 1240px;
+  height: 100dvh;
+  background-image: url('../../assets/images/background-forum.png');
+  background-size: 100% 100%;
+}
+
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  overflow-y: auto;
+  max-height: 100dvh;
+}
+
+.forum {
+  background-color: var(--color-background);
+  width: 520px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+h1 {
+  @include title;
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 60px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

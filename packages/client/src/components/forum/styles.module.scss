@@ -1,0 +1,160 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: none;
+  font-family: var(--bookman-font), sans-serif;
+  color: var(--gray-color);
+  cursor: pointer;
+  font-size: 24px;
+  background-color: var(--color-background);
+  width: 100%;
+}
+
+.headerMarks {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  width: 48px;
+  height: 46px;
+  background-color: #2F2F2F;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.arrow {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.open {
+  transform: rotate(180deg);
+}
+
+.topicsList {
+  width: 100%;
+  box-sizing: content-box;
+}
+
+.forumTopic {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  cursor: pointer;
+  background-color: var(--color-background);
+  color: var(--gray-color);
+  box-sizing: content-box;
+}
+
+.topicTitle {
+  font-size: 20px;
+  color: var(--gray-color);
+  font-family: var(--bookman-font), sans-serif;
+}
+
+.topicHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topicMeta {
+  display: flex;
+  gap: 10px;
+  color: var(--gray-color);
+  font-family: var(--bookman-font), sans-serif;
+}
+
+.username {
+  color: var(--gray-color);
+}
+
+.date {
+  color: var(--gray-color);
+  min-width: 100px;
+}
+
+.newTopic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: var(--color-background);
+}
+
+.roundButton {
+  width: 40px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  background-color: #2F2F2F;
+  color: var(--gray-color);
+  transform: rotate(45deg);
+}
+
+.buttonAbsolute {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.newTopicInput input {
+  color: var(--gray-color);
+  background-color: var(--color-background);
+  width: 100%;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 550px;
+  height: 550px;
+  padding: 20px;
+  background-color: var(--color-background);
+  color: var(--gray-color);
+  font-family: var(--bookman-font), sans-serif;
+}
+
+.modalMessage {
+  color: var(--gray-color);
+  background: var(--color-background);
+}
+
+.close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  font-size: 30px;
+  color: var(--gray-color);
+  top: 20px;
+  right: 20px;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}

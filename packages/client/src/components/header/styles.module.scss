@@ -1,5 +1,5 @@
 .header {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-background);
   min-height: 140px;
   width: 100vw;
   align-content: center;
@@ -41,7 +41,7 @@
 .link {
   color: #AEAEAE;
   font-size: 26px;
-  font-family: 'Bookman Old Style', sans-serif;
+  font-family: var(--bookman-font), sans-serif;
   text-decoration: none;
   text-transform: uppercase;
 
@@ -55,7 +55,7 @@
 .active {
   color: #D9D9D9;
   font-size: 30px;
-  font-family: 'Bookman Old Style', sans-serif;
+  font-family: var(--bookman-font), sans-serif;
   text-decoration: none;
   text-transform: uppercase;
 }
