@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-background);
   max-height: 500px;
   max-width: 380px;
   padding: 29px 94px 29px 94px;
@@ -12,7 +12,7 @@
 
   h2 {
     color: white;
-    font-family: 'Lancelot', sans-serif;
+    font-family: var(--lancelot-font), sans-serif;
   }
 
   input {
@@ -34,7 +34,7 @@
   box-sizing: content-box;
   h1 {
     font-size: 120px;
-    font-family: 'Lancelot', sans-serif;
+    font-family: var(--lancelot-font), sans-serif;
   }
 }
 
@@ -52,7 +52,7 @@
 .titleOverlay {
   text-align: center;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-background);
 }
 .link {
   color: #aeaeae;
