@@ -50,7 +50,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'change-pass',
-        element: <ChangePass />,
+        element: (
+          <RequireAuth>
+            <ChangePass />
+          </RequireAuth>
+        ),
       },
     ],
   },
