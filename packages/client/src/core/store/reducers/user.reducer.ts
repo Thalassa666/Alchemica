@@ -1,5 +1,7 @@
-// Данный редьюсер реализован только в учебных целях,
-// так как все данные пользователя хранятся в auth.reducer
+// ***
+// Данный редьюсер реализован только в учебных целях, так как все данные пользователя хранятся в auth.reducer
+// ***
+
 import {
   createAsyncThunk,
   createSlice,
@@ -9,6 +11,7 @@ import {
 import { IUserChangePass } from '@core/utils/interfaces/User'
 import { userApi } from '@core/api'
 
+// Обновление данных пользователя
 const updateUserData = createAsyncThunk(
   'user/updateUserData',
   async (data: IUserChangePass, { rejectWithValue }) => {
@@ -21,14 +24,19 @@ const updateUserData = createAsyncThunk(
   }
 )
 
+// Изменение аватара
 const changeAvatar = createAsyncThunk(
   'user/changeAvatar',
-  async (file: File, { rejectWithValue }) => {
-    try {
-      await userApi.changeAvatar(file)
-    } catch (error) {
-      return rejectWithValue(error)
-    }
+  async (file: File) => {
+    await userApi.changeAvatar(file)
+  }
+)
+
+// Изменение пароля
+const changePassword = createAsyncThunk(
+  'user/changePassword',
+  async (data: IUserChangePass) => {
+    return await userApi.changePassword(data)
   }
 )
 
@@ -46,7 +54,7 @@ const initialState: IUserState = {
   errorMessage: null,
 }
 
-export const userReducer = createSlice({
+const userReducer = createSlice({
   name: 'user',
   initialState,
   reducers: {},
@@ -89,9 +97,26 @@ export const userReducer = createSlice({
           (action.payload as SerializedError)?.message ||
           'Произошла ошибка при смене аватара'
       })
+
+      // Изменение пароля
+      .addCase(changePassword.pending, state => {
+        state.isLoading = true
+      })
+      .addCase(changePassword.fulfilled, state => {
+        state.isLoading = false
+        state.isError = false
+        state.errorMessage = null
+      })
+      .addCase(changePassword.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.errorMessage =
+          (action.payload as SerializedError)?.message ||
+          'Произошла ошибка при изменении пароля'
+      })
   },
 })
 
 export default userReducer.reducer
 
-export { updateUserData, changeAvatar }
+export { updateUserData, changeAvatar, changePassword }

@@ -3,15 +3,21 @@ import { TAppDispatch } from '@core/store/store'
 import styles from '@components/forms/styles.module.scss'
 import { TextInput } from '@gravity-ui/uikit'
 import { ArrowButton, TextButton } from '@components/UI'
-import { redirect, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import useForm from '@core/hooks/useForms'
 import {
   ChangePasswordFormData,
   changePasswordSchema,
 } from '@core/validation/validationSchema'
 import { useState } from 'react'
+import { useAppSelector } from '@core/hooks'
+import { changePassword } from '@core/store/reducers/user.reducer'
+import { userApi } from '@core/api'
 
 export const ChangePass = () => {
+  const { isLoading, isError, errorMessage } = useAppSelector(
+    state => state.userReducer
+  )
   const dispatch = useDispatch<TAppDispatch>()
   const navigate = useNavigate()
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -24,11 +30,18 @@ export const ChangePass = () => {
       },
       validationSchema: changePasswordSchema,
       onSubmit: async values => {
-        console.log(values)
+        setIsSubmitting(true)
+        try {
+          await dispatch(changePassword(values)).unwrap()
+          navigate('/profile') // Перенаправляем на страницу профиля после успешной смены пароля
+        } catch (error) {
+          console.error('Ошибка при смене пароля:', error)
+        } finally {
+          setIsSubmitting(false)
+        }
       },
     })
 
-  // const handleSubmit = (): void => {}
   const redirectToProfile = () => {
     navigate('/profile')
   }
@@ -59,8 +72,11 @@ export const ChangePass = () => {
           validationState={errors.newPassword ? 'invalid' : undefined}
           errorMessage={errors.newPassword}
         />
-        <ArrowButton type={'submit'} />
+        <ArrowButton type={'submit'} disabled={isSubmitting || isLoading} />
         <TextButton text={'TO PROFILE'} onClick={redirectToProfile} />
+
+        {/* Отображение ошибок, если они есть */}
+        {isError && <p className={styles.error}>{errorMessage}</p>}
       </form>
     </>
   )

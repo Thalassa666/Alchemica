@@ -26,6 +26,9 @@ class User {
     data.append('avatar', file)
     const res = await fetch(`${this.url}/profile/avatar`, {
       method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(data),
       credentials: 'include',
     })
@@ -33,11 +36,15 @@ class User {
   }
 
   public async changePassword(data: IUserChangePass) {
-    const res = await fetch(`${this.url}/profile/password`, {
+    const res = await fetch(`${this.url}/password`, {
       method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(data),
       credentials: 'include',
     })
+    console.log(data)
     await checkResponse(res)
   }
 }
