@@ -27,18 +27,26 @@ function useForm<T extends Record<string, any>>({
     if (validationSchema) {
       try {
         const schema = validationSchema as unknown as ZodObject<any>
-        const fieldSchema = schema.shape[name as keyof T] // Явное указание типа схемы
-        fieldSchema.parse(value)
-        setErrors(prevErrors => ({
-          ...prevErrors,
-          [name]: undefined,
-        }))
+
+        // Проверяем, существует ли поле в схеме
+        const fieldSchema = schema.shape[name as keyof T]
+        if (fieldSchema) {
+          fieldSchema.parse(value)
+          setErrors(prevErrors => ({
+            ...prevErrors,
+            [name]: undefined,
+          }))
+        }
       } catch (err) {
         const error = err as z.ZodError
-        setErrors(prevErrors => ({
-          ...prevErrors,
-          [name]: error.errors[0]?.message,
-        }))
+
+        // Проверяем, есть ли ошибки и есть ли хотя бы одна ошибка
+        if (error.errors && error.errors.length > 0) {
+          setErrors(prevErrors => ({
+            ...prevErrors,
+            [name]: error.errors[0].message, // Берем первое сообщение об ошибке
+          }))
+        }
       }
     }
   }
@@ -55,9 +63,12 @@ function useForm<T extends Record<string, any>>({
         const error = err as z.ZodError
         const fieldErrors: FormErrors<T> = {}
 
+        // Собираем все ошибки валидации
         error.errors.forEach(validationError => {
           const path = validationError.path[0] as keyof T
-          fieldErrors[path] = validationError.message
+          if (!fieldErrors[path]) {
+            fieldErrors[path] = validationError.message
+          }
         })
         setErrors(fieldErrors)
       }

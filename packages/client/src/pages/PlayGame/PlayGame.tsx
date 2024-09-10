@@ -1,4 +1,3 @@
-import { Header } from '@components/header/Header'
 import { GameClient } from '@game/index'
 import { GameStatistic } from '@game/types/types'
 import { useState } from 'react'
@@ -24,14 +23,14 @@ const PlayGame = () => {
           gameCase={gameCase}
           children={
             <>
+              {gameCase === 'playing' && (
+                <GameClient onGameEnd={handleGameEnd} />
+              )}
               {gameCase === 'start' && (
                 <StartButtonBlock setGameCase={setGameCase} />
               )}
               {gameCase === 'loading' && (
                 <PreloaderBlock setGameCase={setGameCase} />
-              )}
-              {gameCase === 'playing' && (
-                <GameClient onGameEnd={handleGameEnd} />
               )}
               {gameCase === 'win' && <WinGameBlock setGameCase={setGameCase} />}
               {gameCase === 'loose' && (

@@ -4,7 +4,6 @@
   justify-content: center;
   align-items: center;
   background-color: var(--color-background);
-  max-height: 500px;
   max-width: 380px;
   padding: 29px 94px 29px 94px;
   gap: 15px;
@@ -12,6 +11,7 @@
 
   h2 {
     color: white;
+    font-weight: normal;
     font-family: var(--lancelot-font), sans-serif;
   }
 
@@ -19,12 +19,6 @@
     background: #465049;
   }
 
-  button {
-    background-color: #c8c8c7;
-    border: none;
-    text-align: center;
-    color: black;
-  }
 }
 
 .layout {
@@ -34,7 +28,7 @@
   box-sizing: content-box;
   h1 {
     font-size: 120px;
-    font-family: var(--lancelot-font), sans-serif;
+    font-family: 'Lancelot', sans-serif;
   }
 }
 
@@ -52,8 +46,14 @@
 .titleOverlay {
   text-align: center;
   width: 100%;
-  background-color: var(--color-background);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .link {
   color: #aeaeae;
+}
+
+.buttonBox {
+  display: flex;
+  align-items: center;
+  gap: 50px;
 }

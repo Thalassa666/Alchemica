@@ -7,9 +7,15 @@
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow: 2px 2px 2px gray;
+  background-color: #c8c8c7;
 }
 button:hover {
   cursor: pointer;
   opacity: 0.8;
   transition: 0.3s ease-in-out;
 }
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.1;
+}
+

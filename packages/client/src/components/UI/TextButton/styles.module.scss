@@ -1,0 +1,14 @@
+.textButton {
+  word-spacing: 3px;
+  font-family: var(--bookman-font), serif;
+  font-size: 24px;
+  font-weight: lighter;
+  border: none;
+  background-color: transparent;
+  color: initial;
+}
+
+.textButton:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
