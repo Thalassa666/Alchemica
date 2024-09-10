@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useAppSelector } from '@core/hooks/useAppSelector'
 import { TAppDispatch } from '@core/store/store'
 import { useDispatch } from 'react-redux'
-import { getUserData } from '@core/store/redusers/auth.reduser'
+import { getUserData } from '@core/store/reducers/auth.reducer'
 
 const Home = () => {
   const dispatch = useDispatch<TAppDispatch>()

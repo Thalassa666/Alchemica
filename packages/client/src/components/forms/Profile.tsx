@@ -11,9 +11,8 @@ import { useAppSelector } from '@core/hooks'
 import { IUser } from '@core/utils/interfaces/User'
 import { useDispatch } from 'react-redux'
 import { TAppDispatch } from '@core/store/store'
-import { logoutUser } from '@core/store/redusers/auth.reduser'
+import { logoutUser } from '@core/store/reducers/auth.reducer'
 import { useNavigate } from 'react-router-dom'
-import { BASE_URL } from '@core/utils/constants'
 
 export const Profile = () => {
   const dispatch = useDispatch<TAppDispatch>()

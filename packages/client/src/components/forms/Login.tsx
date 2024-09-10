@@ -6,7 +6,7 @@ import useForm from '@core/hooks/useForms'
 import { LoginFormData, loginSchema } from '@core/validation/validationSchema'
 import { useDispatch } from 'react-redux'
 import { TAppDispatch } from '@core/store/store'
-import { loginUser } from '@core/store/redusers/auth.reduser'
+import { loginUser } from '@core/store/reducers/auth.reducer'
 import { TUserQuery } from '@core/utils/interfaces/User'
 import { useAppSelector } from '@core/hooks/useAppSelector'
 

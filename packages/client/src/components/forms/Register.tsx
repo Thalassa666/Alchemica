@@ -11,7 +11,7 @@ import { useAppSelector } from '@core/hooks/useAppSelector'
 import useForm from '@core/hooks/useForms'
 import { Navigate, redirect } from 'react-router-dom'
 import { IUser } from '@core/utils/interfaces/User'
-import { registerUser } from '@core/store/redusers/auth.reduser'
+import { registerUser } from '@core/store/reducers/auth.reducer'
 
 export const Register = () => {
   const dispatch = useDispatch<TAppDispatch>()

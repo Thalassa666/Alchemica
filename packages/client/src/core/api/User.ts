@@ -31,6 +31,15 @@ class User {
     })
     await checkResponse(res)
   }
+
+  public async changePassword(data: IUserChangePass) {
+    const res = await fetch(`${this.url}/profile/password`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      credentials: 'include',
+    })
+    await checkResponse(res)
+  }
 }
 
 export const userApi = new User(BASE_URL, '/user')
