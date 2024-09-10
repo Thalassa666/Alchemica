@@ -17,7 +17,7 @@
     font-size: 46px;
     line-height: 44px;
     letter-spacing: 0.1em;
-    font-family: "Lancelot", sans-serif;
+    font-family: var(--lancelot-font), sans-serif;
     font-weight: normal;
     margin: 0;
     width: max-content;
@@ -39,7 +39,7 @@
 
   h1 {
     font-size: 120px;
-    font-family: 'Lancelot', sans-serif;
+    font-family: var(--lancelot-font), sans-serif;
   }
 }
 
@@ -76,7 +76,7 @@
 .titleOverlay {
   text-align: center;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-background);
 }
 
 .form1 {
@@ -84,7 +84,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-background);
   max-height: 240px;
   max-width: 540px;
   padding: 64px 94px 54px 94px;
@@ -98,7 +98,7 @@
     font-size: 46px;
     line-height: 44px;
     letter-spacing: 0.1em;
-    font-family: "Lancelot", sans-serif;
+    font-family: var(--lancelot-font), sans-serif;
     font-weight: normal;
     margin: 0;
     width: max-content;
@@ -117,7 +117,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-background);
   max-height: 640px;
   max-width: 740px;
   padding: 64px 94px 54px 94px;
@@ -131,7 +131,7 @@
     font-size: 46px;
     line-height: 44px;
     letter-spacing: 0.1em;
-    font-family: "Lancelot", sans-serif;
+    font-family: var(--lancelot-font), sans-serif;
     font-weight: normal;
     margin: 0;
     width: max-content;
@@ -156,7 +156,7 @@
     line-height: 26px;
     letter-spacing: 0.1em;
     font-weight: normal;
-    font-family: 'Bookman Old Style', sans-serif;
+    font-family: var(--bookman-font), sans-serif;
     text-align: center;
   }
 
@@ -173,7 +173,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-background);
   max-height: 640px;
   max-width: 740px;
   padding: 64px 94px 54px 94px;
@@ -187,7 +187,7 @@
     font-size: 46px;
     line-height: 44px;
     letter-spacing: 0.1em;
-    font-family: "Lancelot", sans-serif;
+    font-family: var(--lancelot-font), sans-serif;
     font-weight: normal;
     margin: 0;
     width: max-content;
@@ -212,7 +212,7 @@
     line-height: 26px;
     letter-spacing: 0.1em;
     font-weight: normal;
-    font-family: 'Bookman Old Style', sans-serif;
+    font-family: var(--bookman-font), sans-serif;
     text-align: center;
   }
 
@@ -229,7 +229,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-background);
   max-height: 660px;
   max-width: 740px;
   padding: 64px 94px 54px 94px;
@@ -243,7 +243,7 @@
     font-size: 46px;
     line-height: 44px;
     letter-spacing: 0.1em;
-    font-family: "Lancelot", sans-serif;
+    font-family: var(--lancelot-font), sans-serif;
     font-weight: normal;
     margin: 0;
     width: max-content;
@@ -264,7 +264,7 @@
     line-height: 26px;
     letter-spacing: 0.1em;
     font-weight: normal;
-    font-family: 'Bookman Old Style', sans-serif;
+    font-family: var(--bookman-font), sans-serif;
     text-align: center;
   }
 
