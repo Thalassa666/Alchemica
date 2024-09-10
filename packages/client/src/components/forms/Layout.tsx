@@ -5,10 +5,11 @@ import classNames from 'classnames'
 type TLayoutProps = {
   children: ReactNode
   backgroundClass: 'loginBg' | 'profileBg'
+  isTitleShow: boolean
 }
 
 export const Layout = (props: TLayoutProps) => {
-  const { children, backgroundClass } = props
+  const { children, backgroundClass, isTitleShow } = props
   return (
     <section className={styles.layout}>
       <div
@@ -17,9 +18,7 @@ export const Layout = (props: TLayoutProps) => {
           `${styles[backgroundClass]}`
         )}
       >
-        {backgroundClass === 'profileBg' ? (
-          <></>
-        ) : (
+        {isTitleShow && (
           <div className={styles.titleOverlay}>
             <h1>ALCHEMIST</h1>
           </div>

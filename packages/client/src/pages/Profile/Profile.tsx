@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 const Profile = () => {
   return (
     <>
-      <FormsLayout backgroundClass={'profileBg'}>
+      <FormsLayout isTitleShow={false} backgroundClass={'profileBg'}>
         <ProfileForm />
       </FormsLayout>
     </>
