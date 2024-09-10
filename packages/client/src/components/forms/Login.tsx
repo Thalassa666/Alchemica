@@ -8,11 +8,9 @@ import { useDispatch } from 'react-redux'
 import { TAppDispatch } from '@core/store/store'
 import { loginUser } from '@core/store/reducers/auth.reducer'
 import { TUserQuery } from '@core/utils/interfaces/User'
-import { useAppSelector } from '@core/hooks/useAppSelector'
 
 export const Login = () => {
   const dispatch = useDispatch<TAppDispatch>()
-  const { isAuth } = useAppSelector(state => state.authReducer)
 
   const { formData, errors, handleChange, handleSubmit } =
     useForm<LoginFormData>({
@@ -27,9 +25,6 @@ export const Login = () => {
       },
     })
 
-  if (isAuth) {
-    return <Navigate to="/game" replace />
-  }
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h2>LOGIN GAME</h2>
