@@ -116,7 +116,7 @@ export const BadReceiptIngredient: InventoryItem = {
   imgSrc: BadReceiptIngredientImgSrc,
   type: CraftType.Wasted,
   condition: ConditionNames.Raw,
-  label: 'Потрачено',
+  label: 'Испорченное месиво',
 }
 
 const DialogHeight = 576
