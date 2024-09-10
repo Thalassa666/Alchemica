@@ -47,8 +47,12 @@ const defaultState: GameStateType = {
   statistic: {
     startedAt: null,
     endedAt: null,
-    itemsToWin: {},
+    itemsToWin: [],
     totalScore: 0,
+    wastedReceipts: 0,
+    isInitialized: false,
+    isWinConditionDialogOpen: true,
+    step: 'pending',
   },
 }
 

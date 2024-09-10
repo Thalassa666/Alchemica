@@ -9,6 +9,7 @@ import { BackgroundOptions, useImage } from './useImage'
 import { useIngredientsCarousel } from './useIngredientsCarousel'
 import { useIngredientsCombo } from './useIngredientsCombo'
 import { useNotifications } from './useNotifications'
+import { useWinLoose } from './useWinLoose'
 
 const getBackgroundPosition = (context: CanvasContext): Position => {
   return {
@@ -38,6 +39,7 @@ export const useCraftDialog = () => {
   const ingredientsCombo = useIngredientsCombo()
   const ingredientsPick = useIngredientsCarousel()
   const notifications = useNotifications()
+  const winLoose = useWinLoose()
 
   /** Открыть модальное окно, если было взаимодействие с интерактивным объектом */
   const draw = (context: CanvasContext) => {
@@ -168,6 +170,8 @@ export const useCraftDialog = () => {
         text: `Вы создали ${itemByReceipt.label}.`,
         imgSrc: itemByReceipt.imgSrc,
       })
+
+      winLoose.afterCraft(itemByReceipt)
     }
 
     closeDialog()

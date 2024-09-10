@@ -4,6 +4,9 @@ import { Collision } from '../types/types'
 export const Game = {
   Size: { width: 1280, height: 720 },
   PotionsToWin: 3,
+  WastedToLose: 5,
+  WinK: 2,
+  LooseK: 0.5,
 }
 
 /** Подсвечивать "скрытые" коллизии */

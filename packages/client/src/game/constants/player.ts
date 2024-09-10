@@ -16,4 +16,4 @@ export const PlayerInitial: PlayerState = {
 }
 
 /** Ускорение для движения */
-export const VelocitySpeed = 4
+export const VelocitySpeed = 6
