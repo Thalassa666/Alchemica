@@ -12,7 +12,6 @@ import {
 import { useState } from 'react'
 import { useAppSelector } from '@core/hooks'
 import { changePassword } from '@core/store/reducers/user.reducer'
-import { userApi } from '@core/api'
 
 export const ChangePass = () => {
   const { isLoading, isError, errorMessage } = useAppSelector(

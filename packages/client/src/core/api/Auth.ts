@@ -48,9 +48,6 @@ class AuthApi {
   public async logout(): Promise<void> {
     const res = await fetch(`${this.url}/logout`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       credentials: 'include',
     })
     return await checkResponse(res)

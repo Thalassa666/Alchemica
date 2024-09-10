@@ -13,6 +13,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getUserData())
   }, [isAuth])
+
   return (
     <>
       <Header />

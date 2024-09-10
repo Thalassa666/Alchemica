@@ -10,14 +10,15 @@ import {
 } from '@reduxjs/toolkit'
 import { IUserChangePass } from '@core/utils/interfaces/User'
 import { userApi } from '@core/api'
+import { RegistrationFormData } from '@core/validation/validationSchema'
 
 // Обновление данных пользователя
 const updateUserData = createAsyncThunk(
   'user/updateUserData',
-  async (data: IUserChangePass, { rejectWithValue }) => {
+  async (data: RegistrationFormData, { rejectWithValue }) => {
     try {
       await userApi.updateUserData(data)
-      return data // Возвращаем обновленные данные пользователя
+      return data
     } catch (error) {
       return rejectWithValue(error)
     }
@@ -28,7 +29,7 @@ const updateUserData = createAsyncThunk(
 const changeAvatar = createAsyncThunk(
   'user/changeAvatar',
   async (file: File) => {
-    await userApi.changeAvatar(file)
+    return await userApi.changeAvatar(file)
   }
 )
 
@@ -66,7 +67,7 @@ const userReducer = createSlice({
       })
       .addCase(
         updateUserData.fulfilled,
-        (state, action: PayloadAction<IUserChangePass>) => {
+        (state, action: PayloadAction<any>) => {
           state.userData = action.payload
           state.isLoading = false
           state.isError = false

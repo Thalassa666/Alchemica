@@ -1,15 +1,15 @@
 import { checkResponse } from '@core/helpers/checkResponse'
-import { IUser, IUserChangePass, TUserQuery } from '@core/utils/interfaces/User'
+import { IUser, IUserChangePass } from '@core/utils/interfaces/User'
 import { BASE_URL } from '@core/utils/constants'
+import { RegistrationFormData } from '@core/validation/validationSchema'
 
 class User {
   private readonly url: string
-
   constructor(url: string, slug: string) {
     this.url = url + slug
   }
 
-  public async updateUserData(data: IUserChangePass) {
+  public async updateUserData(data: RegistrationFormData) {
     const res = await fetch(`${this.url}/profile`, {
       method: 'PUT',
       headers: {
@@ -26,10 +26,7 @@ class User {
     data.append('avatar', file)
     const res = await fetch(`${this.url}/profile/avatar`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
+      body: data,
       credentials: 'include',
     })
     await checkResponse(res)
@@ -44,7 +41,6 @@ class User {
       body: JSON.stringify(data),
       credentials: 'include',
     })
-    console.log(data)
     await checkResponse(res)
   }
 }

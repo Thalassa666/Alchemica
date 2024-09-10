@@ -1,24 +1,26 @@
 import styles from './styles.module.scss'
-import { TextInput, Button, Avatar } from '@gravity-ui/uikit'
+import { TextInput } from '@gravity-ui/uikit'
 import useForm from '@core/hooks/useForms'
 import {
   RegistrationFormData,
   registrationSchema,
 } from '@core/validation/validationSchema'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { ArrowButton, TextButton, UploadAvatar } from '@components/UI'
 import { useAppSelector } from '@core/hooks'
 import { IUser } from '@core/utils/interfaces/User'
 import { useDispatch } from 'react-redux'
 import { TAppDispatch } from '@core/store/store'
-import { logoutUser } from '@core/store/reducers/auth.reducer'
+import { getUserData, logoutUser } from '@core/store/reducers/auth.reducer'
 import { useNavigate } from 'react-router-dom'
+import { updateUserData } from '@core/store/reducers/user.reducer'
 
 export const Profile = () => {
   const dispatch = useDispatch<TAppDispatch>()
   const navigate = useNavigate()
   const [disable, setDisable] = useState<boolean>(true)
-  const { userData } = useAppSelector(state => state.authReducer)
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  const { userData, isLoading } = useAppSelector(state => state.authReducer)
   const { first_name, second_name, login, email, phone, avatar } =
     userData as IUser
 
@@ -33,9 +35,19 @@ export const Profile = () => {
       },
       validationSchema: registrationSchema,
       onSubmit: async values => {
-        console.log(values)
+        setIsSubmitting(true)
+        try {
+          await dispatch(updateUserData(values))
+          await dispatch(getUserData())
+          setDisable(true)
+        } catch (error) {
+          console.error('Error updating profile:', error)
+        } finally {
+          setIsSubmitting(false)
+        }
       },
     })
+
   const handleDisabled = () => {
     setDisable(!disable)
   }
@@ -111,11 +123,17 @@ export const Profile = () => {
           disabled={disable}
         />
         <div className={styles.buttonBox}>
-          <TextButton text={'ИЗМЕНИТЬ'} onClick={handleDisabled} />
-          <ArrowButton type={'submit'} />
+          <TextButton
+            text={disable ? 'EDIT' : 'BLOCK'}
+            onClick={handleDisabled}
+          />
+          <ArrowButton
+            type={'submit'}
+            disabled={isSubmitting || isLoading || disable}
+          />
         </div>
-        <TextButton text={'ВЫЙТИ'} onClick={logout} />
-        <TextButton text={'ИЗМЕНИТЬ ПАРОЛЬ'} onClick={redirectToChangePass} />
+        <TextButton text={'QUIT'} onClick={logout} />
+        <TextButton text={'CHANGE PASSWORD'} onClick={redirectToChangePass} />
       </form>
     </>
   )

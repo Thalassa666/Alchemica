@@ -7,15 +7,13 @@ import {
 } from '@core/validation/validationSchema'
 import { useDispatch } from 'react-redux'
 import { TAppDispatch } from '@core/store/store'
-import { useAppSelector } from '@core/hooks/useAppSelector'
 import useForm from '@core/hooks/useForms'
-import { Navigate, redirect } from 'react-router-dom'
+import { redirect } from 'react-router-dom'
 import { IUser } from '@core/utils/interfaces/User'
 import { registerUser } from '@core/store/reducers/auth.reducer'
 
 export const Register = () => {
   const dispatch = useDispatch<TAppDispatch>()
-  const { isAuth } = useAppSelector(state => state.authReducer)
 
   const { formData, errors, handleChange, handleSubmit } =
     useForm<RegistrationFormData>({
@@ -30,12 +28,10 @@ export const Register = () => {
       validationSchema: registrationSchema,
       onSubmit: async values => {
         await dispatch(registerUser(values as IUser))
-        redirect('/game')
+        redirect('/login')
       },
     })
-  if (isAuth) {
-    return <Navigate to="/game" replace />
-  }
+
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
