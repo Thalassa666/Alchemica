@@ -1,5 +1,6 @@
 import { ArrowButton } from '@components/UI'
 import useForm from '@core/hooks/useForms'
+import { registerUser } from '@core/store/reducers/auth.reducer'
 import { TAppDispatch } from '@core/store/store'
 import { IUser } from '@core/utils/interfaces/User'
 import {
@@ -8,10 +9,8 @@ import {
 } from '@core/validation/validationSchema'
 import { TextInput } from '@gravity-ui/uikit'
 import { useDispatch } from 'react-redux'
-import { useAppSelector } from '@core/hooks/useAppSelector'
-import { Link, Navigate, redirect } from 'react-router-dom'
+import { Link, redirect } from 'react-router-dom'
 import styles from './styles.module.scss'
-import { registerUser } from '@core/store/redusers/auth.reduser'
 
 export const Register = () => {
   const dispatch = useDispatch<TAppDispatch>()
