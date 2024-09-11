@@ -1,3 +1,5 @@
+import WithErrorBoundary from '@core/helpers/withErrorBoundary'
+import { RequireAuth } from '@core/router/ProtectedRoute'
 import AboutGame from '@pages/AboutGame/AboutGame'
 import Error from '@pages/Error'
 import Forum from '@pages/Forum/Forum'
@@ -9,10 +11,8 @@ import Profile from '@pages/Profile'
 import Register from '@pages/Register'
 import Topic from '@pages/Topic'
 import { createBrowserRouter } from 'react-router-dom'
-import errorBookImage from '../../assets/images/error_book.png'
-import errorPotionImage from '../../assets/images/error_potion.png'
-import WithErrorBoundary from '@core/helpers/withErrorBoundary'
-import { RequireAuth } from '@core/router/ProtectedRoute'
+import errorBookImage from '../../assets/images/icons/error_book.png'
+import errorPotionImage from '../../assets/images/icons/error_potion.png'
 
 export const router = createBrowserRouter([
   {

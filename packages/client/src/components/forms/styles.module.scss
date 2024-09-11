@@ -4,19 +4,20 @@
   justify-content: center;
   align-items: center;
   background-color: var(--color-background);
-  max-height: 500px;
+  max-height: 320px;
   max-width: 380px;
   padding: 29px 94px 29px 94px;
   gap: 15px;
   height: 1000px;
 
   h2 {
-    color: white;
-    font-family: var(--lancelot-font), sans-serif;
+    color: #c8c8c7;
+    font-family: var(--bookman-font), sans-serif;
   }
 
   input {
     background: #465049;
+    color: #c8c8c7 !important;
   }
 
   button {
@@ -27,6 +28,10 @@
   }
 }
 
+.form_register {
+  max-height: 440px;
+}
+
 .layout {
   display: flex;
   align-items: center;
@@ -34,6 +39,7 @@
   box-sizing: content-box;
   h1 {
     font-size: 120px;
+    line-height: 186px;
     font-family: var(--lancelot-font), sans-serif;
   }
 }
@@ -44,16 +50,37 @@
   justify-content: center;
   flex-direction: column;
   width: 1240px;
-  height: 100vh;
-  background-image: url('../../assets/images/alh-background.png');
+  height: calc(100vh - 30px);
+  background-image: url(/src/assets/images/backgrounds/alh-background.png);
   background-size: 100% 100%;
+  margin-top: 12px;
 }
 
 .titleOverlay {
   text-align: center;
   width: 100%;
   background-color: var(--color-background);
+  height: 226px;
+  margin-top: 76px;
+  position: relative;
 }
+
+.titleOverlay_register {
+  margin-top: 196px;
+}
+
 .link {
   color: #aeaeae;
+}
+
+.musicButton {
+  background-image: url(/src/assets/images/icons/skill3-pic.png);
+  width: 26px;
+  height: 23px;
+  background-size: cover;
+  position: absolute;
+  top: 28px;
+  left: 778px;
+  border: none;
+  background-color: transparent;
 }

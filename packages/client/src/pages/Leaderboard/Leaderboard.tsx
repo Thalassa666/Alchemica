@@ -5,8 +5,8 @@ import { Button } from '@gravity-ui/uikit'
 const Leaderboard = () => {
   return (
     <>
-      <section>
-        <LeaderboardLayout>
+      <section className={styles.layout}>
+        <div className={styles.background}>
           <div className={styles.leaderboard}>
             <h2>BOARD OF HONOR</h2>
             <ul className={styles.list}>
@@ -36,7 +36,7 @@ const Leaderboard = () => {
               />
             </ul>
           </div>
-        </LeaderboardLayout>
+        </div>
       </section>
     </>
   )
