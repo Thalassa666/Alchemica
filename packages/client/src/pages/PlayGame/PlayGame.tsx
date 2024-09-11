@@ -1,5 +1,4 @@
-import { Header } from '@components/header/Header'
-import { GameClient } from '@game/index'
+import { GameClient } from '@src/game'
 import { useState } from 'react'
 import { Layout } from './Layout'
 import { LooseGameBlock } from './LooseGameBlock'
@@ -17,13 +16,13 @@ const PlayGame = () => {
           gameCase={gameCase}
           children={
             <>
+              {gameCase === 'playing' && <GameClient />}
               {gameCase === 'start' && (
                 <StartButtonBlock setGameCase={setGameCase} />
               )}
               {gameCase === 'loading' && (
                 <PreloaderBlock setGameCase={setGameCase} />
               )}
-              {gameCase === 'playing' && <GameClient />}
               {gameCase === 'win' && <WinGameBlock setGameCase={setGameCase} />}
               {gameCase === 'loose' && (
                 <LooseGameBlock setGameCase={setGameCase} />
