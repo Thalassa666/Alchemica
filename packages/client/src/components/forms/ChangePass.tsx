@@ -58,6 +58,7 @@ export const ChangePass = () => {
           onChange={handleChange}
           validationState={errors.oldPassword ? 'invalid' : undefined}
           errorMessage={errors.oldPassword}
+          autoComplete={'password'}
         />
 
         {/* Поле для нового пароля */}
@@ -70,6 +71,7 @@ export const ChangePass = () => {
           onChange={handleChange}
           validationState={errors.newPassword ? 'invalid' : undefined}
           errorMessage={errors.newPassword}
+          autoComplete={'new-password'}
         />
         <ArrowButton type={'submit'} disabled={isSubmitting || isLoading} />
         <TextButton text={'TO PROFILE'} onClick={redirectToProfile} />

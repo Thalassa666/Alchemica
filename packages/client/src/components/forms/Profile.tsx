@@ -77,6 +77,7 @@ export const Profile = () => {
           validationState={errors.login ? 'invalid' : undefined}
           errorMessage={errors.login}
           disabled={disable}
+          autoComplete={'login'}
         />
         <TextInput
           size={'l'}
@@ -88,6 +89,7 @@ export const Profile = () => {
           validationState={errors.first_name ? 'invalid' : undefined}
           errorMessage={errors.first_name}
           disabled={disable}
+          autoComplete={'name'}
         />
         <TextInput
           size={'l'}
@@ -99,6 +101,7 @@ export const Profile = () => {
           validationState={errors.second_name ? 'invalid' : undefined}
           errorMessage={errors.second_name}
           disabled={disable}
+          autoComplete={'name'}
         />
         <TextInput
           size={'l'}
@@ -110,6 +113,7 @@ export const Profile = () => {
           validationState={errors.email ? 'invalid' : undefined}
           errorMessage={errors.email}
           disabled={disable}
+          autoComplete={'email'}
         />
         <TextInput
           size={'l'}
@@ -121,6 +125,7 @@ export const Profile = () => {
           validationState={errors.phone ? 'invalid' : undefined}
           errorMessage={errors.phone}
           disabled={disable}
+          autoComplete={'phone'}
         />
         <div className={styles.buttonBox}>
           <TextButton
