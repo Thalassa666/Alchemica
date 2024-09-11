@@ -1,5 +1,5 @@
 import { useWindowEffect } from '@core/hooks'
-import { EvtCodes } from '@core/utils/constants'
+import { runIfKeyMatch } from '@game/helpers/isGameKeyMatch'
 import { CraftDialogSizes, CraftType } from '../constants/craftTools'
 import { receiptFromItem } from '../helpers/receiptFromItem'
 import { receiptToItem } from '../helpers/receiptToItem'
@@ -186,12 +186,16 @@ export const useCraftDialog = () => {
 
     /* Esc - Если все слоты выбраны, то сбросит их. Иначе закроет модальное окно */
     /* Enter - Если все слоты выбраны, то скрафтит элемент. Иначе выберет ингридиент для крафта */
-    const eventsMap = {
-      [EvtCodes.Esc]: isFilled ? resetDialog : closeDialog,
-      [EvtCodes.Enter]: isFilled ? craftElement : pickItem,
+    const onExit = () => {
+      isFilled ? resetDialog() : closeDialog()
     }
 
-    eventsMap[evt.code]?.()
+    const onInteract = () => {
+      isFilled ? craftElement() : pickItem()
+    }
+
+    runIfKeyMatch('Exit', evt, onExit)
+    runIfKeyMatch('Interact', evt, onInteract)
   }
 
   useWindowEffect('keydown', handleKeydown)

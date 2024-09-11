@@ -1,6 +1,6 @@
 import ReceiptBookImgSrc from '@assets/images/background-receipts-book.png'
 import { useWindowEffect } from '@core/hooks'
-import { EvtCodes } from '@core/utils/constants'
+import { runIfKeyMatch } from '@game/helpers/isGameKeyMatch'
 import { useRef } from 'react'
 import { ReceptBookDialog } from '../constants/receipts'
 import { CanvasContext } from '../types/types'
@@ -30,7 +30,7 @@ export const useReceiptsBook = () => {
   const mouse = useMouseInteraction()
 
   const handleKeydown = (evt: KeyboardEvent) => {
-    if (evt.code === EvtCodes.J) {
+    const onJournalOpen = () => {
       updateReceiptBook({
         isDialogOpen: true,
         selected: getReceiptsList().potions[0],
@@ -38,15 +38,26 @@ export const useReceiptsBook = () => {
       updatePlayer({ canMove: false })
     }
 
-    if (evt.code === EvtCodes.Esc && getReceiptBook().isDialogOpen) {
+    const onJournalClose = () => {
+      if (!getReceiptBook().isDialogOpen) {
+        return
+      }
+
       updateReceiptBook({ isDialogOpen: false, hovered: null, selected: null })
       updatePlayer({ canMove: true })
+
+      evt.preventDefault()
+      evt.stopImmediatePropagation()
+      evt.stopPropagation()
 
       /* Отписываемся от всех событий на мышь при закрытии */
       subscribedNamesRef.current.forEach(name => {
         mouse.unSubscribe(name)
       })
     }
+
+    runIfKeyMatch('ReceiptsJournal', evt, onJournalOpen)
+    runIfKeyMatch('Exit', evt, onJournalClose)
   }
 
   useWindowEffect('keydown', handleKeydown)

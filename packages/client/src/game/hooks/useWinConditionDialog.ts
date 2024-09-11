@@ -1,6 +1,6 @@
 import { useWindowEffect } from '@core/hooks'
-import { EvtCodes } from '@core/utils/constants'
 import { Game, GameColors } from '@game/constants/misc'
+import { runIfKeyMatch } from '@game/helpers/isGameKeyMatch'
 import { CanvasContext, InventoryItem, Position } from '@game/types/types'
 import { useGameState } from './useGameState'
 import { BackgroundOptions, useImage } from './useImage'
@@ -37,16 +37,26 @@ export const useWinConditionDialog = () => {
   const image = useImage()
 
   const handleKeydown = (evt: KeyboardEvent) => {
-    if (evt.code === EvtCodes.K && !getStatistic().isWinConditionDialogOpen) {
+    const onModalOpen = () => {
+      if (getStatistic().isWinConditionDialogOpen) {
+        return
+      }
+
       updateStatistic({ isWinConditionDialogOpen: true })
       updatePlayer({ canMove: false })
     }
 
-    /* Закрытие на любую клавишу, кроме открытия */
-    if (evt.code !== EvtCodes.K && getStatistic().isWinConditionDialogOpen) {
+    const onModalClose = () => {
+      if (!getStatistic().isWinConditionDialogOpen) {
+        return
+      }
+
       updateStatistic({ isWinConditionDialogOpen: false })
       updatePlayer({ canMove: true })
     }
+
+    runIfKeyMatch('WinInfo', evt, onModalOpen)
+    runIfKeyMatch('Exit', evt, onModalClose)
   }
 
   useWindowEffect('keydown', handleKeydown)

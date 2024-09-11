@@ -1,3 +1,4 @@
+import { EvtCodes } from '@core/utils/constants'
 import { Collision } from '../types/types'
 
 /** Конфигурация игры */
@@ -60,3 +61,14 @@ export const GameBorders: Collision[] = [
     name: 'Bottom game zone border',
   },
 ]
+
+export const GameKeyCodes = {
+  MoveLeft: [EvtCodes.ArrowLeft, EvtCodes.A],
+  MoveRight: [EvtCodes.ArrowRight, EvtCodes.D],
+  PickLeft: [EvtCodes.ArrowLeft, EvtCodes.A],
+  PickRight: [EvtCodes.ArrowRight, EvtCodes.D],
+  Interact: [EvtCodes.Enter, EvtCodes.Space],
+  Exit: [EvtCodes.Esc, EvtCodes.Tab],
+  ReceiptsJournal: [EvtCodes.J],
+  WinInfo: [EvtCodes.K],
+}

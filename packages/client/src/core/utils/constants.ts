@@ -14,4 +14,5 @@ export const EvtCodes = {
   Enter: 'Enter',
   Space: 'Space',
   Esc: 'Escape',
+  Tab: 'Tab',
 }
