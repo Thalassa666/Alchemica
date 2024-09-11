@@ -10,7 +10,7 @@ class AuthApi {
   }
 
   // Запрос данных пользователя
-  public async fetchUser(): Promise<void> {
+  async fetchUser(): Promise<void> {
     const res = await fetch(`${this.url}/user`, {
       method: 'GET',
       credentials: 'include',
@@ -19,7 +19,7 @@ class AuthApi {
   }
 
   // Вход в систему
-  public async signIn(data: TUserQuery): Promise<void> {
+  async signIn(data: TUserQuery): Promise<void> {
     const res = await fetch(`${this.url}/signin`, {
       method: 'POST',
       headers: {
@@ -46,11 +46,8 @@ class AuthApi {
 
   // Выход из системы
   public async logout(): Promise<void> {
-    const res = await fetch(`${this.url}/signup`, {
+    const res = await fetch(`${this.url}/logout`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       credentials: 'include',
     })
     return await checkResponse(res)

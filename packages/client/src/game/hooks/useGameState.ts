@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { CraftType } from '../constants/craftTools'
 import { IngredientsMap } from '../constants/ingredients'
 import { PlayerInitial } from '../constants/player'
+import { IngredientReceipts, PotionReceipts } from '../constants/receipts'
 import {
   CraftToolsState,
   GameNotification,
@@ -10,6 +11,7 @@ import {
   InventoryItem,
   InventoryState,
   PlayerState,
+  ReceiptBookState,
 } from '../types/types'
 
 const initialInventory = Object.values(IngredientsMap).filter(
@@ -33,12 +35,24 @@ const defaultState: GameStateType = {
     isPicking: false,
     itemByReceipt: null,
   },
+  receiptBook: {
+    isDialogOpen: false,
+    potions: PotionReceipts,
+    ingredients: IngredientReceipts,
+    hovered: null,
+    selected: null,
+    activePage: 1,
+  },
   notifications: [],
   statistic: {
     startedAt: null,
     endedAt: null,
-    itemsToWin: {},
+    itemsToWin: [],
     totalScore: 0,
+    wastedReceipts: 0,
+    isInitialized: false,
+    isWinConditionDialogOpen: true,
+    step: 'pending',
   },
 }
 
@@ -48,6 +62,7 @@ class GameState {
   player = defaultState.player
   craftTools = defaultState.craftTools
   inventory = defaultState.inventory
+  receiptBook = defaultState.receiptBook
   notifications = defaultState.notifications
   statistic = defaultState.statistic
 
@@ -80,6 +95,13 @@ class GameState {
     this.inventory = { ...this.inventory, ...updates }
   }
 
+  getReceiptBook = (): ReceiptBookState => {
+    return this.receiptBook
+  }
+  updateReceiptBook = (updates: Partial<ReceiptBookState>): void => {
+    this.receiptBook = { ...this.receiptBook, ...updates }
+  }
+
   getNotifications = (): GameNotification[] => {
     return this.notifications
   }
@@ -98,6 +120,7 @@ class GameState {
     this.player = defaultState.player
     this.craftTools = defaultState.craftTools
     this.inventory = defaultState.inventory
+    this.receiptBook = defaultState.receiptBook
     this.notifications = defaultState.notifications
     this.statistic = defaultState.statistic
   }
@@ -115,6 +138,8 @@ export const useGameState = () => {
       updateCraftTools,
       getInventory,
       updateInventory,
+      getReceiptBook,
+      updateReceiptBook,
       getNotifications,
       setNotifications,
       getStatistic,
@@ -128,6 +153,15 @@ export const useGameState = () => {
       return { ...rest, all: sortInventory(all) }
     }
 
+    const getReceiptsList = () => {
+      const { potions, ingredients } = getReceiptBook()
+
+      return {
+        potions: Object.values(potions),
+        ingredients: Object.values(ingredients),
+      }
+    }
+
     return {
       getPlayer,
       updatePlayer,
@@ -135,6 +169,9 @@ export const useGameState = () => {
       updateCraftTools,
       getInventory: getSortedInventory,
       updateInventory,
+      getReceiptBook,
+      getReceiptsList,
+      updateReceiptBook,
       getNotifications,
       setNotifications,
       getStatistic,

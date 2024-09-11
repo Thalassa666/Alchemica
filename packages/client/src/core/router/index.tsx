@@ -1,13 +1,14 @@
 import WithErrorBoundary from '@core/helpers/withErrorBoundary'
 import { RequireAuth } from '@core/router/ProtectedRoute'
 import AboutGame from '@pages/AboutGame/AboutGame'
-import Error from '@pages/Error'
+import { ChangePass } from '@pages/ChangePass'
+import Error from '@pages/Error/Error'
 import Forum from '@pages/Forum/Forum'
 import Home from '@pages/Home'
 import Leaderboard from '@pages/Leaderboard/Leaderboard'
 import Login from '@pages/Login'
 import PlayGame from '@pages/PlayGame/PlayGame'
-import Profile from '@pages/Profile'
+import Profile from '@pages/Profile/Profile'
 import Register from '@pages/Register'
 import Topic from '@pages/Topic'
 import { createBrowserRouter } from 'react-router-dom'
@@ -46,6 +47,14 @@ export const router = createBrowserRouter([
       {
         path: 'leaderboard',
         element: <Leaderboard />,
+      },
+      {
+        path: 'change-pass',
+        element: (
+          <RequireAuth>
+            <ChangePass />
+          </RequireAuth>
+        ),
       },
     ],
   },

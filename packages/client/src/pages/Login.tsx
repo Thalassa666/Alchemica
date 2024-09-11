@@ -4,7 +4,9 @@ const Login = () => {
   return (
     <>
       <div>
-        <FormsLayout children={<LoginForm />} />
+        <FormsLayout isTitleShow={true} backgroundClass={'loginBg'}>
+          <LoginForm />
+        </FormsLayout>
       </div>
     </>
   )

@@ -77,6 +77,15 @@ export type Receipt = ItemBase & {
   ingredientNames: string[]
 }
 
+export type ReceiptBookState = {
+  isDialogOpen: boolean
+  potions: Record<string, Receipt>
+  ingredients: Record<string, Receipt>
+  hovered: Receipt | null
+  selected: Receipt | null
+  activePage: number
+}
+
 export type GameNotification = KeyId & {
   title: string
   text: string
@@ -84,16 +93,23 @@ export type GameNotification = KeyId & {
   timeout?: number
 }
 
+export type GameStep = 'won' | 'lost' | 'pending'
+
 export type GameStatistic = {
-  startedAt: string | null
-  endedAt: string | null
-  itemsToWin: Record<string, InventoryItem>
+  startedAt: number | null
+  endedAt: number | null
+  itemsToWin: InventoryItem[]
   totalScore: number
+  wastedReceipts: number
+  isInitialized: boolean
+  isWinConditionDialogOpen: boolean
+  step: GameStep
 }
 
 export type GameStateType = {
   player: PlayerState
   craftTools: CraftToolsState
+  receiptBook: ReceiptBookState
   inventory: InventoryState
   notifications: GameNotification[]
   statistic: GameStatistic

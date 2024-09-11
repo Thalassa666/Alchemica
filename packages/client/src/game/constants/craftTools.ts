@@ -19,10 +19,7 @@ export const CraftType = {
 } as const
 
 /** Конфигурация крафт инструментов */
-export const CraftTools: Record<
-  typeof CraftToolNames[keyof typeof CraftToolNames],
-  CraftTool
-> = {
+export const CraftTools: Record<string, CraftTool> = {
   [CraftToolNames.FirePot]: {
     key: CraftToolNames.FirePot,
     label: 'Жаровня',

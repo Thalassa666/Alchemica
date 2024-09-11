@@ -1,5 +1,5 @@
 import { useWindowEffect } from '@core/hooks'
-import { EvtCodes } from '@core/utils/constants'
+import { runIfKeyMatch } from '@game/helpers/isGameKeyMatch'
 import { CraftTools } from '../constants/craftTools'
 import { GameColors } from '../constants/misc'
 import { hasCollision } from '../helpers/hasCollision'
@@ -17,12 +17,17 @@ export const useCraftTools = () => {
     При установлении как активным - открывает модальное окно 
   */
   const handleKeydown = (evt: KeyboardEvent) => {
-    const isKeyOk = [EvtCodes.Enter, EvtCodes.Space].includes(evt.code)
     const interactable = getCraftTools().nearPlayer
 
-    if (isKeyOk && interactable) {
+    if (!interactable) {
+      return
+    }
+
+    const onInteract = () => {
       updateCraftTools({ active: interactable })
     }
+
+    runIfKeyMatch('Interact', evt, onInteract)
   }
 
   useWindowEffect('keydown', handleKeydown)
