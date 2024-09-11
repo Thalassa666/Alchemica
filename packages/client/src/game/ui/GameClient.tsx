@@ -1,7 +1,6 @@
 import LevelBackgroundSrc from '@assets/images/level-background.jpg'
 import { CanvasContext, GameStatistic } from '@game/types/types'
 import { useEffect, useRef } from 'react'
-import { FC } from 'react'
 import { Game } from '../constants/misc'
 import * as GameHooks from '../hooks'
 import type { BackgroundOptions } from '../hooks'
@@ -16,7 +15,7 @@ const backgroundOptions: BackgroundOptions = {
   size: { width: Game.Size.width, height: Game.Size.height },
 }
 
-export const GameClient: FC<Props> = ({ onGameEnd }) => {
+export const GameClient = ({ onGameEnd }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null)
   const animateRef = useRef<number | null>(null)
@@ -34,6 +33,11 @@ export const GameClient: FC<Props> = ({ onGameEnd }) => {
   const receiptBook = GameHooks.useReceiptsBook()
   const mouseIteration = GameHooks.useMouseInteraction()
 
+  const init = (context: CanvasContext) => {
+    initWinCondition()
+    mouseIteration.init(context)
+  }
+
   const checkForRedirects = () => {
     const statistic = getStatistic()
 
@@ -42,9 +46,18 @@ export const GameClient: FC<Props> = ({ onGameEnd }) => {
     }
   }
 
-  const init = (context: CanvasContext) => {
-    initWinCondition()
-    mouseIteration.init(context)
+  const drawGameElements = (context: CanvasContext) => {
+    background.draw(context, backgroundOptions)
+    quickTools.draw(context)
+    borders.draw(context)
+    quickTools.draw(context)
+    craftTools.draw(context)
+    player.draw(context)
+    player.update(context)
+    craftDialog.draw(context)
+    notifications.draw(context)
+    receiptBook.draw(context)
+    winConditionDialog.draw(context)
   }
 
   const animate = () => {
@@ -58,17 +71,7 @@ export const GameClient: FC<Props> = ({ onGameEnd }) => {
     if (canvas && ctx) {
       ctx.clearRect(0, 0, Game.Size.width, Game.Size.height)
 
-      background.draw({ canvas, ctx }, backgroundOptions)
-      quickTools.draw({ canvas, ctx })
-      borders.draw({ canvas, ctx })
-      quickTools.draw({ canvas, ctx })
-      craftTools.draw({ canvas, ctx })
-      player.draw({ canvas, ctx })
-      player.update({ canvas, ctx })
-      craftDialog.draw({ canvas, ctx })
-      notifications.draw({ canvas, ctx })
-      receiptBook.draw({ canvas, ctx })
-      winConditionDialog.draw({ canvas, ctx })
+      drawGameElements({ canvas, ctx })
     }
   }
 
