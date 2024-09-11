@@ -5,6 +5,12 @@ export interface IUser {
   email: 'string'
   password: 'string'
   phone: 'string'
+  avatar: 'string'
+}
+
+export interface IUserChangePass {
+  oldPassword: string
+  newPassword: string
 }
 
 export type TUserQuery = Pick<IUser, 'login' | 'password'>
