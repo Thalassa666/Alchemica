@@ -28,12 +28,12 @@ const ForumList: React.FC<ForumListProps> = ({
       <div className={styles.section}>
         <button className={styles.header} onClick={toggleSection}>
           {title}
-          <div className={styles.headerMarks}>
+          <span className={styles.headerMarks}>
             <span className={styles.circle}>{topics.length}</span>
             <span className={`${styles.arrow} ${isOpen ? styles.open : ''}`}>
               &#9660;
             </span>
-          </div>
+          </span>
         </button>
         {isOpen && (
           <div className={styles.topicsList}>
