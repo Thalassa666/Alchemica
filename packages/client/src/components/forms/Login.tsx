@@ -38,6 +38,7 @@ export const Login = () => {
         onChange={handleChange}
         validationState={errors.login ? 'invalid' : undefined}
         errorMessage={errors.login}
+        autoComplete={'login'}
       />
 
       <TextInput
@@ -49,6 +50,7 @@ export const Login = () => {
         onChange={handleChange}
         validationState={errors.password ? 'invalid' : undefined}
         errorMessage={errors.password}
+        autoComplete={'password'}
       />
 
       <ArrowButton type={'submit'} />

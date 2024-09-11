@@ -45,6 +45,7 @@ export const Register = () => {
           onChange={handleChange}
           validationState={errors.login ? 'invalid' : undefined}
           errorMessage={errors.login}
+          autoComplete={'login'}
         />
         <TextInput
           size={'l'}
@@ -55,6 +56,7 @@ export const Register = () => {
           onChange={handleChange}
           validationState={errors.first_name ? 'invalid' : undefined}
           errorMessage={errors.first_name}
+          autoComplete={'name'}
         />
         <TextInput
           size={'l'}
@@ -65,6 +67,7 @@ export const Register = () => {
           onChange={handleChange}
           validationState={errors.second_name ? 'invalid' : undefined}
           errorMessage={errors.second_name}
+          autoComplete={'name'}
         />
         <TextInput
           size={'l'}
@@ -75,6 +78,7 @@ export const Register = () => {
           onChange={handleChange}
           validationState={errors.email ? 'invalid' : undefined}
           errorMessage={errors.email}
+          autoComplete={'email'}
         />
         <TextInput
           size={'l'}
@@ -85,6 +89,7 @@ export const Register = () => {
           onChange={handleChange}
           validationState={errors.phone ? 'invalid' : undefined}
           errorMessage={errors.phone}
+          autoComplete={'phone'}
         />
         <TextInput
           size={'l'}
@@ -95,6 +100,7 @@ export const Register = () => {
           onChange={handleChange}
           validationState={errors.password ? 'invalid' : undefined}
           errorMessage={errors.password}
+          autoComplete={'password'}
         />
         <ArrowButton type={'submit'} />
       </form>

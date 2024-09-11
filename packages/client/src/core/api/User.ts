@@ -9,7 +9,7 @@ class User {
     this.url = url + slug
   }
 
-  public async updateUserData(data: RegistrationFormData) {
+  async updateUserData(data: RegistrationFormData) {
     const res = await fetch(`${this.url}/profile`, {
       method: 'PUT',
       headers: {
@@ -21,7 +21,7 @@ class User {
     await checkResponse(res)
   }
 
-  public async changeAvatar(file: File): Promise<void> {
+  async changeAvatar(file: File): Promise<void> {
     const data = new FormData()
     data.append('avatar', file)
     const res = await fetch(`${this.url}/profile/avatar`, {
@@ -32,7 +32,7 @@ class User {
     await checkResponse(res)
   }
 
-  public async changePassword(data: IUserChangePass) {
+  async changePassword(data: IUserChangePass) {
     const res = await fetch(`${this.url}/password`, {
       method: 'PUT',
       headers: {
