@@ -1,5 +1,5 @@
 import { useWindowEffect } from '@core/hooks'
-import { EvtCodes } from '@core/utils/constants'
+import { runIfKeyMatch } from '@game/helpers/isGameKeyMatch'
 import { Direction, VelocitySpeed } from '../constants/player'
 import { DirectionType, Position } from '../types/types'
 import { useGameState } from './useGameState'
@@ -34,25 +34,13 @@ export const useMovement = () => {
   }
 
   const handleKeydown = (evt: KeyboardEvent) => {
-    const eventsMap = {
-      [EvtCodes.A]: moveLeft,
-      [EvtCodes.D]: moveRight,
-      [EvtCodes.ArrowLeft]: moveLeft,
-      [EvtCodes.ArrowRight]: moveRight,
-    }
-
-    eventsMap[evt.code]?.()
+    runIfKeyMatch('MoveLeft', evt, moveLeft)
+    runIfKeyMatch('MoveRight', evt, moveRight)
   }
 
   const handleKeyup = (evt: KeyboardEvent) => {
-    const eventsMap = {
-      [EvtCodes.A]: stopMovingX,
-      [EvtCodes.D]: stopMovingX,
-      [EvtCodes.ArrowLeft]: stopMovingX,
-      [EvtCodes.ArrowRight]: stopMovingX,
-    }
-
-    eventsMap[evt.code]?.()
+    runIfKeyMatch('MoveLeft', evt, stopMovingX)
+    runIfKeyMatch('MoveRight', evt, stopMovingX)
   }
 
   useWindowEffect('keydown', handleKeydown)
