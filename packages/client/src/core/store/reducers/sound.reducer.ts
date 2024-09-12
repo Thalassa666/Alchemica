@@ -1,32 +1,30 @@
-import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface ISoundState {
   soundOn: boolean
   track: string | null
 }
 
-const initialState: ISoundState = {
+const initialSoundState: ISoundState = {
   soundOn: false,
   track: 'common',
 }
 
-const switchSound = createAction('SWITCH_SOUND')
-const changeTrack = createAction('CHANGE_TRACK')
-
-export const soundReducer = createSlice({
+export const soundSlice = createSlice({
   name: 'sound',
-  initialState,
-  reducers: {},
-  extraReducers: builder => {
-    builder
-      // Запрос данных пользователя
-      .addCase(switchSound, state => {
-        state.soundOn = !state.soundOn
-      })
-      .addCase(changeTrack, (state, action: PayloadAction<any>) => {
-        state.track = action.payload
-      })
+  initialState: initialSoundState,
+  reducers: {
+    switchSound: state => {
+      state.soundOn = !state.soundOn
+    },
+    changeTrack: (state, action: PayloadAction<string>) => {
+      state.track = action.payload
+    },
+    clearState: state => {
+      return initialSoundState
+    },
   },
 })
 
-export default soundReducer.reducer
+export const { actions: soundActions } = soundSlice
+export const { reducer: soundReducer } = soundSlice

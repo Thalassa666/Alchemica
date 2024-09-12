@@ -1,6 +1,7 @@
 import { ArrowButton } from '@components/UI'
 import useForm from '@core/hooks/useForms'
 import { registerUser } from '@core/store/reducers/auth.reducer'
+import { soundActions } from '@core/store/reducers/sound.reducer'
 import { TAppDispatch } from '@core/store/store'
 import { IUser } from '@core/utils/interfaces/User'
 import {
@@ -32,11 +33,15 @@ export const Register = () => {
       },
     })
 
+  const onMusicClick = () => {
+    dispatch(soundActions.switchSound())
+  }
+
   return (
     <>
       <div className={`${styles.titleOverlay} ${styles.titleOverlay_register}`}>
         <h1>ALCHEMIST</h1>
-        <button className={styles.musicButton}></button>
+        <button className={styles.musicButton} onClick={onMusicClick}></button>
       </div>
       <form
         className={`${styles.form} ${styles.form_register}`}

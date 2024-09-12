@@ -28,6 +28,36 @@
   }
 }
 
+.formProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-background);
+  max-height: 680px;
+  max-width: 380px;
+  padding: 29px 94px 29px 94px;
+  gap: 15px;
+  margin-top: 100px;
+
+  h2 {
+    color: #c8c8c7;
+    font-family: var(--bookman-font), sans-serif;
+  }
+
+  input {
+    background: #465049;
+    color: #c8c8c7 !important;
+  }
+
+  button {
+    background-color: #c8c8c7;
+    border: none;
+    text-align: center;
+    color: black;
+  }
+}
+
 .form_register {
   max-height: 440px;
 }
@@ -44,6 +74,13 @@
   }
 }
 
+.profileLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+}
+
 .background {
   display: flex;
   align-items: center;
@@ -54,6 +91,21 @@
   background-image: url(/src/assets/images/backgrounds/alh-background.png);
   background-size: 100% 100%;
   margin-top: 12px;
+}
+
+.backgroundProfile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 1240px;
+  height: calc(100vh - 30px);
+  background-image: url(/src/assets/images/backgrounds/profile-background.png);
+  background-size: 100% 100%;
+  margin-top: 12px;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 .titleOverlay {

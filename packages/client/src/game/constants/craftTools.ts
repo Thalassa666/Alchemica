@@ -1,6 +1,6 @@
 import FirePotImgSrc from '@assets/images/icons/boiler.png'
 import MixingImgSrc from '@assets/images/icons/mix.png'
-import CraftTableImgSrc from '@assets/images/icons/table.pngпше ыефегы'
+import CraftTableImgSrc from '@assets/images/icons/table.png'
 import { CraftTool } from '../types/types'
 import { ConditionNames } from './conditions'
 
