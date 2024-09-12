@@ -22,5 +22,6 @@ export default {
   },
   transformIgnorePatterns: [
     'node_modules/(?!(.*@gravity-ui/uikit.*)/)', // Исключаем @gravity-ui/uikit из игнорирования
+    '<rootDir>/src/App.tsx'
   ],
 };
