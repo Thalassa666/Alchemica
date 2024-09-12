@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
-import styles from './styles.module.scss'
 import { Link } from 'react-router-dom'
+import styles from './styles.module.scss'
 
 export const Header = () => {
   useEffect(() => {
     const arr = [
       ...(document.getElementsByTagName('a') as unknown as HTMLLinkElement[]),
     ]
+
     if (arr && arr.length !== 0) {
       arr.forEach(item => {
         if (item.getAttribute('href') === window.location.pathname) {
