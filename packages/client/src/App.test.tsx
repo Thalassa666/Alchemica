@@ -1,5 +1,7 @@
-import App from './App'
+import { store } from '@core/store/store'
 import { render } from '@testing-library/react'
+import { Provider } from 'react-redux'
+import App from './App'
 
 // @ts-ignore
 global.fetch = jest.fn(() =>
@@ -7,5 +9,9 @@ global.fetch = jest.fn(() =>
 )
 
 test('Example test', async () => {
-  render(<App />)
+  render(
+    <Provider store={store}>
+      <App />{' '}
+    </Provider>
+  )
 })

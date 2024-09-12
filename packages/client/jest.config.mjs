@@ -13,6 +13,7 @@ export default {
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@/assets/images/(.*)$': '<rootDir>/src/assets/images/$1',
     '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/mocks/fileMock.js',
+    '\\.(mp3)$': '<rootDir>/mocks/fileMock.js',
   },
   transform: {
     '.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform',
@@ -22,6 +23,5 @@ export default {
   },
   transformIgnorePatterns: [
     'node_modules/(?!(.*@gravity-ui/uikit.*)/)', // Исключаем @gravity-ui/uikit из игнорирования
-    '<rootDir>/src/App.tsx'
   ],
 };
