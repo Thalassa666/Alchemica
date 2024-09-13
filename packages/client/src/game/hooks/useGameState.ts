@@ -52,6 +52,7 @@ const defaultState: GameStateType = {
     wastedReceipts: 0,
     isInitialized: false,
     isWinConditionDialogOpen: true,
+    isControlsDialogOpen: false,
     step: 'pending',
   },
 }

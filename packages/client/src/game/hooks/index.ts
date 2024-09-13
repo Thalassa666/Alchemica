@@ -1,3 +1,4 @@
+export { useControlsDialog } from './useControlsDialog'
 export { useCraftDialog } from './useCraftDialog'
 export { useCraftTools } from './useCraftTools'
 export { useGameBorders } from './useGameBorders'

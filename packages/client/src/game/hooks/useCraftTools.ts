@@ -40,15 +40,45 @@ export const useCraftTools = () => {
       const getStyle = () => {
         switch (true) {
           case getCraftTools().nearPlayer?.key === craftTool.key:
-            return GameColors.CraftToolNearPlayer
+            return {
+              background: GameColors.CraftToolNearPlayer,
+              text: GameColors.CraftToolNearPlayerText,
+            }
           default:
-            return GameColors.CraftToolObject
+            return {
+              background: GameColors.CraftToolObject,
+              text: GameColors.CraftToolObjectText,
+            }
         }
       }
 
-      context.ctx.fillStyle = getStyle()
+      const style = getStyle()
+
+      /* Зона коллизии */
+      context.ctx.fillStyle = style.background
       context.ctx.fillRect(x, y, width, height)
       context.ctx.fillStyle = 'transparent'
+
+      /* Текст и box-shadow для него */
+      const textPos = {
+        x: x + width / 2,
+        y: y - 50,
+      }
+
+      context.ctx.font = `20px serif`
+      context.ctx.fillStyle = style.text
+      context.ctx.textAlign = 'center'
+      context.ctx.shadowColor = 'black'
+      context.ctx.shadowBlur = 6
+      context.ctx.lineWidth = 3
+
+      context.ctx.strokeText(craftTool.label, textPos.x, textPos.y)
+      context.ctx.fillText(craftTool.label, textPos.x, textPos.y)
+
+      context.ctx.shadowBlur = 0
+      context.ctx.lineWidth = 1
+      context.ctx.shadowColor = 'transparent'
+      context.ctx.textAlign = 'left'
     })
   }
 

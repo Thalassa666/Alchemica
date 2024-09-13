@@ -103,6 +103,7 @@ export type GameStatistic = {
   wastedReceipts: number
   isInitialized: boolean
   isWinConditionDialogOpen: boolean
+  isControlsDialogOpen: boolean
   step: GameStep
 }
 

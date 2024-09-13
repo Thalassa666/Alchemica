@@ -1,5 +1,6 @@
 import { ArrowButton } from '@components/UI'
 import { FC } from 'react'
+import { ControlsList } from './ControlsList'
 import styles from './styles.module.scss'
 
 type TBlockProps = {
@@ -17,6 +18,8 @@ export const StartButtonBlock: FC<TBlockProps> = (props: TBlockProps) => {
           type={'button'}
           handleOnClick={() => setGameCase('loading')}
         />
+
+        <ControlsList />
       </div>
     </>
   )

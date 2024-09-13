@@ -1,5 +1,6 @@
 import ReceiptsBookImgSrc from '@assets/images/icon-in-progress.png'
 import WinningConditionImgSrc from '@assets/images/icon-in-progress.png'
+import ControlsImgSrc from '@assets/images/icon-in-progress.png'
 import { Game, GameColors } from '@game/constants/misc'
 import { CanvasContext, Position } from '@game/types/types'
 import { useEffect, useRef } from 'react'
@@ -22,6 +23,11 @@ const QuickTools: QuickTool[] = [
     key: 'WinningCondition',
     label: 'K',
     imgSrc: WinningConditionImgSrc,
+  },
+  {
+    key: 'Controls',
+    label: 'L',
+    imgSrc: ControlsImgSrc,
   },
 ]
 
