@@ -1,13 +1,16 @@
 import { ArrowButton } from '@components/UI'
+import { GameStatistic } from '@game/types/types'
 import { FC } from 'react'
+import { ResultStatistic } from './ResultStatistic'
 import styles from './styles.module.scss'
 
 type TBlockProps = {
+  gameStatistic: GameStatistic | null
   setGameCase: (a: string) => void
 }
 
 export const WinGameBlock: FC<TBlockProps> = (props: TBlockProps) => {
-  const { setGameCase } = props
+  const { gameStatistic, setGameCase } = props
 
   return (
     <>
@@ -18,6 +21,9 @@ export const WinGameBlock: FC<TBlockProps> = (props: TBlockProps) => {
           Вы сдали экзамен и получили диплом Королевской академии алхимии и
           траволечения. Новая жизнь, полная комфорта и приключений, ждет вас!..
         </p>
+
+        {gameStatistic && <ResultStatistic gameStatistic={gameStatistic} />}
+
         <hr></hr>
         <p>Над игрой работали:</p>
         <p>Thalassa666</p>

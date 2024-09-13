@@ -141,10 +141,6 @@
     flex-direction: row;
     align-items: center;
     gap: 24px;
-
-    &:first-of-type {
-      height: 120px;
-    }
   }
 
   p {
@@ -197,10 +193,6 @@
     flex-direction: row;
     align-items: center;
     gap: 24px;
-
-    &:first-of-type {
-      height: 120px;
-    }
   }
 
   p {
@@ -219,6 +211,12 @@
     border: none;
     text-align: center;
     color: black;
+  }
+
+  .resultStatistic {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 }
 
@@ -280,6 +278,12 @@
     border: none;
     text-align: center;
     color: black;
+  }
+
+  .resultStatistic {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 }
 

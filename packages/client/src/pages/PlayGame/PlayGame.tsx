@@ -32,9 +32,17 @@ const PlayGame = () => {
               {gameCase === 'loading' && (
                 <PreloaderBlock setGameCase={setGameCase} />
               )}
-              {gameCase === 'win' && <WinGameBlock setGameCase={setGameCase} />}
+              {gameCase === 'win' && (
+                <WinGameBlock
+                  gameStatistic={gameStatistic}
+                  setGameCase={setGameCase}
+                />
+              )}
               {gameCase === 'loose' && (
-                <LooseGameBlock setGameCase={setGameCase} />
+                <LooseGameBlock
+                  gameStatistic={gameStatistic}
+                  setGameCase={setGameCase}
+                />
               )}
             </>
           }

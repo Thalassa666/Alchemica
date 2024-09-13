@@ -19,8 +19,10 @@ export const Game = {
   PotionsToWin: 3,
   WastedToLose: 5,
   WinK: 2,
-  LooseK: 0.5,
+  LooseK: 0.1,
   WasteK: 100,
+  GoodPotionsK: 200,
+  ScoreSec: 5000,
 }
 
 /** Подсвечивать "скрытые" коллизии */
