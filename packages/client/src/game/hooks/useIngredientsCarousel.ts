@@ -1,6 +1,6 @@
 import IngredientsSelectSrc from '@assets/images/ingredients-select.png'
 import { useWindowEffect } from '@core/hooks'
-import { EvtCodes } from '@core/utils/constants'
+import { runIfKeyMatch } from '@game/helpers/isGameKeyMatch'
 import { CraftDialogSizes } from '../constants/craftTools'
 import { GameColors } from '../constants/misc'
 import { centerActiveElement } from '../helpers/centerActiveElement'
@@ -128,14 +128,8 @@ export const useIngredientsCarousel = () => {
       return
     }
 
-    const eventsMap = {
-      [EvtCodes.A]: swipeLeft,
-      [EvtCodes.ArrowLeft]: swipeLeft,
-      [EvtCodes.D]: swipeRight,
-      [EvtCodes.ArrowRight]: swipeRight,
-    }
-
-    eventsMap[evt.code]?.()
+    runIfKeyMatch('PickLeft', evt, swipeLeft)
+    runIfKeyMatch('PickRight', evt, swipeRight)
   }
 
   useWindowEffect('keydown', handleKeydown)

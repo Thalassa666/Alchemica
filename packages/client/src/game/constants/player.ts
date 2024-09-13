@@ -12,8 +12,8 @@ export const PlayerInitial: PlayerState = {
   velocity: { x: 0, y: 0 },
   size: { width: 75, height: 300 },
   lastDirectionX: Direction.Right,
-  canMove: true,
+  canMove: false,
 }
 
 /** Ускорение для движения */
-export const VelocitySpeed = 4
+export const VelocitySpeed = 6

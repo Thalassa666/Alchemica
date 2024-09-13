@@ -5,6 +5,8 @@ export const EvtCodes = {
   A: 'KeyA',
   S: 'KeyS',
   D: 'KeyD',
+  J: 'KeyJ',
+  K: 'KeyK',
   ArrowLeft: 'ArrowLeft',
   ArrowRight: 'ArrowRight',
   ArrowUp: 'ArrowUp',
@@ -12,4 +14,5 @@ export const EvtCodes = {
   Enter: 'Enter',
   Space: 'Space',
   Esc: 'Escape',
+  Tab: 'Tab',
 }

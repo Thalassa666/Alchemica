@@ -1,5 +1,5 @@
 import { useWindowEffect } from '@core/hooks'
-import { EvtCodes } from '@core/utils/constants'
+import { runIfKeyMatch } from '@game/helpers/isGameKeyMatch'
 import { CraftDialogSizes, CraftType } from '../constants/craftTools'
 import { receiptFromItem } from '../helpers/receiptFromItem'
 import { receiptToItem } from '../helpers/receiptToItem'
@@ -9,6 +9,7 @@ import { BackgroundOptions, useImage } from './useImage'
 import { useIngredientsCarousel } from './useIngredientsCarousel'
 import { useIngredientsCombo } from './useIngredientsCombo'
 import { useNotifications } from './useNotifications'
+import { useWinLoose } from './useWinLoose'
 
 const getBackgroundPosition = (context: CanvasContext): Position => {
   return {
@@ -38,6 +39,7 @@ export const useCraftDialog = () => {
   const ingredientsCombo = useIngredientsCombo()
   const ingredientsPick = useIngredientsCarousel()
   const notifications = useNotifications()
+  const winLoose = useWinLoose()
 
   /** Открыть модальное окно, если было взаимодействие с интерактивным объектом */
   const draw = (context: CanvasContext) => {
@@ -168,6 +170,8 @@ export const useCraftDialog = () => {
         text: `Вы создали ${itemByReceipt.label}.`,
         imgSrc: itemByReceipt.imgSrc,
       })
+
+      winLoose.afterCraft(itemByReceipt)
     }
 
     closeDialog()
@@ -182,12 +186,16 @@ export const useCraftDialog = () => {
 
     /* Esc - Если все слоты выбраны, то сбросит их. Иначе закроет модальное окно */
     /* Enter - Если все слоты выбраны, то скрафтит элемент. Иначе выберет ингридиент для крафта */
-    const eventsMap = {
-      [EvtCodes.Esc]: isFilled ? resetDialog : closeDialog,
-      [EvtCodes.Enter]: isFilled ? craftElement : pickItem,
+    const onExit = () => {
+      isFilled ? resetDialog() : closeDialog()
     }
 
-    eventsMap[evt.code]?.()
+    const onInteract = () => {
+      isFilled ? craftElement() : pickItem()
+    }
+
+    runIfKeyMatch('Exit', evt, onExit)
+    runIfKeyMatch('Interact', evt, onInteract)
   }
 
   useWindowEffect('keydown', handleKeydown)

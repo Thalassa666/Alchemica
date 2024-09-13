@@ -1,4 +1,5 @@
-import { GameClient } from '@src/game'
+import { GameClient } from '@game/index'
+import { GameStatistic } from '@game/types/types'
 import { useState } from 'react'
 import { Layout } from './Layout'
 import { LooseGameBlock } from './LooseGameBlock'
@@ -8,6 +9,12 @@ import { WinGameBlock } from './WinGameBlock'
 
 const PlayGame = () => {
   const [gameCase, setGameCase] = useState('start')
+  const [gameStatistic, setGameStatistic] = useState<GameStatistic | null>(null)
+
+  const handleGameEnd = (statistic: GameStatistic) => {
+    setGameStatistic(statistic)
+    setGameCase(statistic.step === 'won' ? 'win' : 'loose')
+  }
 
   return (
     <>
@@ -16,7 +23,9 @@ const PlayGame = () => {
           gameCase={gameCase}
           children={
             <>
-              {gameCase === 'playing' && <GameClient />}
+              {gameCase === 'playing' && (
+                <GameClient onGameEnd={handleGameEnd} />
+              )}
               {gameCase === 'start' && (
                 <StartButtonBlock setGameCase={setGameCase} />
               )}
