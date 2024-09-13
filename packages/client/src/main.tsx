@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import './mixins.scss'
-import { startServiceWorker } from './serviceWorker'
+import { startServiceWorker } from '@core/utils/serviceWorker'
 
 startServiceWorker()
 

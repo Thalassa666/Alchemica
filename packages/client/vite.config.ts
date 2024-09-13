@@ -14,6 +14,7 @@ export default defineConfig({
     __SERVER_PORT__: process.env.SERVER_PORT,
   },
   plugins: [react()],
+  publicDir: 'public',
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
@@ -24,5 +25,8 @@ export default defineConfig({
       '@src': resolve(__dirname, 'src'),
       '@pages': resolve(__dirname, 'src/pages'),
     },
+  },
+  build: {
+    manifest: true,
   },
 })
