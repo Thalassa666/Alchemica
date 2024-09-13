@@ -3,8 +3,11 @@
 .background {
   width: 1240px;
   height: 100dvh;
-  background-image: url('../../assets/images/background-forum.png');
+  background-image: url('../../assets/images/backgrounds/background-forum.png');
   background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 .layout {
@@ -29,6 +32,7 @@
   flex-direction: column;
   height: 100%;
   padding: 20px;
+  margin-top: 190px;
 }
 
 h1 {

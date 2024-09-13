@@ -1,5 +1,5 @@
-import ReceiptsBookImgSrc from '@assets/images/icon-in-progress.png'
-import WinningConditionImgSrc from '@assets/images/icon-in-progress.png'
+import ReceiptsBookImgSrc from '@assets/images/icons/book.png'
+import WinningConditionImgSrc from '@assets/images/icons/scroll.png'
 import { Game, GameColors } from '@game/constants/misc'
 import { CanvasContext, Position } from '@game/types/types'
 import { useEffect, useRef } from 'react'
