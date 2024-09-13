@@ -27,7 +27,7 @@ export const Game = {
 
 /** Подсвечивать "скрытые" коллизии */
 const colorOnDev = (color: string) => {
-  const isDev = true
+  const isDev = false
 
   return isDev ? color : 'transparent'
 }

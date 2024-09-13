@@ -13,6 +13,10 @@ export const useMovement = () => {
     velocity: Partial<Position>,
     direction: DirectionType
   ) => {
+    if (!getPlayer().canMove) {
+      return
+    }
+
     const updatedVelocity = { ...getPlayer().velocity, ...velocity }
 
     updatePlayer({ velocity: updatedVelocity, lastDirectionX: direction })
