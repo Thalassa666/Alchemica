@@ -1,11 +1,13 @@
+import userReducer from '@core/store/reducers/user.reducer'
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from './reducers/auth.reducer'
-import userReducer from '@core/store/reducers/user.reducer'
+import { soundReducer } from './reducers/sound.reducer'
 
 export const store = configureStore({
   reducer: {
     authReducer,
     userReducer,
+    soundReducer,
   },
 })
 

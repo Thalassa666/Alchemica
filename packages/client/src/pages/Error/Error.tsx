@@ -24,10 +24,7 @@ const Error: React.FC<ErrorProps> = ({
         />
         <h1 className={styles.errorTitle}>Ошибка {errorCode}</h1>
         <p className={styles.errorMessage}>{errorMessage}</p>
-        <Link
-          to="/alchemica/packages/client/public"
-          className={styles.errorLink}
-        >
+        <Link to="/" className={styles.errorLink}>
           Вернуться назад и попробовать снова
         </Link>
       </div>

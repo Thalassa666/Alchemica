@@ -33,9 +33,15 @@
 }
 
 .music {
-  background-image: url('../../assets/images/music-pic.png');
+  background-image: url('../../assets/images/icons/music-pic.png');
   height: 80px;
   width: 74px;
+  background-color: transparent;
+  border: none;
+}
+
+.music_off {
+  opacity: 0.4;
 }
 
 .link {

@@ -33,7 +33,9 @@ export const PreloaderBlock: FC<TBlockProps> = (props: TBlockProps) => {
           <p>К игре:</p>
           <ArrowButton
             type={'button'}
-            handleOnClick={() => setGameCase('playing')}
+            handleOnClick={() => {
+              setGameCase('playing')
+            }}
           />
         </div>
       </div>

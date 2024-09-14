@@ -8,7 +8,7 @@
   width: 1100px;
   padding: 36px 42px 32px;
   gap: 24px;
-  margin-top: 20px;
+  margin-top: 190px;
   border-radius: 10px;
   box-sizing: border-box;
 
@@ -83,8 +83,11 @@
   flex-direction: column;
   width: 1240px;
   height: 100vh;
-  background-image: url('../../assets/images/background-aboutgame.png');
+  background-image: url('../../assets/images/backgrounds/background-aboutgame.png');
   background-size: 100% 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
 }
 
 .titleOverlay {
@@ -96,41 +99,41 @@
 .book {
   height: 174px;
   width: 214px;
-  background-image: url('../../assets/images/book-small-pic.png');
+  background-image: url('../../assets/images/icons/book-small-pic.png');
 }
 
 .skill1 {
   height: 86px;
   width: 86px;
-  background-image: url('../../assets/images/skill1-pic.png');
+  background-image: url('../../assets/images/icons/skill1-pic.png');
 }
 
 .skill2 {
   height: 80px;
   width: 80px;
-  background-image: url('../../assets/images/skill2-pic.png');
+  background-image: url('../../assets/images/icons/skill2-pic.png');
 }
 
 .skill3 {
   height: 75px;
   width: 82px;
-  background-image: url('../../assets/images/skill3-pic.png');
+  background-image: url('../../assets/images/icons/skill3-pic.png');
 }
 
 .potion1 {
   height: 78px;
   width: 70px;
-  background-image: url('../../assets/images/potion1-pic.png');
+  background-image: url('../../assets/images/icons/potion1-pic.png');
 }
 
 .potion2 {
   height: 96px;
   width: 76px;
-  background-image: url('../../assets/images/potion2-pic.png');
+  background-image: url('../../assets/images/icons/potion2-pic.png');
 }
 
 .potion3 {
   height: 105px;
   width: 84px;
-  background-image: url('../../assets/images/potion3-pic.png');
+  background-image: url('../../assets/images/icons/potion3-pic.png');
 }

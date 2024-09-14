@@ -1,16 +1,17 @@
-import styles from './styles.module.scss'
-import { TextInput } from '@gravity-ui/uikit'
 import { ArrowButton } from '@components/UI'
+import useForm from '@core/hooks/useForms'
+import { registerUser } from '@core/store/reducers/auth.reducer'
+import { soundActions } from '@core/store/reducers/sound.reducer'
+import { TAppDispatch } from '@core/store/store'
+import { IUser } from '@core/utils/interfaces/User'
 import {
   RegistrationFormData,
   registrationSchema,
 } from '@core/validation/validationSchema'
+import { TextInput } from '@gravity-ui/uikit'
 import { useDispatch } from 'react-redux'
-import { TAppDispatch } from '@core/store/store'
-import useForm from '@core/hooks/useForms'
-import { redirect } from 'react-router-dom'
-import { IUser } from '@core/utils/interfaces/User'
-import { registerUser } from '@core/store/reducers/auth.reducer'
+import { Link, redirect } from 'react-router-dom'
+import styles from './styles.module.scss'
 
 export const Register = () => {
   const dispatch = useDispatch<TAppDispatch>()
@@ -32,9 +33,20 @@ export const Register = () => {
       },
     })
 
+  const onMusicClick = () => {
+    dispatch(soundActions.switchSound())
+  }
+
   return (
     <>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={`${styles.titleOverlay} ${styles.titleOverlay_register}`}>
+        <h1>ALCHEMIST</h1>
+        <button className={styles.musicButton} onClick={onMusicClick}></button>
+      </div>
+      <form
+        className={`${styles.form} ${styles.form_register}`}
+        onSubmit={handleSubmit}
+      >
         <h2>REGISTER</h2>
         <TextInput
           size={'l'}
@@ -103,6 +115,9 @@ export const Register = () => {
           autoComplete={'password'}
         />
         <ArrowButton type={'submit'} />
+        <Link className={styles.link} to={'/login'}>
+          Вход в игру
+        </Link>
       </form>
     </>
   )

@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import './mixins.scss'
+import { Provider } from 'react-redux'
+import { store } from '@core/store/store'
 import { startServiceWorker } from '@core/utils/serviceWorker'
 
 startServiceWorker()
@@ -13,7 +15,9 @@ startServiceWorker()
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme="dark">
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>
 )

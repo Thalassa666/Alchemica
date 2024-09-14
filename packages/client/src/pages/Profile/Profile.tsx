@@ -1,13 +1,14 @@
-import { FormsLayout, ProfileForm } from '@components/forms'
+import { ProfileForm, ProfileFormsLayout } from '@components/forms'
+import { Header } from '@components/header/Header'
 import styles from './styles.module.scss'
 
 const Profile = () => {
   return (
-    <>
-      <FormsLayout isTitleShow={false} backgroundClass={'profileBg'}>
+    <section>
+      <ProfileFormsLayout isTitleShow={false} backgroundClass={'profileBg'}>
         <ProfileForm />
-      </FormsLayout>
-    </>
+      </ProfileFormsLayout>
+    </section>
   )
 }
 
