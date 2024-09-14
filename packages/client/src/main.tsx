@@ -8,6 +8,9 @@ import './index.css'
 import './mixins.scss'
 import { Provider } from 'react-redux'
 import { store } from '@core/store/store'
+import { startServiceWorker } from '@core/utils/serviceWorker'
+
+startServiceWorker()
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

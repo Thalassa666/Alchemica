@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
+import dotenv from 'dotenv'
+dotenv.config()
 
 export default {
   preset: 'ts-jest',
@@ -24,4 +24,4 @@ export default {
   transformIgnorePatterns: [
     'node_modules/(?!(.*@gravity-ui/uikit.*)/)', // Исключаем @gravity-ui/uikit из игнорирования
   ],
-};
+}
