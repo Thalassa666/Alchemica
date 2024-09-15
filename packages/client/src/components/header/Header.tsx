@@ -1,12 +1,21 @@
+import { useAppSelector } from '@core/hooks/useAppSelector'
+import { soundActions } from '@core/store/reducers/sound.reducer'
+import { TAppDispatch } from '@core/store/store'
+import classNames from 'classnames'
 import { useEffect } from 'react'
-import styles from './styles.module.scss'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import styles from './styles.module.scss'
 
 export const Header = () => {
+  const dispatch = useDispatch<TAppDispatch>()
+  const { soundOn } = useAppSelector(state => state.soundReducer)
+
   useEffect(() => {
     const arr = [
       ...(document.getElementsByTagName('a') as unknown as HTMLLinkElement[]),
     ]
+
     if (arr && arr.length !== 0) {
       arr.forEach(item => {
         if (item.getAttribute('href') === window.location.pathname) {
@@ -16,11 +25,18 @@ export const Header = () => {
     }
   }, [])
 
+  const onMusicClick = () => {
+    dispatch(soundActions.switchSound())
+  }
+
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
         <div>
-          <div className={styles.music}></div>
+          <button
+            className={classNames(styles.music, !soundOn && styles.music_off)}
+            onClick={onMusicClick}
+          ></button>
           <Link className={styles.link} to={'/game'}>
             Играть
           </Link>

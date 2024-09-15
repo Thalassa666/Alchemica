@@ -1,4 +1,8 @@
 .form {
+  margin-top: 140px;
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,8 +51,11 @@
   flex-direction: column;
   width: 1240px;
   height: 100vh;
-  background-image: url('../../assets/images/background-gamestart.png');
+  background-image: url('../../assets/images/backgrounds/background-gamestart.png');
   background-size: 100% 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
 }
 
 .background_loose {
@@ -57,8 +64,11 @@
   flex-direction: column;
   width: 1240px;
   height: 100vh;
-  background-image: url('../../assets/images/background-gameloose.png');
+  background-image: url('../../assets/images/backgrounds/background-gameloose.png');
   background-size: 100% 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
 }
 
 .background_win {
@@ -67,8 +77,11 @@
   flex-direction: column;
   width: 1240px;
   height: 100vh;
-  background-image: url('../../assets/images/background-gameend.png');
+  background-image: url('../../assets/images/backgrounds/background-gameend.png');
   background-size: 100% 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
 }
 
 .titleOverlay {
@@ -120,7 +133,7 @@
   max-width: 740px;
   padding: 64px 94px 54px 94px;
   gap: 24px;
-  margin-top: 60px;
+  margin-top: 190px;
   border-radius: 10px;
   box-sizing: border-box;
 
@@ -163,16 +176,18 @@
 }
 
 .form_loose {
+  margin-top: 140px;
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--color-background);
-  max-height: 640px;
   max-width: 740px;
   padding: 64px 94px 54px 94px;
   gap: 24px;
-  margin-top: 60px;
   border-radius: 10px;
   box-sizing: border-box;
 
@@ -221,16 +236,18 @@
 }
 
 .form_win {
+  margin-top: 140px;
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--color-background);
-  max-height: 660px;
   max-width: 740px;
   padding: 64px 94px 54px 94px;
   gap: 24px;
-  margin-top: 60px;
   border-radius: 10px;
   box-sizing: border-box;
 

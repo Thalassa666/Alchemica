@@ -1,19 +1,19 @@
-import styles from './styles.module.scss'
-import { TextInput } from '@gravity-ui/uikit'
+import { ArrowButton, TextButton, UploadAvatar } from '@components/UI'
+import { useAppSelector } from '@core/hooks'
 import useForm from '@core/hooks/useForms'
+import { getUserData, logoutUser } from '@core/store/reducers/auth.reducer'
+import { updateUserData } from '@core/store/reducers/user.reducer'
+import { TAppDispatch } from '@core/store/store'
+import { IUser } from '@core/utils/interfaces/User'
 import {
   RegistrationFormData,
   registrationSchema,
 } from '@core/validation/validationSchema'
+import { TextInput } from '@gravity-ui/uikit'
 import React, { useState } from 'react'
-import { ArrowButton, TextButton, UploadAvatar } from '@components/UI'
-import { useAppSelector } from '@core/hooks'
-import { IUser } from '@core/utils/interfaces/User'
 import { useDispatch } from 'react-redux'
-import { TAppDispatch } from '@core/store/store'
-import { getUserData, logoutUser } from '@core/store/reducers/auth.reducer'
 import { useNavigate } from 'react-router-dom'
-import { updateUserData } from '@core/store/reducers/user.reducer'
+import styles from './styles.module.scss'
 
 export const Profile = () => {
   const dispatch = useDispatch<TAppDispatch>()
@@ -62,8 +62,8 @@ export const Profile = () => {
   }
 
   return (
-    <>
-      <form className={styles.form} onSubmit={handleSubmit}>
+    <div className={styles.wrapperProfile}>
+      <form className={styles.formProfile} onSubmit={handleSubmit}>
         <h2>WELCOME BACK</h2>
         <UploadAvatar src={avatar} />
         <p className={styles.name}>{first_name.toUpperCase()}</p>
@@ -140,6 +140,6 @@ export const Profile = () => {
         <TextButton text={'QUIT'} onClick={logout} />
         <TextButton text={'CHANGE PASSWORD'} onClick={redirectToChangePass} />
       </form>
-    </>
+    </div>
   )
 }

@@ -10,6 +10,29 @@
   background: rgba(0, 0, 0, 0.7);
   padding: 32px;
   height: 100%;
+  margin-top: 140px;
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+}
+
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+}
+
+.background {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1240px;
+  height: 100vh;
+  background-image: url('../../assets/images/backgrounds/leaderboard.png');
+  background-size: 100% 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
 }
 
 .list {

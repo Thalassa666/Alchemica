@@ -1,4 +1,7 @@
+import WithErrorBoundary from '@core/helpers/withErrorBoundary'
+import { RequireAuth } from '@core/router/ProtectedRoute'
 import AboutGame from '@pages/AboutGame/AboutGame'
+import { ChangePass } from '@pages/ChangePass'
 import Error from '@pages/Error/Error'
 import Forum from '@pages/Forum/Forum'
 import Home from '@pages/Home'
@@ -9,11 +12,8 @@ import Profile from '@pages/Profile/Profile'
 import Register from '@pages/Register'
 import Topic from '@pages/Topic'
 import { createBrowserRouter } from 'react-router-dom'
-import errorBookImage from '../../assets/images/error_book.png'
-import errorPotionImage from '../../assets/images/error_potion.png'
-import WithErrorBoundary from '@core/helpers/withErrorBoundary'
-import { RequireAuth } from '@core/router/ProtectedRoute'
-import { ChangePass } from '@pages/ChangePass'
+import errorBookImage from '../../assets/images/icons/error_book.png'
+import errorPotionImage from '../../assets/images/icons/error_potion.png'
 
 export const router = createBrowserRouter([
   {

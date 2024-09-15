@@ -5,7 +5,7 @@
   flex-direction: column;
   width: 1240px;
   height: 100vh;
-  background-image: url('../../assets/images/alh-background.png');
+  background-image: url('../../assets/images/backgrounds/alh-background.png');
   background-size: 100% 100%;
   margin: 0 auto 0 auto;
 }
@@ -24,7 +24,7 @@
   font-weight: normal;
   margin: 0;
   padding: 0;
-  color: #AEAEAE;
+  color: #aeaeae;
 }
 .titleContainer {
   display: flex;
@@ -34,9 +34,9 @@
 }
 .time {
   font-family: var(--bookman-font), serif;
-  font-size: .7rem;
+  font-size: 0.7rem;
   font-weight: normal;
-  color: #AEAEAE;
+  color: #aeaeae;
 }
 .avatarContainer {
   position: relative;
@@ -55,12 +55,12 @@
 }
 
 .first {
-  background-image: url('../../assets/images/skill3-pic.png');
+  background-image: url('../../assets/images/icons/skill3-pic.png');
 }
 
 .second {
-  background-image: url('../../assets/images/skill1-pic.png');
+  background-image: url('../../assets/images/icons/skill1-pic.png');
 }
 .third {
-  background-image: url('../../assets/images/skill-4-pic.png');
+  background-image: url('../../assets/images/icons/skill-4-pic.png');
 }

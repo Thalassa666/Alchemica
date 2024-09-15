@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 import styles from './styles.module.scss'
-import classNames from 'classnames'
 
 type TLayoutProps = {
   children: ReactNode
@@ -12,19 +11,16 @@ export const Layout = (props: TLayoutProps) => {
   const { children, backgroundClass, isTitleShow } = props
   return (
     <section className={styles.layout}>
-      <div
-        className={classNames(
-          `${styles.background}`,
-          `${styles[backgroundClass]}`
-        )}
-      >
-        {isTitleShow && (
-          <div className={styles.titleOverlay}>
-            <h1>ALCHEMIST</h1>
-          </div>
-        )}
-        {children}
-      </div>
+      <div className={styles.background}>{props.children}</div>
+    </section>
+  )
+}
+
+export const FormsLayout = (props: TLayoutProps) => {
+  const { children, backgroundClass, isTitleShow } = props
+  return (
+    <section className={styles.profileLayout}>
+      <div className={styles.backgroundProfile}>{props.children}</div>
     </section>
   )
 }
