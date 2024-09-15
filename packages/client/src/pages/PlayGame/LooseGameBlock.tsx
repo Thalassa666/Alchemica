@@ -1,13 +1,16 @@
 import { ArrowButton } from '@components/UI'
+import { GameStatistic } from '@game/types/types'
 import { FC } from 'react'
+import { ResultStatistic } from './ResultStatistic'
 import styles from './styles.module.scss'
 
 type TBlockProps = {
+  gameStatistic: GameStatistic | null
   setGameCase: (a: string) => void
 }
 
 export const LooseGameBlock: FC<TBlockProps> = (props: TBlockProps) => {
-  const { setGameCase } = props
+  const { gameStatistic, setGameCase } = props
 
   return (
     <>
@@ -18,6 +21,9 @@ export const LooseGameBlock: FC<TBlockProps> = (props: TBlockProps) => {
           добывая руду в копях Гоблинских пиков или на границе с Заклятым лесом.
           Как знать, что хуже?..
         </p>
+
+        {gameStatistic && <ResultStatistic gameStatistic={gameStatistic} />}
+
         <div>
           <p>Попробовать снова:</p>
           <ArrowButton

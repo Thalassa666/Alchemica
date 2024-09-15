@@ -62,7 +62,7 @@ export const Profile = () => {
   }
 
   return (
-    <>
+    <div className={styles.wrapperProfile}>
       <form className={styles.formProfile} onSubmit={handleSubmit}>
         <h2>WELCOME BACK</h2>
         <UploadAvatar src={avatar} />
@@ -140,6 +140,6 @@ export const Profile = () => {
         <TextButton text={'QUIT'} onClick={logout} />
         <TextButton text={'CHANGE PASSWORD'} onClick={redirectToChangePass} />
       </form>
-    </>
+    </div>
   )
 }

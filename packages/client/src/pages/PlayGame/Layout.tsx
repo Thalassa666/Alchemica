@@ -6,22 +6,26 @@ type TLayoutProps = {
   gameCase?: string
 }
 
+const getClassName = (gameCase: string | undefined) => {
+  switch (gameCase) {
+    case 'start':
+    case 'loading':
+      return styles.background
+    case 'win':
+      return styles.background_win
+    case 'loose':
+      return styles.background_loose
+    default:
+      return undefined
+  }
+}
+
 export const Layout: FC<TLayoutProps> = (props: TLayoutProps) => {
   const { gameCase } = props
 
   return (
     <section className={styles.layout}>
-      <div
-        className={
-          gameCase === 'start'
-            ? styles.background
-            : gameCase === 'loading'
-            ? styles.background
-            : gameCase === 'win'
-            ? styles.background_win
-            : styles.background_loose
-        }
-      >
+      <div className={getClassName(gameCase)}>
         <div className={styles.titleOverlay}></div>
         {props.children}
       </div>

@@ -1,3 +1,4 @@
+import ControlsImgSrc from '@assets/images/icon-in-progress.png'
 import ReceiptsBookImgSrc from '@assets/images/icons/book.png'
 import WinningConditionImgSrc from '@assets/images/icons/scroll.png'
 import { Game, GameColors } from '@game/constants/misc'
@@ -22,6 +23,11 @@ const QuickTools: QuickTool[] = [
     key: 'WinningCondition',
     label: 'K',
     imgSrc: WinningConditionImgSrc,
+  },
+  {
+    key: 'Controls',
+    label: 'L',
+    imgSrc: ControlsImgSrc,
   },
 ]
 

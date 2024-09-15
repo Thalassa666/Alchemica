@@ -21,9 +21,31 @@ export const useWinLoose = () => {
   const endGame = (step: GameStep) => {
     const startedAdd = getStatistic().startedAt ?? 0
     const endedAt = performance.now()
-    const diff = Math.abs(endedAt - startedAdd)
-    const coefficient = step === 'won' ? Game.WinK : Game.LooseK
-    const totalScore = Math.trunc(diff * coefficient)
+    const timeDiffInSec = Math.abs(endedAt - startedAdd) / 1000
+    const timeEconomySec = Game.ScoreSec - timeDiffInSec
+
+    const calcWinScore = () => {
+      const coefficient = Game.WinK
+      const wastedCount = getStatistic().wastedReceipts
+      const score = Math.trunc(
+        timeEconomySec * coefficient - wastedCount * Game.WasteK
+      )
+
+      return Math.max(score, 0)
+    }
+
+    const calcLooseScore = () => {
+      const coefficient = Game.LooseK
+      const goodPotionsCount =
+        Game.PotionsToWin - getStatistic().itemsToWin.length
+      const score = Math.trunc(
+        timeEconomySec * coefficient + goodPotionsCount * Game.GoodPotionsK
+      )
+
+      return Math.max(score, 0)
+    }
+
+    const totalScore = step === 'won' ? calcWinScore() : calcLooseScore()
 
     updateStatistic({ endedAt, step, totalScore })
   }

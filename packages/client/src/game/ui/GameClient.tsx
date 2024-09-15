@@ -32,6 +32,7 @@ export const GameClient = ({ onGameEnd }: Props) => {
   const notifications = GameHooks.useNotifications()
   const receiptBook = GameHooks.useReceiptsBook()
   const mouseIteration = GameHooks.useMouseInteraction()
+  const controlsDialog = GameHooks.useControlsDialog()
 
   const init = (context: CanvasContext) => {
     initWinCondition()
@@ -58,6 +59,7 @@ export const GameClient = ({ onGameEnd }: Props) => {
     notifications.draw(context)
     receiptBook.draw(context)
     winConditionDialog.draw(context)
+    controlsDialog.draw(context)
   }
 
   const animate = () => {
