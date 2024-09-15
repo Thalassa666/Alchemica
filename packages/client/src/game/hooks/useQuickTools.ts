@@ -1,3 +1,4 @@
+import FullScreenImgSrc from '@assets/images/icon-in-progress.png'
 import ControlsImgSrc from '@assets/images/icon-in-progress.png'
 import ReceiptsBookImgSrc from '@assets/images/icons/book.png'
 import WinningConditionImgSrc from '@assets/images/icons/scroll.png'
@@ -14,6 +15,11 @@ type QuickTool = {
 }
 
 const QuickTools: QuickTool[] = [
+  {
+    key: 'FullScreen',
+    label: 'H',
+    imgSrc: FullScreenImgSrc,
+  },
   {
     key: 'ReceiptsBook',
     label: 'J',

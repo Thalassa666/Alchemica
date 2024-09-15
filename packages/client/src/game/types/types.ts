@@ -104,6 +104,7 @@ export type GameStatistic = {
   isInitialized: boolean
   isWinConditionDialogOpen: boolean
   isControlsDialogOpen: boolean
+  isIntroDialogOpen: boolean
   step: GameStep
 }
 

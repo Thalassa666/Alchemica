@@ -2,6 +2,7 @@ import KeyAImgSrc from '@assets/images/keyboard/key-a.png'
 import KeyDImgSrc from '@assets/images/keyboard/key-d.png'
 import KeyEnterImgSrc from '@assets/images/keyboard/key-enter.png'
 import KeyEscImgSrc from '@assets/images/keyboard/key-esc.png'
+import KeyHImgSrc from '@assets/images/keyboard/key-h.png'
 import KeyJImgSrc from '@assets/images/keyboard/key-j.png'
 import KeyKImgSrc from '@assets/images/keyboard/key-k.png'
 import KeyLImgSrc from '@assets/images/keyboard/key-l.png'
@@ -86,6 +87,7 @@ export const GameKeyCodes = {
   PickRight: [EvtCodes.ArrowRight, EvtCodes.D],
   Interact: [EvtCodes.Enter, EvtCodes.Space],
   Exit: [EvtCodes.Esc, EvtCodes.Q],
+  FullScreen: [EvtCodes.H],
   ReceiptsJournal: [EvtCodes.J],
   WinInfo: [EvtCodes.K],
   Controls: [EvtCodes.L],
@@ -111,6 +113,11 @@ export const GameControls = {
     labels: ['Выйти из режима взаимодействия', 'Закрыть модальное окно'],
     keyLabels: ['Esc', 'Q'],
     keyImages: [KeyEscImgSrc, KeyQImgSrc],
+  },
+  FullScreen: {
+    labels: ['Переключить полноэкранный режим'],
+    keyLabels: ['H'],
+    keyImages: [KeyHImgSrc],
   },
   ReceiptsJournal: {
     labels: ['Открыть информацию о журнале рецептов'],
