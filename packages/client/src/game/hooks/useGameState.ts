@@ -53,6 +53,7 @@ const defaultState: GameStateType = {
     isInitialized: false,
     isWinConditionDialogOpen: true,
     isControlsDialogOpen: false,
+    isIntroDialogOpen: true,
     step: 'pending',
   },
 }

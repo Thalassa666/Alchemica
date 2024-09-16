@@ -1,6 +1,7 @@
 export { useControlsDialog } from './useControlsDialog'
 export { useCraftDialog } from './useCraftDialog'
 export { useCraftTools } from './useCraftTools'
+export { useFullScreen } from './useFullScreen'
 export { useGameBorders } from './useGameBorders'
 export { useGameState } from './useGameState'
 export { useImage } from './useImage'
