@@ -1,4 +1,4 @@
-import { GameColors } from '@game/constants/misc'
+import { Game, GameColors } from '@game/constants/misc'
 import { hasCollision } from '@game/helpers/hasCollision'
 import { CanvasContext, Collision, FullLocation } from '@game/types/types'
 import { useCallback, useRef } from 'react'
@@ -60,10 +60,15 @@ class Observer {
 
 const observer = new Observer()
 
-const getMouseLocation = (evt: MouseEvent): FullLocation => {
+const getMouseLocation = (
+  evt: MouseEvent,
+  context: CanvasContext
+): FullLocation => {
+  const canvasRect = context.canvas.getBoundingClientRect()
+
   return {
-    x: evt.offsetX,
-    y: evt.offsetY,
+    x: (evt.clientX - canvasRect.left) * (Game.Size.width / canvasRect.width),
+    y: (evt.clientY - canvasRect.top) * (Game.Size.height / canvasRect.height),
     width: 1,
     height: 1,
   }
@@ -78,7 +83,9 @@ export const useMouseInteraction = () => {
       return
     }
 
-    const collisions = observer.findCollisions(getMouseLocation(evt))
+    const collisions = observer.findCollisions(
+      getMouseLocation(evt, contextRef.current)
+    )
 
     collisions?.forEach(collision => {
       collision.events.onClick?.()
@@ -90,7 +97,9 @@ export const useMouseInteraction = () => {
       return
     }
 
-    const collisions = observer.findCollisions(getMouseLocation(evt))
+    const collisions = observer.findCollisions(
+      getMouseLocation(evt, contextRef.current)
+    )
 
     collisions?.forEach(collision => {
       observer.setHovered(collision)

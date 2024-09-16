@@ -33,10 +33,12 @@ export const GameClient = ({ onGameEnd }: Props) => {
   const receiptBook = GameHooks.useReceiptsBook()
   const mouseIteration = GameHooks.useMouseInteraction()
   const controlsDialog = GameHooks.useControlsDialog()
+  const fullScreen = GameHooks.useFullScreen()
 
   const init = (context: CanvasContext) => {
     initWinCondition()
     mouseIteration.init(context)
+    fullScreen.init(context)
   }
 
   const checkForRedirects = () => {
@@ -60,6 +62,7 @@ export const GameClient = ({ onGameEnd }: Props) => {
     receiptBook.draw(context)
     winConditionDialog.draw(context)
     controlsDialog.draw(context)
+    fullScreen.draw(context)
   }
 
   const animate = () => {

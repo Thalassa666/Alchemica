@@ -9,6 +9,7 @@ export const EvtCodes = {
   K: 'KeyK',
   L: 'KeyL',
   Q: 'KeyQ',
+  H: 'KeyH',
   ArrowLeft: 'ArrowLeft',
   ArrowRight: 'ArrowRight',
   ArrowUp: 'ArrowUp',
