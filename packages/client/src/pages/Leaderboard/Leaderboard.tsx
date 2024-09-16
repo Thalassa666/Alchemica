@@ -1,11 +1,13 @@
 import { LeaderboardLayout, LeadersListItem } from '@components/Leaderboard'
-import styles from './styles.module.scss'
+import { Header } from '@components/header/Header'
 import { Button } from '@gravity-ui/uikit'
+import styles from './styles.module.scss'
 
 const Leaderboard = () => {
   return (
     <>
       <section className={styles.layout}>
+        <Header />
         <div className={styles.background}>
           <div className={styles.leaderboard}>
             <h2>BOARD OF HONOR</h2>

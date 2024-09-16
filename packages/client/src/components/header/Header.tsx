@@ -12,6 +12,7 @@ export const Header = () => {
   const { soundOn } = useAppSelector(state => state.soundReducer)
 
   useEffect(() => {
+    console.log(window.location.pathname)
     const arr = [
       ...(document.getElementsByTagName('a') as unknown as HTMLLinkElement[]),
     ]
@@ -23,7 +24,7 @@ export const Header = () => {
         }
       })
     }
-  }, [])
+  }, [window.location.pathname])
 
   const onMusicClick = () => {
     dispatch(soundActions.switchSound())

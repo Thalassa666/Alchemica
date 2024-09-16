@@ -19,7 +19,6 @@ const Home = () => {
 
   return (
     <>
-      <Header />
       <Outlet />
     </>
   )
