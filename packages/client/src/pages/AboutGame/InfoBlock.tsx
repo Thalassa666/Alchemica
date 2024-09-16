@@ -21,7 +21,7 @@ export const InfoBlock = () => {
           </div>
         </div>
         <div className={styles.layout2}>
-          <p>Следуйте рецептам</p>
+          <p>Следуйте рецептам. У вас всего пять попыток!</p>
           <div className={styles.book}></div>
         </div>
         <div className={styles.layout2}>
