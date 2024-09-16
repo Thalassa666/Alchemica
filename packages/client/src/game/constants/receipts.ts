@@ -1,4 +1,4 @@
-import BadReceiptIngredientImgSrc from '@assets/images/icon-in-progress.png'
+import BadReceiptIngredientImgSrc from '@assets/images/potions/spoiled.png'
 import { InventoryItem, Receipt } from '../types/types'
 import { ConditionNames } from './conditions'
 import { CraftToolNames, CraftType } from './craftTools'

@@ -13,7 +13,7 @@ export const InfoBlock = () => {
           подготовиться и сдать чертов экзамен. Спрашивать будут строго.
         </p>
         <div className={styles.layout2}>
-          <p>Используйте способности</p>
+          <p>Используйте инвентарь лаборатории</p>
           <div>
             <div className={styles.skill1}></div>
             <div className={styles.skill2}></div>
