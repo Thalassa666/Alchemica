@@ -5,7 +5,6 @@ import styles from './styles.module.scss'
 const Profile = () => {
   return (
     <section>
-      <Header />
       <ProfileFormsLayout isTitleShow={false} backgroundClass={'profileBg'}>
         <ProfileForm />
       </ProfileFormsLayout>

@@ -20,7 +20,6 @@ const PlayGame = () => {
   return (
     <>
       <div>
-        <Header />
         <Layout
           gameCase={gameCase}
           children={
