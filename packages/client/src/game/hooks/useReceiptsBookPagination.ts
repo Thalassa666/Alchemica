@@ -1,5 +1,5 @@
 import ArrowLeftImgSrc from '@assets/images/arrow-left.png'
-import ArrowRightImgSrc from '@assets/images/arrow.png'
+import ArrowRightImgSrc from '@assets/images/arrow-left.png'
 import { ReceptBookDialog } from '@game/constants/receipts'
 import { CanvasContext, Collision } from '@game/types/types'
 import { useGameState } from './useGameState'

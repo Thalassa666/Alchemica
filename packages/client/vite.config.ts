@@ -30,4 +30,7 @@ export default defineConfig({
       '@pages': resolve(__dirname, 'src/pages'),
     },
   },
+  ssr: {
+    format: 'cjs',
+  },
 })
