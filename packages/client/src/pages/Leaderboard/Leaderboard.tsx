@@ -1,6 +1,6 @@
 import { LeaderboardLayout, LeadersListItem } from '@components/Leaderboard'
-import styles from './styles.module.scss'
 import { Button } from '@gravity-ui/uikit'
+import styles from './styles.module.scss'
 
 const Leaderboard = () => {
   return (

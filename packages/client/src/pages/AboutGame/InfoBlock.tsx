@@ -1,4 +1,7 @@
 import styles from './styles.module.scss'
+import boiler from '../../assets/images/icons/boiler.png'
+import table from '../../assets/images/icons/table.png'
+import mix from '../../assets/images/icons/mix.png'
 
 export const InfoBlock = () => {
   return (
@@ -13,15 +16,15 @@ export const InfoBlock = () => {
           подготовиться и сдать чертов экзамен. Спрашивать будут строго.
         </p>
         <div className={styles.layout2}>
-          <p>Используйте способности</p>
+          <p>Используйте инвентарь лаборатории</p>
           <div>
-            <div className={styles.skill1}></div>
-            <div className={styles.skill2}></div>
-            <div className={styles.skill3}></div>
+            <img src={boiler} className={styles.boiler} />
+            <img src={table} className={styles.boiler} />
+            <img src={mix} className={styles.boiler} />
           </div>
         </div>
         <div className={styles.layout2}>
-          <p>Следуйте рецептам</p>
+          <p>Следуйте рецептам. У вас всего пять попыток!</p>
           <div className={styles.book}></div>
         </div>
         <div className={styles.layout2}>

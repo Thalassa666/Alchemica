@@ -12,11 +12,9 @@ function App() {
 
   useEffect(() => {
     if (soundOn) {
-      console.log('sound on!')
       gameAudio.current.play()
     }
     if (!soundOn) {
-      console.log('sound off')
       gameAudio.current.pause()
     }
   }, [soundOn])

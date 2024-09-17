@@ -1,3 +1,4 @@
+import { Header } from '@components/header/Header'
 import { GameClient } from '@game/index'
 import { GameStatistic } from '@game/types/types'
 import { useState } from 'react'

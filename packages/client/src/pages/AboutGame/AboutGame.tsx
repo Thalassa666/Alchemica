@@ -1,6 +1,5 @@
-import { Header } from '@components/header/Header'
-import { Layout } from './Layout'
 import { InfoBlock } from './InfoBlock'
+import { Layout } from './Layout'
 
 const AboutGame = () => {
   return (
