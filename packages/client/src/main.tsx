@@ -12,7 +12,8 @@ import { startServiceWorker } from '@core/utils/serviceWorker'
 
 startServiceWorker()
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.hydrateRoot(
+  document.getElementById('root') as HTMLElement,
   <React.StrictMode>
     <ThemeProvider theme="dark">
       <Provider store={store}>
