@@ -1,5 +1,5 @@
-import { BASE_URL } from '@core/utils/constants'
 import { checkResponse } from '@core/helpers/checkResponse'
+import { BASE_URL } from '@core/utils/constants'
 import { IUser, TUserQuery } from '@core/utils/interfaces/User'
 
 class AuthApi {

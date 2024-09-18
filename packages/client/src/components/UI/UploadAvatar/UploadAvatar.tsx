@@ -1,13 +1,13 @@
-import { Avatar } from '@gravity-ui/uikit'
-import { BASE_URL } from '@core/utils/constants'
-import styles from './styles.module.scss'
-import { ChangeEvent } from 'react'
-import { changeAvatar } from '@core/store/reducers/user.reducer'
-import { useDispatch } from 'react-redux'
-import { TAppDispatch } from '@core/store/store'
 import { userApi } from '@core/api'
 import { useAppSelector } from '@core/hooks'
 import { getUserData } from '@core/store/reducers/auth.reducer'
+import { changeAvatar } from '@core/store/reducers/user.reducer'
+import { TAppDispatch } from '@core/store/store'
+import { BASE_URL } from '@core/utils/constants'
+import { Avatar } from '@gravity-ui/uikit'
+import { ChangeEvent } from 'react'
+import { useDispatch } from 'react-redux'
+import styles from './styles.module.scss'
 
 export type TUploadAvatarProps = {
   src: string

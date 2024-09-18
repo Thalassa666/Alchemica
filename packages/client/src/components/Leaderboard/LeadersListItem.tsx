@@ -1,6 +1,6 @@
 import { Avatar } from '@gravity-ui/uikit'
-import styles from './styles.module.scss'
 import classNames from 'classnames'
+import styles from './styles.module.scss'
 
 type TLeaderboardProps = {
   title: string

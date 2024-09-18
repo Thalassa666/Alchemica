@@ -1,6 +1,4 @@
 import { ProfileForm, ProfileFormsLayout } from '@components/forms'
-import { Header } from '@components/header/Header'
-import styles from './styles.module.scss'
 
 const Profile = () => {
   return (

@@ -1,17 +1,17 @@
-import { useDispatch } from 'react-redux'
-import { TAppDispatch } from '@core/store/store'
-import styles from '@components/forms/styles.module.scss'
-import { TextInput } from '@gravity-ui/uikit'
 import { ArrowButton, TextButton } from '@components/UI'
-import { useNavigate } from 'react-router-dom'
+import styles from '@components/forms/styles.module.scss'
+import { useAppSelector } from '@core/hooks'
 import useForm from '@core/hooks/useForms'
+import { changePassword } from '@core/store/reducers/user.reducer'
+import { TAppDispatch } from '@core/store/store'
 import {
   ChangePasswordFormData,
   changePasswordSchema,
 } from '@core/validation/validationSchema'
+import { TextInput } from '@gravity-ui/uikit'
 import { useState } from 'react'
-import { useAppSelector } from '@core/hooks'
-import { changePassword } from '@core/store/reducers/user.reducer'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 export const ChangePass = () => {
   const { isLoading, isError, errorMessage } = useAppSelector(
