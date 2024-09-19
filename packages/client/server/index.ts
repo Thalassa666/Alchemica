@@ -1,10 +1,15 @@
 import dotenv from 'dotenv'
 dotenv.config()
-import express from 'express'
+import express, { Request as ExpressRequest } from 'express'
 import path from 'path'
+import { pathToFileURL, fileURLToPath } from 'url'
 
 import fs from 'fs/promises'
 import { createServer as createViteServer, ViteDevServer } from 'vite'
+
+// Определяем __dirname для ES-модулей
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const port = process.env.PORT || 80
 const clientPath = path.join(__dirname, '..')
@@ -20,6 +25,7 @@ async function createServer() {
       root: clientPath,
       appType: 'custom',
     })
+    app.use(vite.middlewares)
   } else {
     app.use(
       express.static(path.join(clientPath, 'dist/client'), { index: false })
@@ -30,21 +36,19 @@ async function createServer() {
     const url = req.originalUrl
 
     try {
-      // Получаем файл client/index.html который мы правили ранее
-      // Создаём переменные
-      let render: () => Promise<string>
+      let render: (
+        req: ExpressRequest
+      ) => Promise<{ html: string; initialState: unknown }>
       let template: string
+
       if (vite) {
         template = await fs.readFile(
           path.resolve(clientPath, 'index.html'),
           'utf-8'
         )
 
-        // Применяем встроенные HTML-преобразования vite и плагинов
         template = await vite.transformIndexHtml(url, template)
 
-        // Загружаем модуль клиента, который писали выше,
-        // он будет рендерить HTML-код
         render = (
           await vite.ssrLoadModule(
             path.join(clientPath, 'src/entry-server.tsx')
@@ -56,23 +60,18 @@ async function createServer() {
           'utf-8'
         )
 
-        // Получаем путь до сбилдженого модуля клиента, чтобы не тащить средства сборки клиента на сервер
-        const pathToServer = path.join(
-          clientPath,
-          'dist/server/entry-server.js'
-        )
+        // Преобразуем путь к серверному модулю в URL-формат
+        const pathToServer = pathToFileURL(
+          path.join(clientPath, 'dist/server/entry-server.js')
+        ).href
 
-        // Импортируем этот модуль и вызываем с инишл стейтом
         render = (await import(pathToServer)).render
       }
 
-      // Получаем HTML-строку из JSX
-      const appHtml = await render()
+      const { html: appHtml, initialState } = await render(req)
 
-      // Заменяем комментарий на сгенерированную HTML-строку
       const html = template.replace(`<!--ssr-outlet-->`, appHtml)
 
-      // Завершаем запрос и отдаём HTML-страницу
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (e) {
       vite?.ssrFixStacktrace(e as Error)
