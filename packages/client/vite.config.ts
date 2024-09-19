@@ -33,4 +33,11 @@ export default defineConfig({
   ssr: {
     format: 'cjs',
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['legacy-js-api'],
+      },
+    },
+  },
 })
