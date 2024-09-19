@@ -1,11 +1,11 @@
+import { authApi } from '@core/api'
+import { IUser, TUserQuery } from '@core/utils/interfaces/User'
 import {
   createAsyncThunk,
   createSlice,
   PayloadAction,
   SerializedError,
 } from '@reduxjs/toolkit'
-import { IUser, TUserQuery } from '@core/utils/interfaces/User'
-import { authApi } from '@core/api'
 
 const getUserData = createAsyncThunk('auth/user', async () => {
   return await authApi.fetchUser()

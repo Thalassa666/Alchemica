@@ -1,7 +1,7 @@
+import { TextArea } from '@gravity-ui/uikit'
+import { Topic } from '@src/types'
 import React from 'react'
 import styles from './styles.module.scss'
-import { Topic } from '@src/types'
-import { TextArea } from '@gravity-ui/uikit'
 
 interface ModalProps {
   onClose: () => void

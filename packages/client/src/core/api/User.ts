@@ -1,6 +1,6 @@
 import { checkResponse } from '@core/helpers/checkResponse'
-import { IUser, IUserChangePass } from '@core/utils/interfaces/User'
 import { BASE_URL } from '@core/utils/constants'
+import { IUser, IUserChangePass } from '@core/utils/interfaces/User'
 import { RegistrationFormData } from '@core/validation/validationSchema'
 
 class User {

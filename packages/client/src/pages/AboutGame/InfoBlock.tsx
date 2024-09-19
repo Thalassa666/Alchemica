@@ -1,7 +1,7 @@
-import styles from './styles.module.scss'
 import boiler from '../../assets/images/icons/boiler.png'
-import table from '../../assets/images/icons/table.png'
 import mix from '../../assets/images/icons/mix.png'
+import table from '../../assets/images/icons/table.png'
+import styles from './styles.module.scss'
 
 export const InfoBlock = () => {
   return (

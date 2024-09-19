@@ -1,8 +1,8 @@
+import ForumTopic from '@components/forum/ForumTopic'
+import { TextArea } from '@gravity-ui/uikit'
+import { Topic } from '@src/types'
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import ForumTopic from '@components/forum/ForumTopic'
-import { Topic } from '@src/types'
-import { TextArea } from '@gravity-ui/uikit'
 
 interface ForumListProps {
   id: number

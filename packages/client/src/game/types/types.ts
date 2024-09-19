@@ -27,7 +27,7 @@ export type Collision = FullLocation & {
   name: string
 }
 
-export type DirectionType = typeof Direction[keyof typeof Direction]
+export type DirectionType = (typeof Direction)[keyof typeof Direction]
 
 export type PlayerState = {
   position: Position
@@ -37,7 +37,7 @@ export type PlayerState = {
   canMove: boolean
 }
 
-export type ConditionType = typeof ConditionNames[keyof typeof ConditionNames]
+export type ConditionType = (typeof ConditionNames)[keyof typeof ConditionNames]
 
 export type CraftTool = KeyId & {
   label: string
@@ -52,7 +52,7 @@ export type CraftToolsState = {
   active: CraftTool | null
 }
 
-export type CraftType = typeof CraftType[keyof typeof CraftType]
+export type CraftType = (typeof CraftType)[keyof typeof CraftType]
 
 export type ItemBase = KeyId & {
   type: CraftType

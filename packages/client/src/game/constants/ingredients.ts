@@ -39,7 +39,7 @@ export const IngredientNames = {
 
 /** Конфигурация ингредиентов */
 export const IngredientsMap: Record<
-  typeof IngredientNames[keyof typeof IngredientNames],
+  (typeof IngredientNames)[keyof typeof IngredientNames],
   InventoryItem
 > = {
   /* ----- */
