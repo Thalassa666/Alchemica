@@ -9,6 +9,7 @@
   background-size: 100% 100%;
   margin: 0 auto 0 auto;
 }
+
 .item {
   border-bottom: 1px solid gray;
   display: flex;
@@ -16,8 +17,17 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 15px;
-  width: 549px;
+  gap: 16px;
 }
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 8px;
+}
+
 .title {
   font-family: var(--bookman-font), serif;
   font-size: 1.5rem;
@@ -26,19 +36,33 @@
   padding: 0;
   color: #aeaeae;
 }
-.titleContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
+
+.rangName {
+  font-family: var(--bookman-font), serif;
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
 }
+
+.scoreWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.score,
 .time {
+  margin: 0;
   font-family: var(--bookman-font), serif;
   font-size: 0.7rem;
   font-weight: normal;
   color: #aeaeae;
 }
+
 .avatarContainer {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
   position: relative;
   display: inline-block;
 }
@@ -54,13 +78,20 @@
   background-size: cover;
 }
 
-.first {
-  background-image: url('../../assets/images/icons/skill3-pic.png');
-}
+.skill {
+  &--first {
+    background-image: url('../../assets/images/icons/skill1-pic.png');
+  }
 
-.second {
-  background-image: url('../../assets/images/icons/skill1-pic.png');
-}
-.third {
-  background-image: url('../../assets/images/icons/skill-4-pic.png');
+  &--second {
+    background-image: url('../../assets/images/icons/skill2-pic.png');
+  }
+
+  &--third {
+    background-image: url('../../assets/images/icons/skill3-pic.png');
+  }
+
+  &--fourth {
+    background-image: url('../../assets/images/icons/skill-4-pic.png');
+  }
 }
