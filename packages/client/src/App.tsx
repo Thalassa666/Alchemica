@@ -7,6 +7,7 @@ import game from '../src/assets/audio/game.mp3'
 import './App.css'
 
 function App() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const gameAudio = useRef<any>()
   const { soundOn, track } = useAppSelector(state => state.soundReducer)
 

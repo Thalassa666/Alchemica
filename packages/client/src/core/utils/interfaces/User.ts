@@ -14,3 +14,14 @@ export interface IUserChangePass {
 }
 
 export type TUserQuery = Pick<IUser, 'login' | 'password'>
+
+export type TOauthRequest = {
+  code: string
+  redirect_uri: string
+}
+
+export type TOauthRequest1 = {
+  code: string
+  redirect_uri: string
+  jwt: string
+}

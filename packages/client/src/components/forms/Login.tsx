@@ -1,17 +1,24 @@
 import { ArrowButton } from '@components/UI'
+import { useAppSelector } from '@core/hooks'
 import useForm from '@core/hooks/useForms'
-import { loginUser } from '@core/store/reducers/auth.reducer'
+import {
+  loginUser,
+  loginUserWithYandex,
+  getAppIDForYandex,
+} from '@core/store/reducers/auth.reducer'
 import { soundActions } from '@core/store/reducers/sound.reducer'
 import { TAppDispatch } from '@core/store/store'
 import { TUserQuery } from '@core/utils/interfaces/User'
 import { LoginFormData, loginSchema } from '@core/validation/validationSchema'
 import { TextInput } from '@gravity-ui/uikit'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, redirect } from 'react-router-dom'
 import styles from './styles.module.scss'
 
 export const Login = () => {
   const dispatch = useDispatch<TAppDispatch>()
+  const { appID } = useAppSelector(state => state.authReducer)
 
   const { formData, errors, handleChange, handleSubmit } =
     useForm<LoginFormData>({
@@ -29,6 +36,27 @@ export const Login = () => {
   const onMusicClick = () => {
     dispatch(soundActions.switchSound())
   }
+
+  const onYandexButtonClick = () => {
+    dispatch(getAppIDForYandex())
+  }
+
+  useEffect(() => {
+    if (appID !== null && appID !== undefined) {
+      console.log('start')
+      const redirect_uri = 'http://localhost:3000'
+      /*const data = {
+        code: appID,
+        redirect_uri: 'localhost:3000'
+      }
+      dispatch(loginUserWithYandex(data))*/
+
+      console.log(appID)
+      open(
+        `https://oauth.yandex.ru/authorize?response_type=code&client_id=${appID}&redirect_uri=${redirect_uri}` /*, "_self"*/
+      )
+    }
+  }, [appID])
 
   return (
     <>
@@ -67,6 +95,9 @@ export const Login = () => {
         <Link className={styles.link} to={'/register'}>
           Зарегистрироваться
         </Link>
+        <button className={styles.linkButton} onClick={onYandexButtonClick}>
+          Или войти через Яндекс
+        </button>
       </form>
     </>
   )
