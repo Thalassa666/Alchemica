@@ -8,15 +8,15 @@ import {
 import { TAppDispatch } from '@core/store/store'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation, useSearchParams } from 'react-router-dom'
 
 const Home = () => {
   const dispatch = useDispatch<TAppDispatch>()
   const { isAuth } = useAppSelector(state => state.authReducer)
-
   const location = useLocation()
+  const [params] = useSearchParams()
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (window.location.href.includes('?code')) {
       console.log('yes')
       const redirect_uri = 'http://localhost:3000'
@@ -28,7 +28,23 @@ const Home = () => {
       dispatch(loginUserWithYandex(data))
       dispatch(getUserData1(window.location.href.substr(-26, 26)))
     }
-  }, [location])
+  }, [location])*/
+
+  useEffect(() => {
+    console.log(params)
+    const redirect_uri = 'http://localhost:3000'
+    const code = params.get('code')
+    const cid = params.get('cid')
+    console.log(code)
+    if (code && cid) {
+      const data = {
+        code: code,
+        redirect_uri: redirect_uri,
+        jwt: cid,
+      }
+      dispatch(loginUserWithYandex(data))
+    }
+  }, [params])
 
   useEffect(() => {
     if (isAuth) {

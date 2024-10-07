@@ -44,17 +44,14 @@ export const Login = () => {
   useEffect(() => {
     if (appID !== null && appID !== undefined) {
       console.log('start')
-      const redirect_uri = 'http://localhost:3000'
-      /*const data = {
-        code: appID,
-        redirect_uri: 'localhost:3000'
-      }
-      dispatch(loginUserWithYandex(data))*/
-
       console.log(appID)
-      open(
-        `https://oauth.yandex.ru/authorize?response_type=code&client_id=${appID}&redirect_uri=${redirect_uri}` /*, "_self"*/
+      const redirect_uri = 'http://localhost:3000'
+      window.location.replace(
+        `https://oauth.yandex.ru/authorize?response_type=code&client_id=${appID}&redirect_uri=${redirect_uri}`
       )
+      /*open(
+        `https://oauth.yandex.ru/authorize?response_type=code&client_id=${appID}&redirect_uri=${redirect_uri}` /*, "_self"*/
+      //)
     }
   }, [appID])
 

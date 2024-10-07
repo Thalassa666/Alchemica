@@ -38,7 +38,11 @@ const getAppIDForYandex = createAsyncThunk(
 const loginUserWithYandex = createAsyncThunk(
   'oauth/yandex',
   async (data: TOauthRequest1) => {
-    return await authApi.signInWithYandex(data)
+    const data1 = {
+      code: data.code,
+      redirect_uri: data.redirect_uri,
+    }
+    return await authApi.signInWithYandex(data1 /*, data.jwt*/)
   }
 )
 

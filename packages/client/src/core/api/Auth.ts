@@ -62,25 +62,26 @@ class AuthApi {
 
   // Вход в систему через Яндекс - узнать ИД
   async getAppID(): Promise<void> {
-    const res = await fetch(`${this.oauthUrl}/oauth/yandex/service-id`, {
-      method: 'GET',
-      credentials: 'include',
-    })
+    const params = 'http://localhost:3000'
+    const res = await fetch(
+      `${this.oauthUrl}/oauth/yandex/service-id?${params}`,
+      {
+        method: 'GET',
+        credentials: 'include',
+      }
+    )
     return await checkResponse(res)
   }
 
   // Вход в систему через Яндекс
-  async signInWithYandex(data: TOauthRequest1): Promise<void> {
+  async signInWithYandex(data: TOauthRequest /*, jwt: string*/): Promise<void> {
     const res = await fetch(`${this.oauthUrl}/oauth/yandex`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + data.jwt,
+        // Authorization: 'Bearer ' + jwt,
       },
-      body: JSON.stringify({
-        code: data.code,
-        redirect_uri: data.redirect_uri,
-      }),
+      body: JSON.stringify(data),
       credentials: 'include',
     })
     return await checkResponse(res)
