@@ -1,4 +1,4 @@
-import { ArrowButton } from '@components/UI'
+import { ArrowButton, Input } from '@components/UI'
 import { useForm } from '@core/hooks'
 import { loginUser } from '@core/store/reducers/auth.reducer'
 import { soundActions } from '@core/store/reducers/sound.reducer'
@@ -39,7 +39,7 @@ export const Login = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2>LOGIN GAME</h2>
 
-        <TextInput
+        <Input
           size={'l'}
           type={'text'}
           placeholder={'login'}
@@ -51,7 +51,7 @@ export const Login = () => {
           autoComplete={'login'}
         />
 
-        <TextInput
+        <Input
           size={'l'}
           type={'password'}
           placeholder={'password'}

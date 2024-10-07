@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import {
   setPageHasBeenInitializedOnServer,
   selectPageHasBeenInitializedOnServer,
-} from '@core/store/reducers/ssr.reduser'
+} from '@core/store/reducers/ssr.reducer'
 // import { PageInitArgs, PageInitContext } from '../routes'
 
 const getCookie = (name: string) => {

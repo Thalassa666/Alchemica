@@ -1,6 +1,7 @@
 import userReducer from '@core/store/reducers/user.reducer'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import authReducer from './reducers/auth.reducer'
+import ssrReducer from '@core/store/reducers/ssr.reducer'
 import { soundReducer } from './reducers/sound.reducer'
 
 declare global {
@@ -13,6 +14,7 @@ export const reducer = combineReducers({
   authReducer,
   userReducer,
   soundReducer,
+  ssrReducer,
 })
 
 export const store = configureStore({

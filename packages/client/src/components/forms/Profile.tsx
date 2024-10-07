@@ -1,4 +1,4 @@
-import { ArrowButton, TextButton, UploadAvatar } from '@components/UI'
+import { ArrowButton, TextButton, UploadAvatar, Input } from '@components/UI'
 import { useAppSelector, useForm } from '@core/hooks'
 import { getUserData, logoutUser } from '@core/store/reducers/auth.reducer'
 import { updateUserData } from '@core/store/reducers/user.reducer'
@@ -8,7 +8,6 @@ import {
   RegistrationFormData,
   registrationSchema,
 } from '@core/validation/validationSchema'
-import { TextInput } from '@gravity-ui/uikit'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -66,7 +65,7 @@ export const Profile = () => {
         <h2>WELCOME BACK</h2>
         <UploadAvatar src={avatar} />
         <p className={styles.name}>{first_name.toUpperCase()}</p>
-        <TextInput
+        <Input
           size={'l'}
           type={'text'}
           placeholder={'login'}
@@ -78,7 +77,7 @@ export const Profile = () => {
           disabled={disable}
           autoComplete={'login'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'text'}
           placeholder={'first_name'}
@@ -90,7 +89,7 @@ export const Profile = () => {
           disabled={disable}
           autoComplete={'name'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'text'}
           placeholder={'second_name'}
@@ -102,7 +101,7 @@ export const Profile = () => {
           disabled={disable}
           autoComplete={'name'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'email'}
           placeholder={'email'}
@@ -114,7 +113,7 @@ export const Profile = () => {
           disabled={disable}
           autoComplete={'email'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'tel'}
           placeholder={'phone'}

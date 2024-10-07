@@ -23,9 +23,8 @@ export const ssrSlice = createSlice({
   },
 })
 
-export const selectPageHasBeenInitializedOnServer = (
-  state: TRootState
-): boolean => state.ssr.pageHasBeenInitializedOnServer
+export const selectPageHasBeenInitializedOnServer = (state: TRootState) =>
+  state.ssrReducer.pageHasBeenInitializedOnServer
 
 export const { setPageHasBeenInitializedOnServer } = ssrSlice.actions
 

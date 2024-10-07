@@ -13,7 +13,7 @@ import { createFetchRequest } from './entry-server.utils'
 import { reducer } from '@core/store/store'
 import './index.css'
 import { serverRoutes } from '@core/router/serverRouter'
-import { setPageHasBeenInitializedOnServer } from '@core/store/reducers/ssr.reduser'
+import { setPageHasBeenInitializedOnServer } from '@core/store/reducers/ssr.reducer'
 
 export const render = async (req: ExpressRequest) => {
   // 1.
