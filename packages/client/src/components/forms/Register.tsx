@@ -1,5 +1,5 @@
 import { ArrowButton } from '@components/UI'
-import useForm from '@core/hooks/useForms'
+import { useForm } from '@core/hooks'
 import { registerUser } from '@core/store/reducers/auth.reducer'
 import { soundActions } from '@core/store/reducers/sound.reducer'
 import { TAppDispatch } from '@core/store/store'

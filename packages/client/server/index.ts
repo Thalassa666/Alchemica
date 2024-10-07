@@ -70,7 +70,14 @@ async function createServer() {
 
       const { html: appHtml, initialState } = await render(req)
 
-      const html = template.replace(`<!--ssr-outlet-->`, appHtml)
+      const html = template
+        .replace(`<!--ssr-outlet-->`, appHtml)
+        .replace(
+          `<!--ssr-initial-state-->`,
+          `<script>window.APP_INITIAL_STATE = ${JSON.stringify(
+            initialState
+          )}</script>`
+        )
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (e) {

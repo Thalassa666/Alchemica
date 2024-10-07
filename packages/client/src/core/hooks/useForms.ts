@@ -9,7 +9,7 @@ interface UseFormOptions<T> {
   onSubmit: (values: T) => void
 }
 
-function useForm<T extends Record<string, any>>({
+export function useForm<T extends Record<string, any>>({
   initialValues,
   validationSchema,
   onSubmit,
@@ -84,5 +84,3 @@ function useForm<T extends Record<string, any>>({
     handleSubmit,
   }
 }
-
-export default useForm

@@ -4,13 +4,12 @@ import styles from '@components/forms/styles.module.scss'
 import { TextInput } from '@gravity-ui/uikit'
 import { ArrowButton, TextButton } from '@components/UI'
 import { useNavigate } from 'react-router-dom'
-import useForm from '@core/hooks/useForms'
+import { useForm, useAppSelector } from '@core/hooks'
 import {
   ChangePasswordFormData,
   changePasswordSchema,
 } from '@core/validation/validationSchema'
 import { useState } from 'react'
-import { useAppSelector } from '@core/hooks'
 import { changePassword } from '@core/store/reducers/user.reducer'
 
 export const ChangePass = () => {

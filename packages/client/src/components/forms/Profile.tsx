@@ -1,6 +1,5 @@
 import { ArrowButton, TextButton, UploadAvatar } from '@components/UI'
-import { useAppSelector } from '@core/hooks'
-import useForm from '@core/hooks/useForms'
+import { useAppSelector, useForm } from '@core/hooks'
 import { getUserData, logoutUser } from '@core/store/reducers/auth.reducer'
 import { updateUserData } from '@core/store/reducers/user.reducer'
 import { TAppDispatch } from '@core/store/store'

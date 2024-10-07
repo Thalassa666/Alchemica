@@ -25,4 +25,9 @@ const Home = () => {
   )
 }
 
+export const initHomePage = async () => {
+  const dispatch = useDispatch<TAppDispatch>()
+  return dispatch(getUserData())
+}
+
 export default Home
