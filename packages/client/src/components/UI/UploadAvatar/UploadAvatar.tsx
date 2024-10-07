@@ -1,4 +1,4 @@
-import { Avatar } from '@gravity-ui/uikit'
+import { Avatar } from '@components/UI'
 import { BASE_URL } from '@core/utils/constants'
 import styles from './styles.module.scss'
 import { ChangeEvent } from 'react'
