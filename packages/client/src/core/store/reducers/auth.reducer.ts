@@ -1,10 +1,5 @@
 import { authApi } from '@core/api'
-import {
-  IUser,
-  TOauthRequest,
-  TOauthRequest1,
-  TUserQuery,
-} from '@core/utils/interfaces/User'
+import { IUser, TOauthRequest, TUserQuery } from '@core/utils/interfaces/User'
 import {
   createAsyncThunk,
   createSlice,
@@ -37,18 +32,10 @@ const getAppIDForYandex = createAsyncThunk(
 
 const loginUserWithYandex = createAsyncThunk(
   'oauth/yandex',
-  async (data: TOauthRequest1) => {
-    const data1 = {
-      code: data.code,
-      redirect_uri: data.redirect_uri,
-    }
-    return await authApi.signInWithYandex(data1 /*, data.jwt*/)
+  async (data: TOauthRequest) => {
+    return await authApi.signInWithYandex(data)
   }
 )
-
-const getUserData1 = createAsyncThunk('auth/user1', async (jwt: string) => {
-  return await authApi.fetchUser1(jwt)
-})
 
 export interface IUserState {
   userData: IUser | Record<string, unknown>
@@ -57,7 +44,7 @@ export interface IUserState {
   errorMessage: string | null
   isAuth: boolean
   appID?: string | null
-  appID1?: any
+  isYandexAuth?: string | null
 }
 
 const initialState: IUserState = {
@@ -67,7 +54,7 @@ const initialState: IUserState = {
   errorMessage: null,
   isAuth: false,
   appID: null,
-  appID1: null,
+  isYandexAuth: null,
 }
 
 export const authReducer = createSlice({
@@ -135,6 +122,7 @@ export const authReducer = createSlice({
       })
       .addCase(
         getAppIDForYandex.fulfilled,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (state, action: PayloadAction<any>) => {
           state.appID = action.payload.service_id
           state.isLoading = false
@@ -153,8 +141,9 @@ export const authReducer = createSlice({
       })
       .addCase(
         loginUserWithYandex.fulfilled,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (state, action: PayloadAction<any>) => {
-          state.appID1 = action.payload
+          state.isYandexAuth = action.payload
           state.isLoading = false
         }
       )
@@ -173,31 +162,18 @@ export const authReducer = createSlice({
         state.userData = {}
         state.isAuth = false
         state.isLoading = false
+        state.isYandexAuth = null
+        state.appID = null
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.isAuth = false
+        state.isYandexAuth = null
+        state.appID = null
         state.isLoading = false
         state.isError = true
         state.errorMessage =
           (action.error as SerializedError).message ?? 'Произошла ошибка'
         console.log((action.error as SerializedError).message)
-      })
-
-      // Запрос данных пользователя Yandex Oauth
-      .addCase(getUserData1.pending, state => {
-        state.isLoading = true
-      })
-      .addCase(getUserData1.fulfilled, (state, action: PayloadAction<any>) => {
-        state.userData = action.payload
-        state.isAuth = true
-        state.isLoading = false
-      })
-      .addCase(getUserData1.rejected, (state, action) => {
-        state.isAuth = false
-        state.isLoading = false
-        state.isError = true
-        state.errorMessage =
-          (action.error as SerializedError).message ?? 'Произошла ошибка'
       })
   },
 })
@@ -206,7 +182,6 @@ export default authReducer.reducer
 
 export {
   getUserData,
-  getUserData1,
   registerUser,
   loginUser,
   logoutUser,

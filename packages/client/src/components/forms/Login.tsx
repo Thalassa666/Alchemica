@@ -1,11 +1,7 @@
 import { ArrowButton } from '@components/UI'
 import { useAppSelector } from '@core/hooks'
 import useForm from '@core/hooks/useForms'
-import {
-  loginUser,
-  loginUserWithYandex,
-  getAppIDForYandex,
-} from '@core/store/reducers/auth.reducer'
+import { loginUser, getAppIDForYandex } from '@core/store/reducers/auth.reducer'
 import { soundActions } from '@core/store/reducers/sound.reducer'
 import { TAppDispatch } from '@core/store/store'
 import { TUserQuery } from '@core/utils/interfaces/User'
@@ -43,15 +39,10 @@ export const Login = () => {
 
   useEffect(() => {
     if (appID !== null && appID !== undefined) {
-      console.log('start')
-      console.log(appID)
       const redirect_uri = 'http://localhost:3000'
       window.location.replace(
         `https://oauth.yandex.ru/authorize?response_type=code&client_id=${appID}&redirect_uri=${redirect_uri}`
       )
-      /*open(
-        `https://oauth.yandex.ru/authorize?response_type=code&client_id=${appID}&redirect_uri=${redirect_uri}` /*, "_self"*/
-      //)
     }
   }, [appID])
 

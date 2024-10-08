@@ -1,11 +1,7 @@
 import { checkResponse } from '@core/helpers/checkResponse'
+import { checkResponseIsOk } from '@core/helpers/checkResponseIsOk'
 import { BASE_URL } from '@core/utils/constants'
-import {
-  IUser,
-  TOauthRequest,
-  TOauthRequest1,
-  TUserQuery,
-} from '@core/utils/interfaces/User'
+import { IUser, TOauthRequest, TUserQuery } from '@core/utils/interfaces/User'
 
 class AuthApi {
   private readonly url: string
@@ -64,7 +60,7 @@ class AuthApi {
   async getAppID(): Promise<void> {
     const params = 'http://localhost:3000'
     const res = await fetch(
-      `${this.oauthUrl}/oauth/yandex/service-id?${params}`,
+      `${this.oauthUrl}/oauth/yandex/service-id?redirect_uri=${params}`,
       {
         method: 'GET',
         credentials: 'include',
@@ -74,30 +70,16 @@ class AuthApi {
   }
 
   // Вход в систему через Яндекс
-  async signInWithYandex(data: TOauthRequest /*, jwt: string*/): Promise<void> {
+  async signInWithYandex(data: TOauthRequest): Promise<void | string> {
     const res = await fetch(`${this.oauthUrl}/oauth/yandex`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // Authorization: 'Bearer ' + jwt,
       },
       body: JSON.stringify(data),
       credentials: 'include',
     })
-    return await checkResponse(res)
-  }
-
-  // Запрос данных пользователя
-  async fetchUser1(jwt: string): Promise<void> {
-    const res = await fetch(`${this.url}/user`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + jwt,
-      },
-      credentials: 'include',
-    })
-    return await checkResponse(res)
+    return await checkResponseIsOk(res)
   }
 }
 
