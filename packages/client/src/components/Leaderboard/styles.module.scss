@@ -79,19 +79,19 @@
 }
 
 .skill {
-  &--first {
+  &__first {
     background-image: url('../../assets/images/icons/skill1-pic.png');
   }
 
-  &--second {
+  &__second {
     background-image: url('../../assets/images/icons/skill2-pic.png');
   }
 
-  &--third {
+  &__third {
     background-image: url('../../assets/images/icons/skill3-pic.png');
   }
 
-  &--fourth {
+  &__fourth {
     background-image: url('../../assets/images/icons/skill-4-pic.png');
   }
 }

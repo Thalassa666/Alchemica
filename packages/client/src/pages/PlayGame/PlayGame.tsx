@@ -1,7 +1,6 @@
 import { useAppSelector } from '@core/hooks'
 import { shareLeaderboardResult } from '@core/store/reducers/leaderboard.reducer'
 import { TAppDispatch } from '@core/store/store'
-import { IUser } from '@core/utils/interfaces/User'
 import { GameClient } from '@game/index'
 import { GameStatistic } from '@game/types/types'
 import { useState } from 'react'
@@ -20,17 +19,18 @@ const PlayGame = () => {
 
   const handleGameEnd = (statistic: GameStatistic) => {
     const { step, totalScore, startedAt, endedAt } = statistic
+    const isWon = step === 'won'
 
     setGameStatistic(statistic)
-    setGameCase(step === 'won' ? 'win' : 'loose')
+    setGameCase(isWon ? 'win' : 'loose')
 
-    if (step === 'won' && endedAt && startedAt && user) {
+    if (isWon && endedAt && startedAt && user) {
       dispatch(
         shareLeaderboardResult({
           alchemyGameScore: totalScore,
           startedAt,
           endedAt,
-          user: user as IUser,
+          user,
         })
       )
     }

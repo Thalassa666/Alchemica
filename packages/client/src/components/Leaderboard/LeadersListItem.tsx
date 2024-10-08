@@ -10,20 +10,27 @@ type TLeaderboardProps = {
   data: ILeaderboardResult
 }
 
+type RangValue = { name: string; value: number }
+
+const rangConfig: Record<string, RangValue> = {
+  first: { name: 'Успешно сдавший', value: 0 },
+  second: { name: 'Диплом с отличием', value: 6_000 },
+  third: { name: 'Почетный выпускник', value: 8_000 },
+  fourth: { name: 'Гордость академии', value: 10_000 },
+}
+
 const getRang = (score: number) => {
-  if (score >= 10_000) {
-    return { name: `Гордость академии`, level: 'first' }
-  }
+  const [firstEntry, ...restEntries] = Object.entries(rangConfig)
+  const [level, rangValue] = firstEntry
+  let result = { level, ...rangValue }
 
-  if (score >= 8_000) {
-    return { name: `Почетный выпускник`, level: 'second' }
-  }
+  restEntries.forEach(([entryRang, entryValue]) => {
+    if (entryValue.value > result.value && entryValue.value < score) {
+      result = { level: entryRang, ...entryValue }
+    }
+  })
 
-  if (score >= 6_000) {
-    return { name: `Диплом с отличием`, level: 'third' }
-  }
-
-  return { name: `Успешно сдавший`, level: 'fourth' }
+  return result
 }
 
 export const LeadersListItem = ({ data }: TLeaderboardProps) => {
@@ -58,7 +65,7 @@ export const LeadersListItem = ({ data }: TLeaderboardProps) => {
         <div
           className={classNames(
             `${styles.icon}`,
-            styles[`skill--${rang.level}`]
+            styles[`skill__${rang.level}`]
           )}
         />
       </div>
