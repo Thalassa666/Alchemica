@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
-// import { useDispatch, useSelector, useStore } from '../store'
 import {
   setPageHasBeenInitializedOnServer,
   selectPageHasBeenInitializedOnServer,
 } from '@core/store/reducers/ssr.reducer'
-// import { PageInitArgs, PageInitContext } from '../routes'
+import { TAppDispatch, TRootState } from '@core/store/store'
+import { useEffect } from 'react'
+import { useAppSelector } from '@core/hooks/useAppSelector'
+import { useDispatch, useStore } from 'react-redux'
 
 const getCookie = (name: string) => {
   const matches = document.cookie.match(
@@ -18,19 +19,27 @@ const getCookie = (name: string) => {
   return matches ? decodeURIComponent(matches[1]) : undefined
 }
 
-/*const createContext = (): PageInitContext => ({
-  clientToken: getCookie('token'),
-})*/
+export type PageInitContext = {
+  clientToken?: string
+}
 
-/*
+export type PageInitArgs = {
+  dispatch: TAppDispatch
+  state: TRootState
+  ctx: PageInitContext
+}
+
+const createContext = (): PageInitContext => ({
+  clientToken: getCookie('token'),
+})
+
 type PageProps = {
   initPage: (data: PageInitArgs) => Promise<unknown>
 }
-*/
 
-/*export const usePage = ({ initPage }: PageProps) => {
+export const usePage = ({ initPage }: PageProps) => {
   const dispatch = useDispatch()
-  const pageHasBeenInitializedOnServer = useSelector(
+  const pageHasBeenInitializedOnServer = useAppSelector(
     selectPageHasBeenInitializedOnServer
   )
   const store = useStore()
@@ -42,4 +51,4 @@ type PageProps = {
     }
     initPage({ dispatch, state: store.getState(), ctx: createContext() })
   }, [])
-}*/
+}

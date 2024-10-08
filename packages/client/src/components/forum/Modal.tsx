@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import { Topic } from '@src/types'
-import { TextArea } from '@gravity-ui/uikit'
+import { TextArea } from '@components/UI'
 
 interface ModalProps {
   onClose: () => void

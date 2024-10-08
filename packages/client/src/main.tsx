@@ -1,6 +1,3 @@
-import { ThemeProvider } from '@gravity-ui/uikit'
-import '@gravity-ui/uikit/styles/fonts.css'
-import '@gravity-ui/uikit/styles/styles.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
@@ -15,10 +12,8 @@ startServiceWorker()
 ReactDOM.hydrateRoot(
   document.getElementById('root') as HTMLElement,
   <React.StrictMode>
-    <ThemeProvider theme="dark">
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ThemeProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 )

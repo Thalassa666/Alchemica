@@ -1,4 +1,4 @@
-import { ArrowButton } from '@components/UI'
+import { ArrowButton, Input } from '@components/UI'
 import { useForm } from '@core/hooks'
 import { registerUser } from '@core/store/reducers/auth.reducer'
 import { soundActions } from '@core/store/reducers/sound.reducer'
@@ -8,7 +8,6 @@ import {
   RegistrationFormData,
   registrationSchema,
 } from '@core/validation/validationSchema'
-import { TextInput } from '@gravity-ui/uikit'
 import { useDispatch } from 'react-redux'
 import { Link, redirect } from 'react-router-dom'
 import styles from './styles.module.scss'
@@ -48,7 +47,7 @@ export const Register = () => {
         onSubmit={handleSubmit}
       >
         <h2>REGISTER</h2>
-        <TextInput
+        <Input
           size={'l'}
           type={'text'}
           placeholder={'login'}
@@ -59,7 +58,7 @@ export const Register = () => {
           errorMessage={errors.login}
           autoComplete={'login'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'text'}
           placeholder={'first_name'}
@@ -70,7 +69,7 @@ export const Register = () => {
           errorMessage={errors.first_name}
           autoComplete={'name'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'text'}
           placeholder={'second_name'}
@@ -81,7 +80,7 @@ export const Register = () => {
           errorMessage={errors.second_name}
           autoComplete={'name'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'email'}
           placeholder={'email'}
@@ -92,7 +91,7 @@ export const Register = () => {
           errorMessage={errors.email}
           autoComplete={'email'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'tel'}
           placeholder={'phone'}
@@ -103,7 +102,7 @@ export const Register = () => {
           errorMessage={errors.phone}
           autoComplete={'phone'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'password'}
           placeholder={'password'}

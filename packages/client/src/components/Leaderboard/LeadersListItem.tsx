@@ -1,4 +1,4 @@
-import { Avatar } from '@gravity-ui/uikit'
+import { Avatar } from '@components/UI'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
 

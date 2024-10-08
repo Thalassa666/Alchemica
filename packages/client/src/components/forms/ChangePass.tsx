@@ -1,8 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { TAppDispatch } from '@core/store/store'
 import styles from '@components/forms/styles.module.scss'
-import { TextInput } from '@gravity-ui/uikit'
-import { ArrowButton, TextButton } from '@components/UI'
+import { ArrowButton, TextButton, Input } from '@components/UI'
 import { useNavigate } from 'react-router-dom'
 import { useForm, useAppSelector } from '@core/hooks'
 import {
@@ -48,7 +47,7 @@ export const ChangePass = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2>CHANGE PASSWORD</h2>
         {/* Поле для старого пароля */}
-        <TextInput
+        <Input
           size={'l'}
           type={'password'}
           placeholder={'Old Password'}
@@ -61,7 +60,7 @@ export const ChangePass = () => {
         />
 
         {/* Поле для нового пароля */}
-        <TextInput
+        <Input
           size={'l'}
           type={'password'}
           placeholder={'New Password'}

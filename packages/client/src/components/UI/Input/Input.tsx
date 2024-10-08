@@ -6,7 +6,7 @@ interface InputProps {
   type: 'text' | 'password' | 'email' | 'number' | 'tel'
   placeholder: string
   name: string
-  value: string
+  value: string | undefined | number
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
   validationState?: 'valid' | 'invalid'
   errorMessage?: string
