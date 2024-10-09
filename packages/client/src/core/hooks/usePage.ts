@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import { useAppSelector } from '@core/hooks/useAppSelector'
 import { useDispatch, useStore } from 'react-redux'
 
-const getCookie = (name: string) => {
+const getCookie = (name: string): string | undefined => {
   const matches = document.cookie.match(
     new RegExp(
       '(?:^|; )' +
@@ -19,6 +19,7 @@ const getCookie = (name: string) => {
   return matches ? decodeURIComponent(matches[1]) : undefined
 }
 
+// Определение контекста страницы для инициализации
 export type PageInitContext = {
   clientToken?: string
 }
@@ -38,17 +39,30 @@ type PageProps = {
 }
 
 export const usePage = ({ initPage }: PageProps) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<TAppDispatch>()
   const pageHasBeenInitializedOnServer = useAppSelector(
     selectPageHasBeenInitializedOnServer
   )
-  const store = useStore()
+  const store = useStore<TRootState>()
 
   useEffect(() => {
-    if (pageHasBeenInitializedOnServer) {
-      dispatch(setPageHasBeenInitializedOnServer(false))
-      return
+    const initializePage = async () => {
+      if (pageHasBeenInitializedOnServer) {
+        dispatch(setPageHasBeenInitializedOnServer(false))
+        return
+      }
+
+      try {
+        await initPage({
+          dispatch,
+          state: store.getState(),
+          ctx: createContext(),
+        })
+      } catch (error) {
+        console.error('Error during page initialization:', error)
+      }
     }
-    initPage({ dispatch, state: store.getState(), ctx: createContext() })
-  }, [])
+
+    initializePage()
+  }, [dispatch, initPage, store, pageHasBeenInitializedOnServer])
 }

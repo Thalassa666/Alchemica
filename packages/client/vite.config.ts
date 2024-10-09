@@ -16,6 +16,8 @@ export default defineConfig({
   },
   build: {
     outDir: path.join(__dirname, 'dist/client'),
+    cssCodeSplit: true,
+    manifest: true,
   },
   plugins: [react()],
   publicDir: 'public',

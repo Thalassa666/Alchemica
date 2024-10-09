@@ -1,21 +1,19 @@
 import { Header } from '@components/header/Header'
 import { Outlet } from 'react-router-dom'
-import { useEffect } from 'react'
 import { useAppSelector } from '@core/hooks/useAppSelector'
-import { TAppDispatch } from '@core/store/store'
-import { useDispatch } from 'react-redux'
 import { getUserData } from '@core/store/reducers/auth.reducer'
+import { PageInitArgs, usePage } from '@core/hooks/usePage'
 
 const Home = () => {
-  const dispatch = useDispatch<TAppDispatch>()
   const { isAuth } = useAppSelector(state => state.authReducer)
 
-  useEffect(() => {
-    if (isAuth) {
-      return
-    }
-    dispatch(getUserData())
-  }, [isAuth])
+  usePage({
+    initPage: async ({ dispatch }: PageInitArgs) => {
+      if (!isAuth) {
+        await dispatch(getUserData())
+      }
+    },
+  })
 
   return (
     <>
@@ -25,9 +23,9 @@ const Home = () => {
   )
 }
 
-export const initHomePage = async () => {
-  const dispatch = useDispatch<TAppDispatch>()
-  return dispatch(getUserData())
+// Функция для инициализации на серверной стороне
+export const initHomePage = async ({ dispatch }: PageInitArgs) => {
+  await dispatch(getUserData())
 }
 
 export default Home
