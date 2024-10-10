@@ -1,5 +1,4 @@
 import { useAppSelector } from '@core/hooks/useAppSelector'
-import { serverRoutes } from '@core/router/serverRouter'
 import { useEffect, useRef } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import common from '../src/assets/audio/common.mp3'

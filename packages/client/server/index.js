@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { pathToFileURL, fileURLToPath } from 'url';
+import serialize from 'serialize-javascript';
 import dotenv from 'dotenv';
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
@@ -48,10 +49,14 @@ async function createServer() {
                 const pathToServer = pathToFileURL(path.join(clientPath, 'dist/server/entry-server.js')).href;
                 render = (await import(pathToServer)).render;
             }
-            const { html: appHtml, initialState } = await render(req);
+            // Получаем HTML-строку из JSX
+            const { html: appHtml, initialState, helmet } = await render(req);
             const html = template
+                .replace(`<!--ssr-helmet-->`, `${helmet.meta.toString()} ${helmet.title.toString()} ${helmet.link.toString()}`)
                 .replace(`<!--ssr-outlet-->`, appHtml)
-                .replace(`<!--ssr-initial-state-->`, `<script>window.APP_INITIAL_STATE = ${JSON.stringify(initialState)}</script>`);
+                .replace(`<!--ssr-initial-state-->`, `<script>window.APP_INITIAL_STATE = ${serialize(initialState, {
+                isJSON: true,
+            })}</script>`);
             res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
         }
         catch (e) {

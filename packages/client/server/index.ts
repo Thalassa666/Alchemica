@@ -1,6 +1,8 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { pathToFileURL, fileURLToPath } from 'url'
+import serialize from 'serialize-javascript'
+import { HelmetData } from 'react-helmet'
 import dotenv from 'dotenv'
 import express, { Request as ExpressRequest } from 'express'
 import { createServer as createViteServer, ViteDevServer } from 'vite'
@@ -44,7 +46,7 @@ async function createServer() {
     try {
       let render: (
         req: ExpressRequest
-      ) => Promise<{ html: string; initialState: unknown }>
+      ) => Promise<{ html: string; initialState: unknown; helmet: HelmetData }>
       let template: string
 
       if (vite) {
@@ -74,15 +76,20 @@ async function createServer() {
         render = (await import(pathToServer)).render
       }
 
-      const { html: appHtml, initialState } = await render(req)
+      // Получаем HTML-строку из JSX
+      const { html: appHtml, initialState, helmet } = await render(req)
 
       const html = template
+        .replace(
+          `<!--ssr-helmet-->`,
+          `${helmet.meta.toString()} ${helmet.title.toString()} ${helmet.link.toString()}`
+        )
         .replace(`<!--ssr-outlet-->`, appHtml)
         .replace(
           `<!--ssr-initial-state-->`,
-          `<script>window.APP_INITIAL_STATE = ${JSON.stringify(
-            initialState
-          )}</script>`
+          `<script>window.APP_INITIAL_STATE = ${serialize(initialState, {
+            isJSON: true,
+          })}</script>`
         )
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)

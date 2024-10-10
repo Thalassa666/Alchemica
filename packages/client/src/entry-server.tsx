@@ -4,6 +4,7 @@ import { reducer } from '@core/store/store'
 import { configureStore } from '@reduxjs/toolkit'
 import { Request as ExpressRequest } from 'express'
 import ReactDOM from 'react-dom/server'
+import { Helmet } from 'react-helmet'
 import { Provider } from 'react-redux'
 import {
   createStaticHandler,
@@ -36,7 +37,7 @@ export const render = async (req: ExpressRequest) => {
   // 6.
   const router = createStaticRouter(dataRoutes, context)
 
-  // 7.
+  const helmet = Helmet.renderStatic()
   return {
     html: ReactDOM.renderToString(
       <Provider store={store}>
@@ -44,5 +45,6 @@ export const render = async (req: ExpressRequest) => {
       </Provider>
     ),
     initialState: store.getState(),
+    helmet: helmet,
   }
 }

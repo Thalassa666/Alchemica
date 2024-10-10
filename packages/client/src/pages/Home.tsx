@@ -2,6 +2,7 @@ import { Header } from '@components/header/Header'
 import { PageInitArgs, usePage } from '@core/hooks/usePage'
 import { getUserData } from '@core/store/reducers/auth.reducer'
 import { Outlet } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 const Home = () => {
   usePage({
@@ -12,6 +13,11 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Главная</title>
+        <meta name="description" content="Home page" />
+      </Helmet>
       <Header />
       <Outlet />
     </>
