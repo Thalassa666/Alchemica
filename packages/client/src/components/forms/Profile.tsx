@@ -15,6 +15,16 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styles from './styles.module.scss'
 
+const emptyUser: IUser = {
+  first_name: '',
+  second_name: '',
+  login: '',
+  email: '',
+  password: '',
+  phone: '',
+  avatar: null,
+}
+
 export const Profile = () => {
   const dispatch = useDispatch<TAppDispatch>()
   const navigate = useNavigate()
@@ -22,7 +32,7 @@ export const Profile = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const { userData, isLoading } = useAppSelector(state => state.authReducer)
   const { first_name, second_name, login, email, phone, avatar } =
-    userData as IUser
+    userData ?? emptyUser
 
   const { formData, errors, handleChange, handleSubmit } =
     useForm<RegistrationFormData>({
@@ -65,7 +75,7 @@ export const Profile = () => {
     <div className={styles.wrapperProfile}>
       <form className={styles.formProfile} onSubmit={handleSubmit}>
         <h2>WELCOME BACK</h2>
-        <UploadAvatar src={avatar} />
+        <UploadAvatar src={avatar ?? ''} />
         <p className={styles.name}>{first_name.toUpperCase()}</p>
         <TextInput
           size={'l'}

@@ -1,6 +1,7 @@
 import userReducer from '@core/store/reducers/user.reducer'
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from './reducers/auth.reducer'
+import { leaderboardReducer } from './reducers/leaderboard.reducer'
 import { soundReducer } from './reducers/sound.reducer'
 
 export const store = configureStore({
@@ -8,6 +9,7 @@ export const store = configureStore({
     authReducer,
     userReducer,
     soundReducer,
+    leaderboardReducer,
   },
 })
 

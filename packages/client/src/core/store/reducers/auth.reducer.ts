@@ -38,7 +38,7 @@ const loginUserWithYandex = createAsyncThunk(
 )
 
 export interface IUserState {
-  userData: IUser | Record<string, unknown>
+  userData: IUser | null
   isLoading: boolean
   isError: boolean
   errorMessage: string | null
@@ -48,7 +48,7 @@ export interface IUserState {
 }
 
 const initialState: IUserState = {
-  userData: {},
+  userData: null,
   isLoading: false,
   isError: false,
   errorMessage: null,
@@ -159,7 +159,7 @@ export const authReducer = createSlice({
         state.isLoading = true
       })
       .addCase(logoutUser.fulfilled, state => {
-        state.userData = {}
+        state.userData = null
         state.isAuth = false
         state.isLoading = false
         state.isYandexAuth = null
