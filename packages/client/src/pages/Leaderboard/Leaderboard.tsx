@@ -1,39 +1,31 @@
 import { LeadersListItem } from '@components/Leaderboard'
+import { Loader } from '@gravity-ui/uikit'
+import { useFetch } from './lib/useFetch'
 import styles from './styles.module.scss'
 
 const Leaderboard = () => {
+  const { data, isLoading, isError, errorMessage } = useFetch()
+
   return (
     <>
       <section className={styles.layout}>
         <div className={styles.background}>
           <div className={styles.leaderboard}>
             <h2>BOARD OF HONOR</h2>
-            <ul className={styles.list}>
-              <LeadersListItem
-                title={'Диплом с отличием'}
-                time={18000}
-                imagUrl={
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTcQ-IfY7IMPcRZFvL_HwG0NuVRLejlGfncQ&s'
-                }
-                iconBackgroundClass={'first'}
-              />
-              <LeadersListItem
-                title={'Почетный выпускник'}
-                time={99999}
-                imagUrl={
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTcQ-IfY7IMPcRZFvL_HwG0NuVRLejlGfncQ&s'
-                }
-                iconBackgroundClass={'second'}
-              />
-              <LeadersListItem
-                title={'Гордость академии'}
-                time={1245558}
-                imagUrl={
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTcQ-IfY7IMPcRZFvL_HwG0NuVRLejlGfncQ&s'
-                }
-                iconBackgroundClass={'third'}
-              />
-            </ul>
+
+            {isError && <p>Ошибка: {errorMessage} </p>}
+            {isLoading && <Loader />}
+
+            {data && (
+              <ul className={styles.list}>
+                {data?.map(item => (
+                  <LeadersListItem
+                    key={item.data.user.login}
+                    data={item.data}
+                  />
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </section>

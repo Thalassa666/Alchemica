@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import styles from './styles.module.scss'
-import { Header } from '@components/header/Header'
-import { Layout } from './Layout'
 import ForumList from '@components/forum/ForumList'
 import Modal from '@components/forum/Modal'
+import { Header } from '@components/header/Header'
 import { Section, Topic } from '@src/types'
+import React, { useState } from 'react'
 import { mockForumSections } from '../../../mocks/forumMock'
+import { Layout } from './Layout'
+import styles from './styles.module.scss'
 
 const Forum: React.FC = () => {
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null)

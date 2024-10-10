@@ -113,7 +113,7 @@ export const Register = () => {
           errorMessage={errors.password}
           autoComplete={'password'}
         />
-        <ArrowButton type={'submit'} />
+        <ArrowButton type={'submit'} data-testid="submitBtn" />
         <Link className={styles.link} to={'/login'}>
           Вход в игру
         </Link>

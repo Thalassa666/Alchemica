@@ -1,9 +1,6 @@
 const CACHE_NAME = 'alc-cache-v1'
 
-const URLS = [
-  '/',
-  '/index.html',
-]
+const URLS = ['/', '/index.html']
 
 async function getFilesFromManifest() {
   try {
@@ -11,9 +8,7 @@ async function getFilesFromManifest() {
     const manifestResponse = await fetch(manifestUrl)
 
     if (!manifestResponse.ok) {
-      console.warn(
-        'Manifest not found'
-      )
+      console.warn('Manifest not found')
       return []
     }
 

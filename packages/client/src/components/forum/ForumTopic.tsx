@@ -1,6 +1,6 @@
+import { Topic, Message } from '@src/types'
 import React from 'react'
 import styles from './styles.module.scss'
-import { Topic, Message } from '@src/types'
 
 interface TopicProps {
   topic: Topic

@@ -8,17 +8,15 @@ import './App.css'
 import { routes } from '@core/router'
 
 function App() {
-  const gameAudio = useRef<any>()
+  const gameAudio = useRef<HTMLAudioElement>(null)
   const { soundOn, track } = useAppSelector(state => state.soundReducer)
 
   useEffect(() => {
     if (soundOn) {
-      console.log('sound on!')
-      gameAudio.current.play()
+      gameAudio.current?.play()
     }
     if (!soundOn) {
-      console.log('sound off')
-      gameAudio.current.pause()
+      gameAudio.current?.pause()
     }
   }, [soundOn])
 

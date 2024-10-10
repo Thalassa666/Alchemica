@@ -1,5 +1,5 @@
 import { store } from '@core/store/store'
-import { render } from '@testing-library/react'
+import { render, act } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import App from './App'
 
@@ -8,10 +8,14 @@ global.fetch = jest.fn(() =>
   Promise.resolve({ json: () => Promise.resolve('hey') })
 )
 
+HTMLMediaElement.prototype.pause = jest.fn()
+
 test('Example test', async () => {
-  render(
-    <Provider store={store}>
-      <App />{' '}
-    </Provider>
-  )
+  await act(() => {
+    render(
+      <Provider store={store}>
+        <App />{' '}
+      </Provider>
+    )
+  })
 })

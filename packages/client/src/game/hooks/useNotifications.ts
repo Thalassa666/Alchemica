@@ -1,4 +1,4 @@
-import NotificationDefaultImgSrc from '@assets/images/icon-in-progress.png'
+import NotificationDefaultImgSrc from '@assets/images/icons/fullscreen.png'
 import { GameColors, Game } from '../constants/misc'
 import { CanvasContext, FullLocation, GameNotification } from '../types/types'
 import { useGameState } from './useGameState'

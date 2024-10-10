@@ -1,5 +1,5 @@
-import styles from './styles.module.scss'
 import { ReactNode } from 'react'
+import styles from './styles.module.scss'
 
 type TLeaderboardLayoutProps = {
   children: ReactNode

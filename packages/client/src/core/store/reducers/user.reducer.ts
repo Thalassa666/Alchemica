@@ -2,15 +2,15 @@
 // Данный редьюсер реализован только в учебных целях, так как все данные пользователя хранятся в auth.reducer
 // ***
 
+import { userApi } from '@core/api'
+import { IUserChangePass } from '@core/utils/interfaces/User'
+import { RegistrationFormData } from '@core/validation/validationSchema'
 import {
   createAsyncThunk,
   createSlice,
   PayloadAction,
   SerializedError,
 } from '@reduxjs/toolkit'
-import { IUserChangePass } from '@core/utils/interfaces/User'
-import { userApi } from '@core/api'
-import { RegistrationFormData } from '@core/validation/validationSchema'
 
 // Обновление данных пользователя
 const updateUserData = createAsyncThunk(
