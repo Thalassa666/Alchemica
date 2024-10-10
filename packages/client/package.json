@@ -10,9 +10,6 @@
     "format": "prettier --write .",
     "test": "jest ./"
   },
-  "engines": {
-    "node": "^16.0.0"
-  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "@types/react-helmet": "^6.1.11",
