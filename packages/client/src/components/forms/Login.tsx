@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, redirect } from 'react-router-dom'
 import styles from './styles.module.scss'
+import { redirect_uri } from '@core/utils/constants'
 
 export const Login = () => {
   const dispatch = useDispatch<TAppDispatch>()
@@ -38,8 +39,7 @@ export const Login = () => {
   }
 
   useEffect(() => {
-    if (appID !== null && appID !== undefined) {
-      const redirect_uri = 'http://localhost:3000'
+    if (appID) {
       window.location.replace(
         `https://oauth.yandex.ru/authorize?response_type=code&client_id=${appID}&redirect_uri=${redirect_uri}`
       )
@@ -83,7 +83,11 @@ export const Login = () => {
         <Link className={styles.link} to={'/register'}>
           Зарегистрироваться
         </Link>
-        <button className={styles.linkButton} onClick={onYandexButtonClick}>
+        <button
+          className={styles.linkButton}
+          onClick={onYandexButtonClick}
+          type="button"
+        >
           Или войти через Яндекс
         </button>
       </form>

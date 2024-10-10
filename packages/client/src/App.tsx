@@ -7,16 +7,15 @@ import game from '../src/assets/audio/game.mp3'
 import './App.css'
 
 function App() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const gameAudio = useRef<any>()
+  const gameAudio = useRef<HTMLAudioElement>(null)
   const { soundOn, track } = useAppSelector(state => state.soundReducer)
 
   useEffect(() => {
     if (soundOn) {
-      gameAudio.current.play()
+      gameAudio.current?.play()
     }
     if (!soundOn) {
-      gameAudio.current.pause()
+      gameAudio.current?.pause()
     }
   }, [soundOn])
 

@@ -5,6 +5,7 @@ import {
   loginUserWithYandex,
 } from '@core/store/reducers/auth.reducer'
 import { TAppDispatch } from '@core/store/store'
+import { redirect_uri } from '@core/utils/constants'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Outlet, useSearchParams } from 'react-router-dom'
@@ -15,7 +16,6 @@ const Home = () => {
   const [params] = useSearchParams()
 
   useEffect(() => {
-    const redirect_uri = 'http://localhost:3000'
     const code = params.get('code')
     if (code && isYandexAuth !== 'OK') {
       const data = {
