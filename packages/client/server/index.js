@@ -1,10 +1,10 @@
-import dotenv from 'dotenv';
-dotenv.config();
-import express from 'express';
+import fs from 'fs/promises';
 import path from 'path';
 import { pathToFileURL, fileURLToPath } from 'url';
-import fs from 'fs/promises';
+import dotenv from 'dotenv';
+import express from 'express';
 import { createServer as createViteServer } from 'vite';
+dotenv.config();
 // Определяем __dirname для ES-модулей
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,7 +23,14 @@ async function createServer() {
         app.use(vite.middlewares);
     }
     else {
-        app.use(express.static(path.join(clientPath, 'dist/client'), { index: false }));
+        app.use(express.static(path.join(clientPath, 'dist/client'), {
+            index: false,
+            setHeaders: (res, path) => {
+                if (path.endsWith('.js')) {
+                    res.set('Content-Type', 'application/javascript');
+                }
+            },
+        }));
     }
     app.get('*', async (req, res, next) => {
         const url = req.originalUrl;

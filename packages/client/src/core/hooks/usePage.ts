@@ -64,5 +64,5 @@ export const usePage = ({ initPage }: PageProps) => {
     }
 
     initializePage()
-  }, [dispatch, initPage, store, pageHasBeenInitializedOnServer])
+  }, [dispatch, initPage, pageHasBeenInitializedOnServer])
 }

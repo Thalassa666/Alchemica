@@ -11,21 +11,10 @@ import PlayGame from '@pages/PlayGame/PlayGame'
 import Profile from '@pages/Profile/Profile'
 import Register from '@pages/Register'
 import Topic from '@pages/Topic'
-import { createBrowserRouter } from 'react-router-dom'
 import errorBookImage from '../../assets/images/icons/error_book.png'
 import errorPotionImage from '../../assets/images/icons/error_potion.png'
-import { TAppDispatch, TRootState } from '@core/store/store'
 
-export type PageInitContext = {
-  clientToken?: string
-}
-
-export type PageInitArgs = {
-  dispatch: TAppDispatch
-  state: TRootState
-  ctx: PageInitContext
-}
-export const router = createBrowserRouter([
+export const routes = [
   {
     path: '/',
     element: (
@@ -120,4 +109,4 @@ export const router = createBrowserRouter([
       />
     ),
   },
-])
+]

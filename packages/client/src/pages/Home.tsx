@@ -5,13 +5,9 @@ import { getUserData } from '@core/store/reducers/auth.reducer'
 import { PageInitArgs, usePage } from '@core/hooks/usePage'
 
 const Home = () => {
-  const { isAuth } = useAppSelector(state => state.authReducer)
-
   usePage({
     initPage: async ({ dispatch }: PageInitArgs) => {
-      if (!isAuth) {
-        await dispatch(getUserData())
-      }
+      await dispatch(getUserData())
     },
   })
 

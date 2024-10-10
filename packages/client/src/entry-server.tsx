@@ -1,23 +1,21 @@
-import React from 'react'
+import { routes } from '@core/router'
+import { setPageHasBeenInitializedOnServer } from '@core/store/reducers/ssr.reducer'
+import { reducer } from '@core/store/store'
+import { configureStore } from '@reduxjs/toolkit'
+import { Request as ExpressRequest } from 'express'
 import ReactDOM from 'react-dom/server'
 import { Provider } from 'react-redux'
-import { Request as ExpressRequest } from 'express'
 import {
   createStaticHandler,
   createStaticRouter,
   StaticRouterProvider,
 } from 'react-router-dom/server'
-import { configureStore } from '@reduxjs/toolkit'
-
 import { createFetchRequest } from './entry-server.utils'
-import { reducer } from '@core/store/store'
 import './index.css'
-import { serverRoutes } from '@core/router/serverRouter'
-import { setPageHasBeenInitializedOnServer } from '@core/store/reducers/ssr.reducer'
 
 export const render = async (req: ExpressRequest) => {
   // 1.
-  const { query, dataRoutes } = createStaticHandler(serverRoutes)
+  const { query, dataRoutes } = createStaticHandler(routes)
   // 2.
   const fetchRequest = createFetchRequest(req)
   // 3.
