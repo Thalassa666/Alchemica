@@ -25,6 +25,22 @@
     border: none;
     text-align: center;
     color: black;
+
+    &:hover {
+      opacity: 0.5;
+      transition: 0.4s;
+    }
+  }
+
+  .linkButton {
+    color: #aeaeae !important;
+    background-color: transparent !important;
+    text-decoration: underline;
+
+    &:hover {
+      opacity: 0.5;
+      transition: 0.4s;
+    }
   }
 }
 
@@ -126,6 +142,11 @@
 
 .link {
   color: #aeaeae;
+  
+  &:hover {
+    opacity: 0.5;
+    transition: 0.4s;
+  }
 }
 
 .musicButton {

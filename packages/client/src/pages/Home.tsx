@@ -1,20 +1,44 @@
 import { Header } from '@components/header/Header'
 import { useAppSelector } from '@core/hooks/useAppSelector'
-import { getUserData } from '@core/store/reducers/auth.reducer'
+import {
+  getUserData,
+  loginUserWithYandex,
+} from '@core/store/reducers/auth.reducer'
 import { TAppDispatch } from '@core/store/store'
+import { redirect_uri } from '@core/utils/constants'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useSearchParams } from 'react-router-dom'
 
 const Home = () => {
   const dispatch = useDispatch<TAppDispatch>()
-  const { isAuth } = useAppSelector(state => state.authReducer)
+  const { isAuth, isYandexAuth } = useAppSelector(state => state.authReducer)
+  const [params] = useSearchParams()
 
   useEffect(() => {
-    if (isAuth) {
+    const code = params.get('code')
+    if (code && isYandexAuth !== 'OK') {
+      const data = {
+        code: code,
+        redirect_uri: redirect_uri,
+      }
+      dispatch(loginUserWithYandex(data))
+    }
+  }, [params])
+
+  useEffect(() => {
+    if (isYandexAuth === 'OK') {
+      dispatch(getUserData())
+    }
+  }, [isYandexAuth])
+
+  useEffect(() => {
+    if (isAuth && isYandexAuth === 'OK') {
       return
     }
-    dispatch(getUserData())
+    if (!isAuth && !(isYandexAuth === 'OK')) {
+      dispatch(getUserData())
+    }
   }, [isAuth])
 
   return (

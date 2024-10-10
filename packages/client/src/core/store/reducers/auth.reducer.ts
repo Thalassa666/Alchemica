@@ -1,5 +1,5 @@
 import { authApi } from '@core/api'
-import { IUser, TUserQuery } from '@core/utils/interfaces/User'
+import { IUser, TOauthRequest, TUserQuery } from '@core/utils/interfaces/User'
 import {
   createAsyncThunk,
   createSlice,
@@ -23,12 +23,28 @@ const logoutUser = createAsyncThunk('auth/logout', async () => {
   return await authApi.logout()
 })
 
+const getAppIDForYandex = createAsyncThunk(
+  'oauth/yandex/service_id',
+  async () => {
+    return await authApi.getAppID()
+  }
+)
+
+const loginUserWithYandex = createAsyncThunk(
+  'oauth/yandex',
+  async (data: TOauthRequest) => {
+    return await authApi.signInWithYandex(data)
+  }
+)
+
 export interface IUserState {
   userData: IUser | Record<string, unknown>
   isLoading: boolean
   isError: boolean
   errorMessage: string | null
   isAuth: boolean
+  appID?: string | null
+  isYandexAuth?: string | null
 }
 
 const initialState: IUserState = {
@@ -37,6 +53,8 @@ const initialState: IUserState = {
   isError: false,
   errorMessage: null,
   isAuth: false,
+  appID: null,
+  isYandexAuth: null,
 }
 
 export const authReducer = createSlice({
@@ -98,6 +116,44 @@ export const authReducer = createSlice({
         }
       })
 
+      // Вход в систему через Яндекс - получение ID
+      .addCase(getAppIDForYandex.pending, state => {
+        state.isLoading = true
+      })
+      .addCase(
+        getAppIDForYandex.fulfilled,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (state, action: PayloadAction<any>) => {
+          state.appID = action.payload.service_id
+          state.isLoading = false
+        }
+      )
+      .addCase(getAppIDForYandex.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.errorMessage =
+          (action.error as SerializedError).message ?? 'Произошла ошибка'
+      })
+
+      // Вход в систему через Яндекс - авторизация
+      .addCase(loginUserWithYandex.pending, state => {
+        state.isLoading = true
+      })
+      .addCase(
+        loginUserWithYandex.fulfilled,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (state, action: PayloadAction<any>) => {
+          state.isYandexAuth = action.payload
+          state.isLoading = false
+        }
+      )
+      .addCase(loginUserWithYandex.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.errorMessage =
+          (action.error as SerializedError).message ?? 'Произошла ошибка'
+      })
+
       // Выход из системы
       .addCase(logoutUser.pending, state => {
         state.isLoading = true
@@ -106,9 +162,13 @@ export const authReducer = createSlice({
         state.userData = {}
         state.isAuth = false
         state.isLoading = false
+        state.isYandexAuth = null
+        state.appID = null
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.isAuth = false
+        state.isYandexAuth = null
+        state.appID = null
         state.isLoading = false
         state.isError = true
         state.errorMessage =
@@ -120,4 +180,11 @@ export const authReducer = createSlice({
 
 export default authReducer.reducer
 
-export { getUserData, registerUser, loginUser, logoutUser }
+export {
+  getUserData,
+  registerUser,
+  loginUser,
+  logoutUser,
+  loginUserWithYandex,
+  getAppIDForYandex,
+}
