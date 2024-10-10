@@ -63,7 +63,7 @@ export const Profile = () => {
     <div className={styles.wrapperProfile}>
       <form className={styles.formProfile} onSubmit={handleSubmit}>
         <h2>WELCOME BACK</h2>
-        <UploadAvatar src={avatar} />
+        <UploadAvatar src={avatar ?? ''} />
         <p className={styles.name}>{first_name}</p>
         <Input
           size={'l'}

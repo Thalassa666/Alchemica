@@ -1,5 +1,5 @@
 import { LeadersListItem } from '@components/Leaderboard'
-import { Loader } from '@gravity-ui/uikit'
+import { Loader } from '@components/UI'
 import { useFetch } from './lib/useFetch'
 import styles from './styles.module.scss'
 

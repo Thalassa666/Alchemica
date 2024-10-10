@@ -1,8 +1,7 @@
 import { Header } from '@components/header/Header'
-import { Outlet } from 'react-router-dom'
-import { useAppSelector } from '@core/hooks/useAppSelector'
-import { getUserData } from '@core/store/reducers/auth.reducer'
 import { PageInitArgs, usePage } from '@core/hooks/usePage'
+import { getUserData } from '@core/store/reducers/auth.reducer'
+import { Outlet } from 'react-router-dom'
 
 const Home = () => {
   usePage({
