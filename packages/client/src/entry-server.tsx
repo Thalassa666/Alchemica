@@ -45,6 +45,6 @@ export const render = async (req: ExpressRequest) => {
       </Provider>
     ),
     initialState: store.getState(),
-    helmet: helmet,
+    helmet,
   }
 }
