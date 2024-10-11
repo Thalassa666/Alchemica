@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react'
-import styles from './Avatar.module.scss'
+import styles from './avatar.module.scss'
 
 interface AvatarProps {
   className?: string
