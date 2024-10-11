@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react'
-import styles from './Input.module.scss'
+import styles from './input.module.scss'
 
 interface InputProps {
   size: 's' | 'm' | 'l'
