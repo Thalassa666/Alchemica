@@ -5,6 +5,7 @@ import { GameColors } from '../constants/misc'
 import { hasCollision } from '../helpers/hasCollision'
 import { CanvasContext, CraftTool, Position, Size } from '../types/types'
 import { useGameState } from './useGameState'
+import { speak } from '@game/helpers/speechSynthesis'
 
 const craftToolsValues = Object.values(CraftTools)
 
@@ -97,6 +98,13 @@ export const useCraftTools = () => {
 
   /** Установить интерактивный объект как объект рядом с игроком */
   const activateTool = (collision: CraftTool) => {
+    const currentNearPlayer = getCraftTools().nearPlayer
+
+    if (currentNearPlayer?.key !== collision.key) {
+      //озвучка активной коллизии
+      speak(`${collision.label}`)
+    }
+
     updateCraftTools({ nearPlayer: collision })
   }
 
