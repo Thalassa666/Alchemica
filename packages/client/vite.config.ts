@@ -1,7 +1,8 @@
-import { resolve } from 'path'
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import dotenv from 'dotenv'
-import { defineConfig } from 'vite'
+import { resolve } from 'path'
+import path from 'path'
 
 dotenv.config()
 
@@ -12,6 +13,11 @@ export default defineConfig({
   },
   define: {
     __SERVER_PORT__: process.env.SERVER_PORT,
+  },
+  build: {
+    outDir: path.join(__dirname, 'dist/client'),
+    cssCodeSplit: true,
+    manifest: true,
   },
   plugins: [react()],
   publicDir: 'public',
@@ -26,7 +32,11 @@ export default defineConfig({
       '@pages': resolve(__dirname, 'src/pages'),
     },
   },
-  build: {
-    manifest: true,
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['legacy-js-api'],
+      },
+    },
   },
 })

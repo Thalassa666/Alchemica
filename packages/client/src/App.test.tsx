@@ -11,10 +11,10 @@ global.fetch = jest.fn(() =>
 HTMLMediaElement.prototype.pause = jest.fn()
 
 test('Example test', async () => {
-  await act(() => {
+  await act(async () => {
     render(
       <Provider store={store}>
-        <App />{' '}
+        <App />
       </Provider>
     )
   })

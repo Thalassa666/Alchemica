@@ -1,52 +1,32 @@
 import { Header } from '@components/header/Header'
-import { useAppSelector } from '@core/hooks/useAppSelector'
-import {
-  getUserData,
-  loginUserWithYandex,
-} from '@core/store/reducers/auth.reducer'
-import { TAppDispatch } from '@core/store/store'
-import { redirect_uri } from '@core/utils/constants'
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { Outlet, useSearchParams } from 'react-router-dom'
+import { PageInitArgs, usePage } from '@core/hooks/usePage'
+import { getUserData } from '@core/store/reducers/auth.reducer'
+import { Outlet } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 const Home = () => {
-  const dispatch = useDispatch<TAppDispatch>()
-  const { isAuth, isYandexAuth } = useAppSelector(state => state.authReducer)
-  const [params] = useSearchParams()
-
-  useEffect(() => {
-    const code = params.get('code')
-    if (code && isYandexAuth !== 'OK') {
-      const data = {
-        code: code,
-        redirect_uri: redirect_uri,
-      }
-      dispatch(loginUserWithYandex(data))
-    }
-  }, [params])
-
-  useEffect(() => {
-    if (isYandexAuth === 'OK') {
-      dispatch(getUserData())
-    }
-  }, [isYandexAuth])
-
-  useEffect(() => {
-    if (isAuth && isYandexAuth === 'OK') {
-      return
-    }
-    if (!isAuth && !(isYandexAuth === 'OK')) {
-      dispatch(getUserData())
-    }
-  }, [isAuth])
+  usePage({
+    initPage: async ({ dispatch }: PageInitArgs) => {
+      await dispatch(getUserData())
+    },
+  })
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Главная</title>
+        <meta name="description" content="Home page" />
+      </Helmet>
       <Header />
       <Outlet />
     </>
   )
+}
+
+// Функция для инициализации на серверной стороне
+export const initHomePage = async ({ dispatch }: PageInitArgs) => {
+  await dispatch(getUserData())
 }
 
 export default Home

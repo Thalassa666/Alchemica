@@ -1,3 +1,7 @@
 export { ArrowButton } from './ArrowButton/ArrowButton'
 export { TextButton } from './TextButton/TextButton'
 export { UploadAvatar } from './UploadAvatar/UploadAvatar'
+export { Input } from './Input/Input'
+export { Avatar } from './Avatar/Avatar'
+export { TextArea } from './TextAria/TextAria'
+export { Loader } from './Loader/Loader'

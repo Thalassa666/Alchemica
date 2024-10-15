@@ -1,6 +1,5 @@
-import { ArrowButton, TextButton, UploadAvatar } from '@components/UI'
-import { useAppSelector } from '@core/hooks'
-import useForm from '@core/hooks/useForms'
+import { ArrowButton, TextButton, UploadAvatar, Input } from '@components/UI'
+import { useAppSelector, useForm } from '@core/hooks'
 import { getUserData, logoutUser } from '@core/store/reducers/auth.reducer'
 import { updateUserData } from '@core/store/reducers/user.reducer'
 import { TAppDispatch } from '@core/store/store'
@@ -9,21 +8,10 @@ import {
   RegistrationFormData,
   registrationSchema,
 } from '@core/validation/validationSchema'
-import { TextInput } from '@gravity-ui/uikit'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styles from './styles.module.scss'
-
-const emptyUser: IUser = {
-  first_name: '',
-  second_name: '',
-  login: '',
-  email: '',
-  password: '',
-  phone: '',
-  avatar: null,
-}
 
 export const Profile = () => {
   const dispatch = useDispatch<TAppDispatch>()
@@ -32,7 +20,7 @@ export const Profile = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const { userData, isLoading } = useAppSelector(state => state.authReducer)
   const { first_name, second_name, login, email, phone, avatar } =
-    userData ?? emptyUser
+    userData as IUser
 
   const { formData, errors, handleChange, handleSubmit } =
     useForm<RegistrationFormData>({
@@ -76,8 +64,8 @@ export const Profile = () => {
       <form className={styles.formProfile} onSubmit={handleSubmit}>
         <h2>WELCOME BACK</h2>
         <UploadAvatar src={avatar ?? ''} />
-        <p className={styles.name}>{first_name.toUpperCase()}</p>
-        <TextInput
+        <p className={styles.name}>{first_name}</p>
+        <Input
           size={'l'}
           type={'text'}
           placeholder={'login'}
@@ -89,7 +77,7 @@ export const Profile = () => {
           disabled={disable}
           autoComplete={'login'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'text'}
           placeholder={'first_name'}
@@ -101,7 +89,7 @@ export const Profile = () => {
           disabled={disable}
           autoComplete={'name'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'text'}
           placeholder={'second_name'}
@@ -113,7 +101,7 @@ export const Profile = () => {
           disabled={disable}
           autoComplete={'name'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'email'}
           placeholder={'email'}
@@ -125,7 +113,7 @@ export const Profile = () => {
           disabled={disable}
           autoComplete={'email'}
         />
-        <TextInput
+        <Input
           size={'l'}
           type={'tel'}
           placeholder={'phone'}

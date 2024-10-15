@@ -1,8 +1,8 @@
 import FallbackImage from '@assets/images/character/character-go-left.png'
+import { Avatar } from '@components/UI'
 import { getFormattedDiff } from '@core/helpers'
 import { BASE_URL } from '@core/utils/constants'
 import { ILeaderboardResult } from '@core/utils/interfaces/Leaderboard'
-import { Avatar } from '@gravity-ui/uikit'
 import classNames from 'classnames'
 import styles from './styles.module.scss'
 

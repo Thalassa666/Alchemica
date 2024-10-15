@@ -1,8 +1,8 @@
-import ForumTopic from '@components/forum/ForumTopic'
-import { TextArea } from '@gravity-ui/uikit'
-import { Topic } from '@src/types'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styles from './styles.module.scss'
+import ForumTopic from '@components/forum/ForumTopic'
+import { Topic } from '@src/types'
+import { TextArea } from '@components/UI'
 
 interface ForumListProps {
   id: number
@@ -11,12 +11,7 @@ interface ForumListProps {
   onSelectTopic: (topic: Topic) => void
 }
 
-const ForumList: React.FC<ForumListProps> = ({
-  id,
-  title,
-  topics,
-  onSelectTopic,
-}) => {
+const ForumList = ({ id, title, topics, onSelectTopic }: ForumListProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleSection = () => {

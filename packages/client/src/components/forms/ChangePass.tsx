@@ -1,17 +1,15 @@
-import { ArrowButton, TextButton } from '@components/UI'
-import styles from '@components/forms/styles.module.scss'
-import { useAppSelector } from '@core/hooks'
-import useForm from '@core/hooks/useForms'
-import { changePassword } from '@core/store/reducers/user.reducer'
+import { useDispatch } from 'react-redux'
 import { TAppDispatch } from '@core/store/store'
+import styles from '@components/forms/styles.module.scss'
+import { ArrowButton, TextButton, Input } from '@components/UI'
+import { useNavigate } from 'react-router-dom'
+import { useForm, useAppSelector } from '@core/hooks'
 import {
   ChangePasswordFormData,
   changePasswordSchema,
 } from '@core/validation/validationSchema'
-import { TextInput } from '@gravity-ui/uikit'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { changePassword } from '@core/store/reducers/user.reducer'
 
 export const ChangePass = () => {
   const { isLoading, isError, errorMessage } = useAppSelector(
@@ -49,7 +47,7 @@ export const ChangePass = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2>CHANGE PASSWORD</h2>
         {/* Поле для старого пароля */}
-        <TextInput
+        <Input
           size={'l'}
           type={'password'}
           placeholder={'Old Password'}
@@ -62,7 +60,7 @@ export const ChangePass = () => {
         />
 
         {/* Поле для нового пароля */}
-        <TextInput
+        <Input
           size={'l'}
           type={'password'}
           placeholder={'New Password'}

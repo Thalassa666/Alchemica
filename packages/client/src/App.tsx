@@ -1,10 +1,10 @@
 import { useAppSelector } from '@core/hooks/useAppSelector'
-import { router } from '@core/router'
 import { useEffect, useRef } from 'react'
-import { RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import common from '../src/assets/audio/common.mp3'
 import game from '../src/assets/audio/game.mp3'
 import './App.css'
+import { routes } from '@core/router'
 
 function App() {
   const gameAudio = useRef<HTMLAudioElement>(null)
@@ -19,6 +19,7 @@ function App() {
     }
   }, [soundOn])
 
+  const router = createBrowserRouter(routes)
   return (
     <>
       <RouterProvider router={router} />

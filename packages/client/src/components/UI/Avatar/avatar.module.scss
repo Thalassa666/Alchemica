@@ -1,0 +1,31 @@
+.avatar-container {
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+
+  &.avatar-s {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.avatar-m {
+    width: 48px;
+    height: 48px;
+  }
+
+  &.avatar-l {
+    width: 64px;
+    height: 64px;
+  }
+
+  &.avatar-xl {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
