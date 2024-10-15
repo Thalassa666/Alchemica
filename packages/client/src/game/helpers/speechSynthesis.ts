@@ -1,13 +1,31 @@
+let selectedVoice: SpeechSynthesisVoice | null = null
+
+const initializeVoices = () => {
+  const voices = window.speechSynthesis.getVoices()
+
+  // Фильтруем только русские голоса
+  const russianVoices = voices.filter(voice => voice.lang === 'ru-RU')
+
+  // Ищем голос Павла (на маке его нет)
+  const pavelVoice = russianVoices.find(
+    voice => voice.name === 'Microsoft Pavel - Russian (Russia)'
+  )
+
+  // Если голос найден, сохраняем его, иначе берем первый русский или null
+  selectedVoice = pavelVoice
+    ? pavelVoice
+    : russianVoices.length > 0
+    ? russianVoices[0]
+    : null
+}
+
+// Обработчик события voiceschanged для асинхронной загрузки голосов
+window.speechSynthesis.onvoiceschanged = () => {
+  initializeVoices()
+}
+
 export const speak = (text: string) => {
   const utterance = new SpeechSynthesisUtterance(text)
-
-  const voices = window.speechSynthesis.getVoices() //можно выбирать из списка разные голоса
-
-  const selectedVoice = voices.find(
-    voice =>
-      voice.name === 'Microsoft Pavel - Russian (Russia)' &&
-      voice.lang === 'ru-RU'
-  )
 
   if (selectedVoice) {
     utterance.voice = selectedVoice
@@ -19,3 +37,5 @@ export const speak = (text: string) => {
 
   window.speechSynthesis.speak(utterance)
 }
+
+initializeVoices()
