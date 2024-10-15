@@ -19,9 +19,13 @@ const initializeVoices = () => {
     : null
 }
 
-// Обработчик события voiceschanged для асинхронной загрузки голосов
-window.speechSynthesis.onvoiceschanged = () => {
-  initializeVoices()
+if (
+  'speechSynthesis' in window &&
+  'onvoiceschanged' in window.speechSynthesis
+) {
+  window.speechSynthesis.onvoiceschanged = () => {
+    initializeVoices()
+  }
 }
 
 export const speak = (text: string) => {
