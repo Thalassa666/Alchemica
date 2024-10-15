@@ -10,6 +10,7 @@ import { useIngredientsCarousel } from './useIngredientsCarousel'
 import { useIngredientsCombo } from './useIngredientsCombo'
 import { useNotifications } from './useNotifications'
 import { useWinLoose } from './useWinLoose'
+import { speak } from '@game/helpers/speechSynthesis'
 
 const getBackgroundPosition = (context: CanvasContext): Position => {
   return {
@@ -149,6 +150,11 @@ export const useCraftDialog = () => {
       itemByReceipt = receiptToItem(receipt)
     }
 
+    // Озвучка выбранного ингредиента
+    if (centeredItem) {
+      speak(`Вы выбрали ${centeredItem.label}`)
+    }
+
     updateInventory({ selected: updatedSelected, itemByReceipt })
   }
 
@@ -170,6 +176,13 @@ export const useCraftDialog = () => {
         text: `Вы создали ${itemByReceipt.label}.`,
         imgSrc: itemByReceipt.imgSrc,
       })
+
+      // Озвучка результата крафта
+      const resultText =
+        itemByReceipt.type === CraftType.Wasted
+          ? `К сожалению, зелье испорчено!`
+          : `Успех! Вы создали ${itemByReceipt.label}.`
+      speak(resultText)
 
       winLoose.afterCraft(itemByReceipt)
     }
