@@ -7,7 +7,7 @@ export const createClientAndConnect = async (): Promise<Client | null> => {
   try {
     const client = new Client({
       user: POSTGRES_USER,
-      host: 'localhost',
+      host: 'postgres',
       database: POSTGRES_DB,
       password: POSTGRES_PASSWORD,
       port: Number(POSTGRES_PORT),
@@ -17,7 +17,8 @@ export const createClientAndConnect = async (): Promise<Client | null> => {
 
     const res = await client.query('SELECT NOW()')
     console.log('  ➜ 🎸 Connected to the database at:', res?.rows?.[0].now)
-    client.end()
+
+    await client.end()
 
     return client
   } catch (e) {

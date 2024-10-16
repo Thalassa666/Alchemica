@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --project tsconfig.server.json && vite build && vite build --ssr src/entry-server.tsx --outDir dist/server",
-    "preview": "node server/index.js",
+    "start": "node server/index.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "jest ./"

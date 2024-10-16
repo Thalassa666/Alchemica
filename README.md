@@ -1,3 +1,6 @@
+### Документация по игре находится тут: 
+`packages/client/src/game/README.md`
+
 ### Ссылка на видео презентацию игры по 5 и 6 спринтам
 https://www.loom.com/share/6e6df7175cf24fd5a73c6c1bc095f931?sid=9772eea7-3383-44b4-ba3f-a8a90cc1f58c
 
@@ -6,9 +9,15 @@ https://www.loom.com/share/6e6df7175cf24fd5a73c6c1bc095f931?sid=9772eea7-3383-44
 1. Убедитесь что у вас установлен `node` и `docker`
 2. Выполните команду `yarn bootstrap` - это обязательный шаг, без него ничего работать не будет :)
 3. Выполните команду `yarn dev`
-3. Выполните команду `yarn dev --scope=client` чтобы запустить только клиент
-4. Выполните команду `yarn dev --scope=server` чтобы запустить только server
+4. Выполните команду `yarn dev --scope=client` чтобы запустить только клиент
+5. Выполните команду `yarn dev --scope=server` чтобы запустить только server
 
+### Docker
+1. установить `Docker` 
+2. `docker-compose up` создаст (если нету) контейнеры и запустит их
+3. `docker-compose down` остановка контейнеров
+4. в `.env` можно указать свои переменные
+5. в `.env.sample` находятся готовые тестовые данные
 
 ### Как добавить зависимости?
 В этом проекте используется `monorepo` на основе [`lerna`](https://github.com/lerna/lerna)
@@ -48,8 +57,8 @@ https://www.loom.com/share/6e6df7175cf24fd5a73c6c1bc095f931?sid=9772eea7-3383-44
 И чтобы посмотреть что получилось
 
 
-`yarn preview --scope client`
-`yarn preview --scope server`
+`yarn start --scope client`
+`yarn start --scope server`
 
 ## Хуки
 В проекте используется [lefthook](https://github.com/evilmartians/lefthook)
