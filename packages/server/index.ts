@@ -1,19 +1,41 @@
-import dotenv from 'dotenv'
+import cookieParser from 'cookie-parser'
 import cors from 'cors'
-dotenv.config()
-
+import dotenv from 'dotenv'
 import express from 'express'
-import { createClientAndConnect } from './db'
+import { createProxyMiddleware } from 'http-proxy-middleware'
+import { checkAuthMiddleware } from './middlewares'
+import { dbConnect } from './models'
+import { router } from './router'
 
-const app = express()
-app.use(cors())
 const port = Number(process.env.SERVER_PORT) || 3001
+const app = express()
 
-createClientAndConnect()
+dotenv.config()
+dbConnect()
 
-app.get('/', (_, res) => {
-  res.json('👋 Howdy from the server :)')
-})
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+)
+
+app.use(express.json())
+app.use(cookieParser())
+app.use(checkAuthMiddleware)
+
+app.use(
+  '/api/v2',
+  createProxyMiddleware({
+    changeOrigin: true,
+    cookieDomainRewrite: {
+      '*': '',
+    },
+    target: 'https://ya-praktikum.tech',
+  })
+)
+
+app.use('/', router)
 
 app.listen(port, () => {
   console.log(`  ➜ 🎸 Server is listening on port: ${port}`)
