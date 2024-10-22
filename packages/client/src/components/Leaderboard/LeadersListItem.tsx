@@ -55,7 +55,7 @@ export const LeadersListItem = ({ data }: TLeaderboardProps) => {
         </div>
       </div>
 
-      <div className={styles.avatarContainer}>
+      <div className={styles.leadersAvatarContainer}>
         <Avatar
           size={'xl'}
           imgUrl={avatarUrl}

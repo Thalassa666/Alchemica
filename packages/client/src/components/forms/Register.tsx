@@ -48,7 +48,7 @@ export const Register = () => {
       >
         <h2>REGISTER</h2>
         <Input
-          size={'l'}
+          size={'m'}
           type={'text'}
           placeholder={'login'}
           name={'login'}
@@ -59,7 +59,7 @@ export const Register = () => {
           autoComplete={'login'}
         />
         <Input
-          size={'l'}
+          size={'m'}
           type={'text'}
           placeholder={'first_name'}
           name={'first_name'}
@@ -70,7 +70,7 @@ export const Register = () => {
           autoComplete={'name'}
         />
         <Input
-          size={'l'}
+          size={'m'}
           type={'text'}
           placeholder={'second_name'}
           name={'second_name'}
@@ -81,7 +81,7 @@ export const Register = () => {
           autoComplete={'name'}
         />
         <Input
-          size={'l'}
+          size={'m'}
           type={'email'}
           placeholder={'email'}
           name={'email'}
@@ -92,7 +92,7 @@ export const Register = () => {
           autoComplete={'email'}
         />
         <Input
-          size={'l'}
+          size={'m'}
           type={'tel'}
           placeholder={'phone'}
           name={'phone'}
@@ -103,7 +103,7 @@ export const Register = () => {
           autoComplete={'phone'}
         />
         <Input
-          size={'l'}
+          size={'m'}
           type={'password'}
           placeholder={'password'}
           name={'password'}
