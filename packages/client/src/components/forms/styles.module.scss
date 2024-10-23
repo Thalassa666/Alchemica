@@ -1,3 +1,5 @@
+@import "../../mixins.scss";
+
 .form {
   display: flex;
   flex-direction: column;
@@ -9,6 +11,7 @@
   padding: 29px 94px 29px 94px;
   gap: 15px;
   height: 1000px;
+  color: #aeaeae !important;
 
   h2 {
     color: #c8c8c7;
@@ -65,6 +68,10 @@
     font-family: var(--bookman-font), sans-serif;
   }
 
+  p {
+    color: #c8c8c7;
+  }
+
   input {
     background: #465049;
     color: #c8c8c7 !important;
@@ -80,6 +87,15 @@
 
 .form_register {
   max-height: 440px;
+  padding-top: 10px;
+  
+  h2 {
+    z-index: 10;
+  }
+
+  div {
+    margin-bottom: 0;
+  }
 }
 
 .layout {
@@ -131,8 +147,8 @@
   text-align: center;
   width: 100%;
   background-color: var(--color-background);
-  height: 226px;
-  margin-top: 76px;
+  height: 210px;
+  margin-top: 86px;
   position: relative;
 }
 

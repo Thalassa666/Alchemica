@@ -7,12 +7,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-background);
   padding: 64px 94px 54px 94px;
   gap: 24px;
   border-radius: 10px;
   height: 100%;
   box-sizing: border-box;
+  color: #d9d9d9;
 
   h2 {
     color: #d9d9d9;

@@ -39,7 +39,7 @@ export const Login = () => {
         <h2>LOGIN GAME</h2>
 
         <Input
-          size={'l'}
+          size={'m'}
           type={'text'}
           placeholder={'login'}
           name={'login'}
@@ -51,7 +51,7 @@ export const Login = () => {
         />
 
         <Input
-          size={'l'}
+          size={'m'}
           type={'password'}
           placeholder={'password'}
           name={'password'}

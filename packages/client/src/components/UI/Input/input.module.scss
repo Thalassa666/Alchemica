@@ -26,18 +26,20 @@
 }
 
 .input-field {
-  border: 1px solid #ccc;
+  border: 1px solid #241E1E;
   border-radius: 4px;
   padding: 0.5rem;
   transition: border-color 0.3s ease;
 
   &:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #ccc;
+    background: #37493c;
   }
 
   &.input-error {
-    border-color: red;
+    border-color: #928E6A;
+    font-size: 12px;
   }
 
   &:disabled {
@@ -48,7 +50,7 @@
 }
 
 .input-error-message {
-  color: red;
+  color: #f1944d;
   font-size: 0.875rem;
   margin-top: 0.25rem;
 }

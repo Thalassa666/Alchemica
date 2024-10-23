@@ -6,12 +6,13 @@
   align-items: center;
   width: 644px;
   text-align: center;
-  background: rgba(0, 0, 0, 0.7);
+  background: var(--color-background);
   padding: 32px;
   height: 100%;
   margin-top: 140px;
   max-height: calc(100vh - 140px);
   position: relative;
+  color: #aeaeae;
 }
 
 .layout {

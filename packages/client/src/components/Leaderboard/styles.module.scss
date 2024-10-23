@@ -18,6 +18,9 @@
   justify-content: space-between;
   padding: 15px;
   gap: 16px;
+  width: 580px;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .titleContainer {
@@ -65,6 +68,19 @@
   height: 50px;
   position: relative;
   display: inline-block;
+}
+
+.leadersAvatarContainer {
+  flex-shrink: 0;
+  width: 50px !important;
+  height: 50px !important;
+  position: relative;
+  display: inline-block;
+
+  & > div:first-of-type {
+    width: 50px !important;
+    height: 50px !important;
+  }
 }
 
 .icon {

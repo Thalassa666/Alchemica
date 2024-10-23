@@ -66,7 +66,7 @@ export const Profile = () => {
         <UploadAvatar src={avatar ?? ''} />
         <p className={styles.name}>{first_name}</p>
         <Input
-          size={'l'}
+          size={'m'}
           type={'text'}
           placeholder={'login'}
           name={'login'}
@@ -78,7 +78,7 @@ export const Profile = () => {
           autoComplete={'login'}
         />
         <Input
-          size={'l'}
+          size={'m'}
           type={'text'}
           placeholder={'first_name'}
           name={'first_name'}
@@ -90,7 +90,7 @@ export const Profile = () => {
           autoComplete={'name'}
         />
         <Input
-          size={'l'}
+          size={'m'}
           type={'text'}
           placeholder={'second_name'}
           name={'second_name'}
@@ -102,7 +102,7 @@ export const Profile = () => {
           autoComplete={'name'}
         />
         <Input
-          size={'l'}
+          size={'m'}
           type={'email'}
           placeholder={'email'}
           name={'email'}
@@ -114,7 +114,7 @@ export const Profile = () => {
           autoComplete={'email'}
         />
         <Input
-          size={'l'}
+          size={'m'}
           type={'tel'}
           placeholder={'phone'}
           name={'phone'}

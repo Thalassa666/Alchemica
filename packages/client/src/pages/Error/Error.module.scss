@@ -1,9 +1,12 @@
+@import "../../mixins.scss";
+
 .errorContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   font-family: var(--amatic-font), sans-serif;
+  background: $background-color;
 }
 
 .errorContent {
