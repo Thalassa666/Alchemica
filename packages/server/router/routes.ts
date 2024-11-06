@@ -4,16 +4,17 @@ import {
   CommentController,
   ReplyController,
 } from '../controllers'
+import { ApiRoute } from './names'
 
 const ExpressRouter = Router()
 
-ExpressRouter.get('/', (_, res) => {
+ExpressRouter.get(ApiRoute.Main, (_, res) => {
   res.json('👋 Howdy from the server :)')
 })
 
-ExpressRouter.post('/reply', ReplyController.create)
-ExpressRouter.post('/comment', CommentController.create)
-ExpressRouter.get('/topics', TopicController.getAll)
-ExpressRouter.post('/topic', TopicController.create)
+ExpressRouter.post(ApiRoute.Reply, ReplyController.create)
+ExpressRouter.post(ApiRoute.Comment, CommentController.create)
+ExpressRouter.get(ApiRoute.Topics, TopicController.getAll)
+ExpressRouter.post(ApiRoute.Topic, TopicController.create)
 
 export default ExpressRouter

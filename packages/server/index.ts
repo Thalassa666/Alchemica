@@ -22,7 +22,18 @@ app.use(
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(checkAuthMiddleware)
+
+const simpleRequestLogger = (
+  proxyServer: { on: (...args: unknown[]) => void },
+  options: unknown
+) => {
+  proxyServer.on(
+    'proxyReq',
+    (proxyReq: unknown, req: { method: unknown; url: unknown }) => {
+      console.log(`[HPM] [${req.method}] ${req.url}`, proxyReq) // outputs: [HPM] GET /users
+    }
+  )
+}
 
 app.use(
   '/api/v2',
@@ -32,9 +43,12 @@ app.use(
       '*': '',
     },
     target: 'https://ya-praktikum.tech',
+    //@ts-expect-error: 123
+    plugins: [simpleRequestLogger],
   })
 )
 
+app.use(checkAuthMiddleware)
 app.use('/', router)
 
 app.listen(port, () => {

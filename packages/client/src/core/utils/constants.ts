@@ -1,6 +1,6 @@
 import { ILeaderboardResult } from './interfaces/Leaderboard'
 
-export const BASE_URL = 'https://ya-praktikum.tech/api/v2'
+export const BASE_URL = 'http://localhost:3001/api/v2'
 
 export const redirect_uri = 'http://localhost:3000'
 
