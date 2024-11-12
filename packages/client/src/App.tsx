@@ -5,7 +5,7 @@ import common from '../src/assets/audio/common.mp3'
 import game from '../src/assets/audio/game.mp3'
 import cut from '../src/assets/audio/cut.mp3'
 import fire from '../src/assets/audio/fire.mp3'
-import boil from '../src/assets/audio/boil.mp3'
+import boil from '../src/assets/audio/boiling.mp3'
 import page from '../src/assets/audio/page.mp3'
 import './App.css'
 import { routes } from '@core/router'
@@ -42,10 +42,10 @@ function App() {
     <>
       <RouterProvider router={router} />
       <audio ref={gameAudio} src={track === 'game' ? game : common} loop />
-      <audio ref={cutAudio} src={cut} loop />
-      <audio ref={boilAudio} src={boil} loop />
-      <audio ref={fireAudio} src={fire} loop />
-      <audio ref={pageAudio} src={page} loop />
+      <audio ref={cutAudio} src={cut} loop={false} />
+      <audio ref={boilAudio} src={boil} loop={false} />
+      <audio ref={fireAudio} src={fire} loop={false} />
+      <audio ref={pageAudio} src={page} loop={false} />
     </>
   )
 }

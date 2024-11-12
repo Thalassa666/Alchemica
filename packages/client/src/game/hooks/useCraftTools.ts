@@ -107,7 +107,6 @@ export const useCraftTools = () => {
     if (currentNearPlayer?.key !== collision.key) {
       //озвучка активной коллизии
       speak(`${collision.label}`)
-
       dispatch(soundActions.setSound(collision.audio))
     }
 
