@@ -16,6 +16,7 @@ dbConnect()
 app.use(
   cors({
     origin: [
+      '*',
       'http://localhost:3000',
       'https://alchemists-team.ya-praktikum.tech',
     ],
@@ -25,7 +26,7 @@ app.use(
 
 app.use(express.json())
 app.use(cookieParser())
-//app.use(checkAuthMiddleware)
+// app.use(checkAuthMiddleware)
 
 app.use(
   '/api/v2',

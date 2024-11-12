@@ -58,7 +58,7 @@ class AuthApi {
 
   // Вход в систему через Яндекс - узнать ИД
   async getAppID(): Promise<void> {
-    const params = 'http://localhost:3000'
+    const params = 'https://alchemists-team.ya-praktikum.tech'
     const res = await fetch(
       `${this.oauthUrl}/oauth//service-id?redirect_uri=${params}`,
       {

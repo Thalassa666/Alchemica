@@ -52,6 +52,24 @@ services:
     networks:
       - awesome
 
+  nginx:
+    container_name: nginx
+    image: nginx
+    build:
+      dockerfile: Dockerfile.nginx
+    restart: always
+    depends_on:
+      - app
+      - db
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    networks:
+      - awesome
+
 networks:
   awesome:
     driver: bridge
