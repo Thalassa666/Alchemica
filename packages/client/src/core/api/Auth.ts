@@ -60,7 +60,7 @@ class AuthApi {
   async getAppID(): Promise<void> {
     const params = 'http://localhost:3000'
     const res = await fetch(
-      `${this.oauthUrl}/oauth/yandex/service-id?redirect_uri=${params}`,
+      `${this.oauthUrl}/oauth//service-id?redirect_uri=${params}`,
       {
         method: 'GET',
         credentials: 'include',

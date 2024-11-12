@@ -1,5 +1,5 @@
 export function startServiceWorker() {
-  if ('serviceWorker' in navigator) {
+  /*if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker
         .register('/sw.js')
@@ -13,5 +13,5 @@ export function startServiceWorker() {
           console.log('ServiceWorker registration failed: ', error)
         })
     })
-  }
+  }*/
 }

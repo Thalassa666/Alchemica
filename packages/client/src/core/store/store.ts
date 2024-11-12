@@ -1,8 +1,9 @@
+import ssrReducer from '@core/store/reducers/ssr.reducer'
 import userReducer from '@core/store/reducers/user.reducer'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import authReducer from './reducers/auth.reducer'
+import { forumReducer } from './reducers/forum.reducer'
 import { leaderboardReducer } from './reducers/leaderboard.reducer'
-import ssrReducer from '@core/store/reducers/ssr.reducer'
 import { soundReducer } from './reducers/sound.reducer'
 
 declare global {
@@ -12,6 +13,7 @@ declare global {
 }
 
 export const reducer = combineReducers({
+  forumReducer,
   authReducer,
   userReducer,
   soundReducer,
