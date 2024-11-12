@@ -45,6 +45,7 @@ export type CraftTool = KeyId & {
   comboCount: number
   collision: Collision
   toConditions: Record<string, boolean>
+  audio: string
 }
 
 export type CraftToolsState = {

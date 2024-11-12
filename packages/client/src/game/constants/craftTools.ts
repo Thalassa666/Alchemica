@@ -35,6 +35,7 @@ export const CraftTools: Record<string, CraftTool> = {
     toConditions: {
       [ConditionNames.Dry]: true,
     },
+    audio: 'fire',
   },
   [CraftToolNames.CraftTable]: {
     key: CraftToolNames.CraftTable,
@@ -51,6 +52,7 @@ export const CraftTools: Record<string, CraftTool> = {
     toConditions: {
       [ConditionNames.Cut]: true,
     },
+    audio: 'cut',
   },
   [CraftToolNames.Mixing]: {
     key: CraftToolNames.Mixing,
@@ -67,6 +69,7 @@ export const CraftTools: Record<string, CraftTool> = {
     toConditions: {
       [ConditionNames.Raw]: true, // Создаёт новый предмет - зелье
     },
+    audio: 'boil',
   },
 }
 
