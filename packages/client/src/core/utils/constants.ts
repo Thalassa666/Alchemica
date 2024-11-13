@@ -2,6 +2,8 @@ import { ILeaderboardResult } from './interfaces/Leaderboard'
 
 export const BASE_URL = 'https://ya-praktikum.tech/api/v2'
 
+export const forum_api_url = 'https://alchemists-team.ya-praktikum.tech'
+
 export const redirect_uri = 'https://alchemists-team.ya-praktikum.tech'
 
 export const RATING_FIELD_NAME: keyof ILeaderboardResult = 'alchemyGameScore'

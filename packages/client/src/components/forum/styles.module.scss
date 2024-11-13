@@ -47,6 +47,26 @@
 .topicsList {
   width: 100%;
   box-sizing: content-box;
+  max-height: 500px;
+    overflow-y: scroll;
+}
+
+.topicsList1 {
+  width: 100%;
+  box-sizing: content-box;
+  position: relative;
+}
+
+.icon2 {
+  position: absolute;
+  bottom: 24px;
+  right: 10px;
+}
+
+.icon3 {
+  position: absolute;
+  bottom: 68px;
+  right: 10px;
 }
 
 .forumTopic {
@@ -98,7 +118,7 @@
 
 .roundButton {
   width: 40px;
-  height: 38px;
+  height: 40px;
   border-radius: 50%;
   border: none;
   display: flex;
@@ -109,12 +129,13 @@
   background-color: #2f2f2f;
   color: var(--gray-color);
   transform: rotate(45deg);
+  padding: 0 18px;
 }
 
 .buttonAbsolute {
   position: absolute;
   bottom: 30px;
-  right: 30px;
+  right: 10px;
 }
 
 .newTopicInput input {
@@ -129,7 +150,7 @@
   justify-content: space-between;
   position: relative;
   width: 550px;
-  height: 550px;
+  height: 618px;
   padding: 20px;
   background-color: var(--color-background);
   color: var(--gray-color);
@@ -158,4 +179,22 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+}
+
+.text {
+  font-size: 22px;
+}
+
+.emojiButton {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  border: none;
+}
+
+.messagesList {
+  overflow-y: scroll;
+  max-height: 460px;
+  padding-right: 16px;
 }
