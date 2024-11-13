@@ -6,12 +6,16 @@ import { hasCollision } from '../helpers/hasCollision'
 import { CanvasContext, CraftTool, Position, Size } from '../types/types'
 import { useGameState } from './useGameState'
 import { speak } from '@game/helpers/speechSynthesis'
+import { soundActions, soundSlice } from '@core/store/reducers/sound.reducer'
+import { useDispatch } from 'react-redux'
+import { TAppDispatch } from '@core/store/store'
 
 const craftToolsValues = Object.values(CraftTools)
 
 /** Использовать коллизии для крафтовых инструментов */
 export const useCraftTools = () => {
   const { getCraftTools, updateCraftTools } = useGameState()
+  const dispatch = useDispatch<TAppDispatch>()
 
   /** 
     При использовании OK клавиши и нахождении инструмента рядом с игроком - установить его активным 
@@ -103,6 +107,7 @@ export const useCraftTools = () => {
     if (currentNearPlayer?.key !== collision.key) {
       //озвучка активной коллизии
       speak(`${collision.label}`)
+      dispatch(soundActions.setSound(collision.audio))
     }
 
     updateCraftTools({ nearPlayer: collision })

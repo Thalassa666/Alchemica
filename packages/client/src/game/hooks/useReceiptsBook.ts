@@ -10,6 +10,9 @@ import { useMouseInteraction } from './useMouseInteraction'
 import { useReceiptsBookComboList } from './useReceiptsBookComboList'
 import { useReceiptsBookPagination } from './useReceiptsBookPagination'
 import { useReceiptsBookReceiptsList } from './useReceiptsBookReceiptsList'
+import { useDispatch } from 'react-redux'
+import { TAppDispatch } from '@core/store/store'
+import { soundActions } from '@core/store/reducers/sound.reducer'
 
 /** Использовать книгу рецептов */
 export const useReceiptsBook = () => {
@@ -17,6 +20,7 @@ export const useReceiptsBook = () => {
     useGameState()
 
   const subscribedNamesRef = useRef<string[]>([])
+  const dispatch = useDispatch<TAppDispatch>()
 
   /* Точечное зарегистрировать подписки на мышь только в этом модальном окне, чтобы удалить после закрытия */
   const regModalSubscriber = (name: string) => {
@@ -31,6 +35,7 @@ export const useReceiptsBook = () => {
 
   const handleKeydown = (evt: KeyboardEvent) => {
     const onJournalOpen = () => {
+      dispatch(soundActions.setSound('page'))
       updateReceiptBook({
         isDialogOpen: true,
         selected: getReceiptsList().potions[0],
@@ -40,6 +45,7 @@ export const useReceiptsBook = () => {
 
     const onJournalClose = () => {
       if (!getReceiptBook().isDialogOpen) {
+        dispatch(soundActions.setSound('page'))
         return
       }
 
