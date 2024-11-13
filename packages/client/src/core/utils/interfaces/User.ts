@@ -6,7 +6,6 @@ export interface IUser {
   password: string
   phone: string
   avatar: string | null
-  id: number | null
 }
 
 export interface IUserChangePass {

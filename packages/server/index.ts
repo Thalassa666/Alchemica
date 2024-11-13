@@ -15,11 +15,7 @@ dbConnect()
 
 app.use(
   cors({
-    origin: [
-      '*',
-      'http://localhost:3000',
-      'https://alchemists-team.ya-praktikum.tech',
-    ],
+    origin: '*',
     credentials: true,
   })
 )

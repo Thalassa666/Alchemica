@@ -60,7 +60,7 @@ class AuthApi {
   async getAppID(): Promise<void> {
     const params = 'https://alchemists-team.ya-praktikum.tech'
     const res = await fetch(
-      `${this.oauthUrl}/oauth//service-id?redirect_uri=${params}`,
+      `${this.oauthUrl}/oauth/yandex/service-id?redirect_uri=${params}`,
       {
         method: 'GET',
         credentials: 'include',

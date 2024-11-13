@@ -16,11 +16,10 @@ const {
 const options: SequelizeOptions = {
   host: POSTGRES_HOST ?? 'localhost',
   port: POSTGRES_PORT ? Number(POSTGRES_PORT) : 5432,
-  //username: POSTGRES_USER,
-  password: 'postgres',
-  database: 'postgres',
+  username: POSTGRES_USER,
+  password: POSTGRES_PASSWORD,
+  database: POSTGRES_DB,
   dialect: 'postgres',
-  username: 'postgres',
   define: {
     underscored: false,
   },
